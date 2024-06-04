@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
-from flask import Flask, request
+from flask import Flask, request, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
+from config import app, db
 
 from models import db # import your models here!
 
