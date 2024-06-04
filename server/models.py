@@ -14,15 +14,28 @@ class Campaign(db.Model, SerializerMixin):
     name=  db.Column(db.String)
     user= db.Column(db.String)
 
+    
 
 #  realtionships here
 # - should connect to intermediary table which connects to users which would be a many to many (campaigns have many users users has many capnaigns)
+# - shoudl also have a one to many with characters campaigns have many characters
+    characters = db.relationship('Character', backref='campaign')
 
 
 
+# serializerules here / association proxy if  needed
 
-# serializerules here / assproxy is needed
 
+class User_Campaign (db.model):
+
+
+    user_id = db.Column(db.Integer, db.ForeignKey( 'users_table.id' ))
+    campaign_id = db.Column(db.Integer, db.ForeignKey( 'campaigns_table.id' ))
+
+    user = db.relationship('User', back_populates='User_Campaign')
+    campaign = db.relationship('Campaign', back_populates='User_Campaign')
+
+    
 
 class User(db.Model, SerializerMixin):
     __tablename__ = "users_table"
@@ -30,13 +43,22 @@ class User(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     username= db.Column(db.String, unique=True, nullable=False )
     password= db.Column(db.String)
-    Dungeonmaster = db.Column(bool)
+    Dungeonmaster = db.Column(db.Boolean)
+
+    
+
+
+    
+
+
+
 
 #  realtionships here
 # - should connect to intermediary table which connects to campaigns which would be a many to many (users have many campaigns campagn has many users)
 # - should connect to a character table where useres have many characters
 # -
 # -
+    characters = db.relationship('Character', backref='user')
 
 
 # serializerules here
@@ -51,10 +73,15 @@ class Character(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key = True)
     name=  db.Column(db.String)
+    # F keys 
+    user_id = db.Column(db.Integer, db.ForeignKey("users_table.id"))
+    campaign_id = db.Column(db.Integer, db.ForeignKey("campaign_table.id"))
 
 
 
 #  realtionships here
+
+# - one to many 
 # - this is wehere alot of tables and foriegnkeys would be with all the tables 
 
 
