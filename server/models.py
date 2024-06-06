@@ -104,7 +104,7 @@ class Character(db.Model, SerializerMixin):
 
     roles= db.relationship("Role", back_populates = 'character' )
 
-
+    campaigns =association_proxy("roles", 'campaign')
 
 
 # # - one to many 
