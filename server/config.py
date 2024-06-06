@@ -4,10 +4,10 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from flask_migrate import Migrate
 from flask_cors import CORS
-from flask_bcrypt import Bcrypt
-from dotenv import load_dotenv
+# from flask_bcrypt import Bcrypt
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
@@ -27,4 +27,4 @@ migrate = Migrate(app, db)
 
 db.init_app(app)
 
-bcrypt = Bcrypt(app)
+# bcrypt = Bcrypt(app)
