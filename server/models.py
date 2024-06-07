@@ -17,6 +17,8 @@ class Campaign(db.Model, SerializerMixin):
     roles = db.relationship('Role', back_populates='campaign')
 # serializerules here / association proxy if  needed
     characters =association_proxy("roles", 'character')
+    users =association_proxy("roles", 'user')
+
 
 class Role (db.Model, SerializerMixin):
 
@@ -73,10 +75,13 @@ class User(db.Model, SerializerMixin):
    
 #  realtionships here
 
-    characters = db.relationship('Character', back_populates ='user')
+    # characters = db.relationship('Character', back_populates ='user')
 
     roles = db.relationship('Role', back_populates='user')
+    campaings =association_proxy("roles", 'campaign')
+    characters =association_proxy("roles", 'character')
 
+    
 # # serializerules here
 
 # # validations here
@@ -95,16 +100,20 @@ class Character(db.Model, SerializerMixin):
     alignment = db.Column(db.String)
 
     # F keys 
-    user_id = db.Column(db.Integer, db.ForeignKey( "users_table.id" ))
+    # user_id = db.Column(db.Integer, db.ForeignKey( "users_table.id" ))
     
 
 # #  realtionships here
 #     campaign = db.relationship("Campaign", back_populates = "characters")
-    user = db.relationship("User", back_populates = "characters")
+    # user = db.relationship("User", back_populates = "characters")
 
     roles= db.relationship("Role", back_populates = 'character' )
 
     campaigns =association_proxy("roles", 'campaign')
+
+
+    users =association_proxy("roles", 'user')
+
 
 
 # # - one to many 
