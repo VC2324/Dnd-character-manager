@@ -110,10 +110,9 @@ class Character(db.Model, SerializerMixin):
     roles= db.relationship("Role", back_populates = 'character' )
 
     campaigns =association_proxy("roles", 'campaign')
-
-
     users =association_proxy("roles", 'user')
 
+    stats = db.relationship('Stat', back_populates='character')
 
 
 # # - one to many 
@@ -137,31 +136,37 @@ class Character(db.Model, SerializerMixin):
 
 
 
-# class Stat(db.Model, SerializerMixin):
-#     __tablename__ = "stats_table"
+class Stat(db.Model, SerializerMixin):
+    __tablename__ = "stats_table"
 
-#     id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key = True)
 
-#     strength_mod =  db.Column(db.Integer)
-#     strength =  db.Column(db.Integer)
-#     dexterity_mod =  db.Column(db.Integer)
-#     dexterity =  db.Column(db.Integer)
-#     constitution_mod =  db.Column(db.Integer)
-#     constitution =  db.Column(db.Integer)
-#     intelligence_mod =  db.Column(db.Integer)
-#     intelligence =  db.Column(db.Integer)
-#     wisdom_mod =  db.Column(db.Integer)
-#     wisdom =  db.Column(db.Integer)
-#     charisma_mod =  db.Column(db.Integer)
-#     charisma =  db.Column(db.Integer)
-#     wis_perception =  db.Column(db.Integer)
-#     wis_perception_mod =  db.Column(db.Integer)
+    strength_mod =  db.Column(db.Integer)
+    strength =  db.Column(db.Integer)
+    dexterity_mod =  db.Column(db.Integer)
+    dexterity =  db.Column(db.Integer)
+    constitution_mod =  db.Column(db.Integer)
+    constitution =  db.Column(db.Integer)
+    intelligence_mod =  db.Column(db.Integer)
+    intelligence =  db.Column(db.Integer)
+    wisdom_mod =  db.Column(db.Integer)
+    wisdom =  db.Column(db.Integer)
+    charisma_mod =  db.Column(db.Integer)
+    charisma =  db.Column(db.Integer)
+    wis_perception =  db.Column(db.Integer)
+    wis_perception_mod =  db.Column(db.Integer)
+
+    # f key to character
+
+
+    character_id= db.Column(db.Integer, db.ForeignKey( 'characters_table.id' ))
+
+    character = db.relationship('Character', back_populates='stats')
 
 
     
     
 # # this should have a one to many relatioship to character
-
 
 # class MiscStat(db.Model, SerializerMixin):
 #     __tablename__ = "misc_table"
