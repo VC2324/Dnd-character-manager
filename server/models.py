@@ -164,7 +164,7 @@ class Stat(db.Model, SerializerMixin):
     character = db.relationship('Character', back_populates='stats')
 
 
-    
+    "just a new change "
     
 # # this should have a one to many relatioship to character
 
