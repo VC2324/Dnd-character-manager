@@ -40,16 +40,17 @@ class Role (db.Model, SerializerMixin):
     character = db.relationship('Character', back_populates= 'roles')
 
 # add validations where character  if dm boolean is true character id must be null
-# @validates('dm', 'character_id')
-# def validate_character_dm(self, key, value):
-#     if key == 'dm' and value:
-#         if self.character_id is not None:
-#             raise ValueError("DM cannot have a character.")
-#     elif key == 'character_id' and value is not None:
-#         if self.dm:
-#             raise ValueError("Character cannot be set if DM is true.")
-#     return value
 # and vice 
+
+    @validates('dm', 'character_id')
+    def validate_character_dm(self, key, value):
+        if key == 'dm' and value:
+            if self.character_id is not None:
+                raise ValueError("DM cannot have a character.")
+        elif key == 'character_id' and value is not None:
+            if self.dm:
+                raise ValueError("Character cannot be set if DM is true.")
+        return value
 
 
 
@@ -113,19 +114,22 @@ class Character(db.Model, SerializerMixin):
     users =association_proxy("roles", 'user')
 
     stats = db.relationship('Stat', back_populates='character')
+    misc_stats = db.relationship('MiscStat', back_populates='character')
+    saving_throws = db.relationship('SavingThrow', back_populates='character')
+    skills = db.relationship('Skill', back_populates='character')
+    health = db.relationship('Health', back_populates='character')
+    personal = db.relationship('Personal', back_populates='character')
+    
+    attacks = db.relationship('Attack', back_populates='character')
+
+
+
+
+
 
 
 # # - one to many 
 # # - this is wehere alot of tables and foriegnkeys would be with all the tables 
-
-
-
-
-
-
-
-
-
 
 
 
@@ -157,122 +161,156 @@ class Stat(db.Model, SerializerMixin):
     wis_perception_mod =  db.Column(db.Integer)
 
     # f key to character
-
-
     character_id= db.Column(db.Integer, db.ForeignKey( 'characters_table.id' ))
 
     character = db.relationship('Character', back_populates='stats')
 
 
-    "just a new change "
+   
     
 # # this should have a one to many relatioship to character
 
-# class MiscStat(db.Model, SerializerMixin):
-#     __tablename__ = "misc_table"
+class MiscStat(db.Model, SerializerMixin):
+    __tablename__ = "misc_table"
 
-#     id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key = True)
 
-#     inspiration = db.Column(db.Integer)
-#     prof_bonus = db.Column(db.Integer)
+    inspiration = db.Column(db.Integer)
+    prof_bonus = db.Column(db.Integer)
 
-# # this should have a one to many relatioship to character
+    character_id= db.Column(db.Integer, db.ForeignKey( 'characters_table.id' ))
 
-
-# class SavingThrow(db.Model, SerializerMixin):
-
-#     __tablename__ = "saving_throws"
-
-#     id = db.Column(db.Integer, primary_key = True)
-# # for proficieny box would add another column where savingthrow_prof = db.Column(db.Boolean)
-    
-#     strength =  db.Column(db.Integer)
-#     strength_pro =  db.Column(db.Boolean)
-
-#     dexterity =  db.Column(db.Integer)
-#     dexterity_pro =  db.Column(db.Boolean)
-
-#     constitution =  db.Column(db.Integer)
-#     constitution_pro =  db.Column(db.Boolean)
-
-#     intelligence =  db.Column(db.Integer)
-#     intelligence_pro =  db.Column(db.Boolean)
-
-#     wisdom =  db.Column(db.Integer)
-#     wisdom_pro =  db.Column(db.Boolean)
-
-#     charisma =  db.Column(db.Integer)
-#     charisma_pro =  db.Column(db.Boolean)
-
-    
-# # this should have a one to many relatioship to character
-
-# class Skill(db.Model, SerializerMixin):
-
-#     __tablename__='skills_table'
-#     id = db.Column(db.Integer, primary_key = True)
-
-
-# # for proficieny box would add another column where skill_prof = db.Column(db.Boolean)
-    
-#     acrobatics  = db.Column(db.Integer)
-#     acrobatics_pro  = db.Column(db.Boolean)
-#     animal_handling = db.Column(db.Integer)
-#     animal_handling_pro = db.Column(db.Boolean)
-#     arcana = db.Column(db.Integer)
-#     arcana_pro = db.Column(db.Boolean)
-#     athletics = db.Column(db.Integer)
-#     athletics_pro = db.Column(db.Boolean)
-#     deception = db.Column(db.Integer)
-#     deception_pro = db.Column(db.Boolean)
-#     history = db.Column(db.Integer)
-#     history_pro = db.Column(db.Boolean)
-#     insight = db.Column(db.Integer)
-#     insight_pro = db.Column(db.Boolean)
-#     intimidation = db.Column(db.Integer)
-#     intimidation_pro = db.Column(db.Boolean)
-#     investigation = db.Column(db.Integer)
-#     investigation_pro = db.Column(db.Boolean)
-#     medicine = db.Column(db.Integer)
-#     medicine_pro = db.Column(db.Boolean)
-#     nature = db.Column(db.Integer)
-#     nature_pro = db.Column(db.Boolean)
-#     perception = db.Column(db.Integer)
-#     perception_pro = db.Column(db.Boolean)
-#     performance = db.Column(db.Integer)
-#     performance_pro = db.Column(db.Boolean)
-#     persuasion = db.Column(db.Integer)
-#     persuasion_pro = db.Column(db.Boolean)
-#     religion = db.Column(db.Integer)
-#     religion_pro = db.Column(db.Boolean)
-#     sleight_of_hand = db.Column(db.Integer)
-#     sleight_of_hand_pro = db.Column(db.Boolean)
-#     stealth = db.Column(db.Integer)
-#     stealth_pro = db.Column(db.Boolean)
-#     survival = db.Column(db.Integer)
-#     survival_pro = db.Column(db.Boolean)
-    
-# # this should have a one to many relatioship to character
-
-
-# class HealthBlock(db.Model, SerializerMixin):
-
-#     __tablename__="health_block_table"
-
-#     id = db.Column(db.Integer, primary_key = True)
-
-#     armor_Class  = db.Column(db.Integer)
-#     initiative  = db.Column(db.Integer)
-#     speed  = db.Column(db.Integer)
-#     max_hp  = db.Column(db.Integer)
-#     current_hp  = db.Column(db.Integer)
-#     temp_hp  = db.Column(db.Integer)
-#     hit_total  = db.Column(db.Integer)
-#     hit_dice  = db.Column(db.Integer)
-
+    character = db.relationship('Character', back_populates='misc_stats')
 
 
 # # this should have a one to many relatioship to character
+
+
+class SavingThrow(db.Model, SerializerMixin):
+    __tablename__ = "saving_throws"
+
+    id = db.Column(db.Integer, primary_key = True)
+
+    strength =  db.Column(db.Integer)
+    strength_pro =  db.Column(db.Boolean)
+    dexterity =  db.Column(db.Integer)
+    dexterity_pro =  db.Column(db.Boolean)
+    constitution =  db.Column(db.Integer)
+    constitution_pro =  db.Column(db.Boolean)
+    intelligence =  db.Column(db.Integer)
+    intelligence_pro =  db.Column(db.Boolean)
+    wisdom =  db.Column(db.Integer)
+    wisdom_pro =  db.Column(db.Boolean)
+    charisma =  db.Column(db.Integer)
+    charisma_pro =  db.Column(db.Boolean)
+
+    character_id= db.Column(db.Integer, db.ForeignKey( 'characters_table.id' ))
+    character = db.relationship('Character', back_populates='saving_throws')
+    
+# # this should have a one to many relatioship to character
+
+class Skill(db.Model, SerializerMixin):
+
+    __tablename__='skills_table'
+    id = db.Column(db.Integer, primary_key = True)
+
+
+# for proficieny box would add another column where skill_prof = db.Column(db.Boolean)
+    
+    acrobatics  = db.Column(db.Integer)
+    acrobatics_pro  = db.Column(db.Boolean)
+    animal_handling = db.Column(db.Integer)
+    animal_handling_pro = db.Column(db.Boolean)
+    arcana = db.Column(db.Integer)
+    arcana_pro = db.Column(db.Boolean)
+    athletics = db.Column(db.Integer)
+    athletics_pro = db.Column(db.Boolean)
+    deception = db.Column(db.Integer)
+    deception_pro = db.Column(db.Boolean)
+    history = db.Column(db.Integer)
+    history_pro = db.Column(db.Boolean)
+    insight = db.Column(db.Integer)
+    insight_pro = db.Column(db.Boolean)
+    intimidation = db.Column(db.Integer)
+    intimidation_pro = db.Column(db.Boolean)
+    investigation = db.Column(db.Integer)
+    investigation_pro = db.Column(db.Boolean)
+    medicine = db.Column(db.Integer)
+    medicine_pro = db.Column(db.Boolean)
+    nature = db.Column(db.Integer)
+    nature_pro = db.Column(db.Boolean)
+    perception = db.Column(db.Integer)
+    perception_pro = db.Column(db.Boolean)
+    performance = db.Column(db.Integer)
+    performance_pro = db.Column(db.Boolean)
+    persuasion = db.Column(db.Integer)
+    persuasion_pro = db.Column(db.Boolean)
+    religion = db.Column(db.Integer)
+    religion_pro = db.Column(db.Boolean)
+    sleight_of_hand = db.Column(db.Integer)
+    sleight_of_hand_pro = db.Column(db.Boolean)
+    stealth = db.Column(db.Integer)
+    stealth_pro = db.Column(db.Boolean)
+    survival = db.Column(db.Integer)
+    survival_pro = db.Column(db.Boolean)
+
+    character_id= db.Column(db.Integer, db.ForeignKey( 'characters_table.id' ))
+    
+# # this should have a one to many relatioship to character
+
+    character = db.relationship('Character', back_populates='skills')
+
+class Health(db.Model, SerializerMixin):
+
+    __tablename__="health_table"
+
+    id = db.Column(db.Integer, primary_key = True)
+
+    armor_class  = db.Column(db.Integer)
+    initiative  = db.Column(db.Integer)
+    speed  = db.Column(db.Integer)
+    max_hp  = db.Column(db.Integer)
+    current_hp  = db.Column(db.Integer)
+    temp_hp  = db.Column(db.Integer)
+    hit_total  = db.Column(db.Integer)
+    hit_dice  = db.Column(db.Integer)
+
+    character_id= db.Column(db.Integer, db.ForeignKey( 'characters_table.id' ))
+
+    character = db.relationship('Character', back_populates='health')
+
+
+
+# # this should have a one to many relatioship to character
     
 
+
+class Personal(db.Model, SerializerMixin):
+
+    __tablename__="personal_table"
+
+    id = db.Column(db.Integer, primary_key = True)
+    personality_traits= db.Column(db.String)
+    ideals= db.Column(db.String)
+    bonds= db.Column(db.String)
+    flaws= db.Column(db.String)
+
+    character_id= db.Column(db.Integer, db.ForeignKey( 'characters_table.id' ))
+
+    character = db.relationship('Character', back_populates='personal')
+
+
+class Attack(db.Model, SerializerMixin):
+
+    __tablename__="attack_table"
+
+    id = db.Column(db.Integer, primary_key = True)
+    name= db.Column(db.String)
+    attack_bonus= db.Column(db.Integer)
+    dmg= db.Column(db.Integer)
+    tipe= db.Column(db.String)
+
+    character_id= db.Column(db.Integer, db.ForeignKey( 'characters_table.id' ))
+
+    character = db.relationship('Character', back_populates='attacks')
 
