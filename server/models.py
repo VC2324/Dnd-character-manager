@@ -119,21 +119,14 @@ class Character(db.Model, SerializerMixin):
     skills = db.relationship('Skill', back_populates='character')
     health = db.relationship('Health', back_populates='character')
     personal = db.relationship('Personal', back_populates='character')
-    
+
     attacks = db.relationship('Attack', back_populates='character')
-
-
-
-
-
-
+    feats = db.relationship('Feat', back_populates='character')
+    equipments = db.relationship('Equipment', back_populates='character')
+    other = db.relationship('Other', back_populates='character')
 
 # # - one to many 
 # # - this is wehere alot of tables and foriegnkeys would be with all the tables 
-
-
-
-
 
 
 # # ********************************rest of character sheet tables below ***********************************************
@@ -314,3 +307,41 @@ class Attack(db.Model, SerializerMixin):
 
     character = db.relationship('Character', back_populates='attacks')
 
+
+class Feat(db.Model, SerializerMixin):
+
+    __tablename__="feats_table"
+
+    id = db.Column(db.Integer, primary_key = True)
+    features= db.Column(db.String)
+    traits= db.Column(db.String)
+
+    character_id= db.Column(db.Integer, db.ForeignKey( 'characters_table.id' ))
+
+    character = db.relationship('Character', back_populates='feats')
+
+
+class Equipment(db.Model, SerializerMixin):
+
+    __tablename__="equipment_table"
+
+    id = db.Column(db.Integer, primary_key = True)
+    equipment= db.Column(db.String)
+    equipment_stat= db.Column(db.Integer)
+
+    character_id= db.Column(db.Integer, db.ForeignKey( 'characters_table.id' ))
+
+    character = db.relationship('Character', back_populates='equipments')
+
+
+class Other(db.Model, SerializerMixin):
+
+    __tablename__="other_table"
+
+    id = db.Column(db.Integer, primary_key = True)
+    other_prof= db.Column(db.String)
+    languages= db.Column(db.String)
+
+    character_id= db.Column(db.Integer, db.ForeignKey( 'characters_table.id' ))
+
+    character = db.relationship('Character', back_populates='other')
