@@ -19,6 +19,7 @@ class Campaign(db.Model, SerializerMixin):
     characters =association_proxy("roles", 'character')
     users =association_proxy("roles", 'user')
 
+    serialize_rules =('-roles', '-characters', '-users',)
 
 class Role (db.Model, SerializerMixin):
 
@@ -38,6 +39,7 @@ class Role (db.Model, SerializerMixin):
 
     character = db.relationship('Character', back_populates= 'roles')
 
+    serialize_rules=('-campaign', '-user', '-character',)
 # add validations where character  if dm boolean is true character id must be null
 # and vice 
 
@@ -80,6 +82,8 @@ class User(db.Model, SerializerMixin):
     roles = db.relationship('Role', back_populates='user')
     campaings =association_proxy("roles", 'campaign')
     characters =association_proxy("roles", 'character')
+    serialize_rules=('-roles', '-characters', '-campaigns',)
+
 
     
 # # serializerules here
@@ -103,9 +107,9 @@ class Character(db.Model, SerializerMixin):
     # user_id = db.Column(db.Integer, db.ForeignKey( "users_table.id" ))
     
 
-# #  realtionships here
-#     campaign = db.relationship("Campaign", back_populates = "characters")
-    # user = db.relationship("User", back_populates = "characters")
+#   realtionships here
+#   campaign = db.relationship("Campaign", back_populates = "characters")
+#   user = db.relationship("User", back_populates = "characters")
 
     roles= db.relationship("Role", back_populates = 'character' )
 
@@ -123,6 +127,9 @@ class Character(db.Model, SerializerMixin):
     feats = db.relationship('Feat', back_populates='character')
     equipments = db.relationship('Equipment', back_populates='character')
     other = db.relationship('Other', back_populates='character')
+
+    serialize_rules=('-roles', '-campaigns', '-users','-stats', '-misc_stats','-saving_throws','-skills','-health','-personal','-attacks','-feats','-equipments','-other')
+
 
 # # - one to many 
 # # - this is wehere alot of tables and foriegnkeys would be with all the tables 
@@ -157,6 +164,7 @@ class Stat(db.Model, SerializerMixin):
 
     character = db.relationship('Character', back_populates='stats')
 
+    serialize_rules = ('-character',)
 
    
     
@@ -173,6 +181,9 @@ class MiscStat(db.Model, SerializerMixin):
     character_id= db.Column(db.Integer, db.ForeignKey( 'characters_table.id' ))
 
     character = db.relationship('Character', back_populates='misc_stats')
+
+    serialize_rules = ('-character',)
+
 
 
 # # this should have a one to many relatioship to character
@@ -198,6 +209,8 @@ class SavingThrow(db.Model, SerializerMixin):
 
     character_id= db.Column(db.Integer, db.ForeignKey( 'characters_table.id' ))
     character = db.relationship('Character', back_populates='saving_throws')
+    serialize_rules = ('-character',)
+
     
 # # this should have a one to many relatioship to character
 
@@ -251,6 +264,7 @@ class Skill(db.Model, SerializerMixin):
 # # this should have a one to many relatioship to character
 
     character = db.relationship('Character', back_populates='skills')
+    serialize_rules = ('-character',)
 
 class Health(db.Model, SerializerMixin):
 
@@ -271,6 +285,8 @@ class Health(db.Model, SerializerMixin):
 
     character = db.relationship('Character', back_populates='health')
 
+    serialize_rules = ('-character',)
+    
 
 
 # # this should have a one to many relatioship to character
@@ -290,6 +306,7 @@ class Personal(db.Model, SerializerMixin):
     character_id= db.Column(db.Integer, db.ForeignKey( 'characters_table.id' ))
 
     character = db.relationship('Character', back_populates='personal')
+    serialize_rules = ('-character',)
 
 
 class Attack(db.Model, SerializerMixin):
@@ -305,6 +322,8 @@ class Attack(db.Model, SerializerMixin):
     character_id= db.Column(db.Integer, db.ForeignKey( 'characters_table.id' ))
 
     character = db.relationship('Character', back_populates='attacks')
+    serialize_rules = ('-character',)
+
 
 
 class Feat(db.Model, SerializerMixin):
@@ -318,6 +337,8 @@ class Feat(db.Model, SerializerMixin):
     character_id= db.Column(db.Integer, db.ForeignKey( 'characters_table.id' ))
 
     character = db.relationship('Character', back_populates='feats')
+    serialize_rules = ('-character',)
+
 
 
 class Equipment(db.Model, SerializerMixin):
@@ -331,6 +352,8 @@ class Equipment(db.Model, SerializerMixin):
     character_id= db.Column(db.Integer, db.ForeignKey( 'characters_table.id' ))
 
     character = db.relationship('Character', back_populates='equipments')
+    serialize_rules = ('-character',)
+
 
 
 class Other(db.Model, SerializerMixin):
@@ -344,3 +367,4 @@ class Other(db.Model, SerializerMixin):
     character_id= db.Column(db.Integer, db.ForeignKey( 'characters_table.id' ))
 
     character = db.relationship('Character', back_populates='other')
+    serialize_rules = ('-character',)
