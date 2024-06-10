@@ -28,7 +28,6 @@ class Role (db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key= True)
     dm = db.Column(db.Boolean)
  
-    
     #F keys 
     user_id = db.Column(db.Integer, db.ForeignKey( 'users_table.id' ))
     campaign_id = db.Column(db.Integer, db.ForeignKey( 'campaigns_table.id' ))
