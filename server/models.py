@@ -2,9 +2,9 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy_serializer import SerializerMixin
+from sqlalchemy.ext.hybrid import hybrid_property
 
-from config import db
-# bcrypt 
+from config import db, bcrypt 
 
 class Campaign(db.Model, SerializerMixin):
     __tablename__ ="campaigns_table"
@@ -73,8 +73,22 @@ class User(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key = True)
     username= db.Column(db.String, unique=True, nullable=False )
-    password= db.Column(db.String)
-   
+    _hashed_password= db.Column(db.String)
+
+
+    @hybrid_property
+    def hashed_password(self):
+        raise AttributeError('Password hashes may not be viewed.')
+    
+    @hashed_password.setter
+    def hashed_password(self, password):
+        hashed_password = bcrypt.generate_password_hash(
+            password.encode('utf-8'))
+        self._hashed_password = hashed_password.decode('utf-8')
+
+    def authenticate(self, password):
+        return bcrypt.check_password_hash(
+            self._hashed_password, password.encode('utf-8'))
 #  realtionships here
 
     # characters = db.relationship('Character', back_populates ='user')
@@ -127,8 +141,8 @@ class Character(db.Model, SerializerMixin):
     feats = db.relationship('Feat', back_populates='character')
     equipments = db.relationship('Equipment', back_populates='character')
     other = db.relationship('Other', back_populates='character')
-
-    serialize_rules=('-roles', '-campaigns', '-users','-stats', '-misc_stats','-saving_throws','-skills','-health','-personal','-attacks','-feats','-equipments','-other')
+# add character.skills to test so we recieve when we call character 
+    serialize_rules=('-roles', '-campaigns', '-users','-stats', '-misc_stats','-saving_throws','-skills','-health','-personal','-attacks','-feats','-equipments','-other',)
 
 
 # # - one to many 

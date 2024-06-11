@@ -7,7 +7,7 @@ function Navbar(){
             {/* <Link to ="/userprofile"> Profile </Link> */}
             <NavLink to ="/charactercreator"> Creator Creator </NavLink>
             <NavLink to ="/charactersheet"> Character Sheet </NavLink>
-            <NavLink to ="/checkout"> Checkout </NavLink>
+            {/* <NavLink to ="/checkout"> Checkout </NavLink> */}
         </div>
     )
 }

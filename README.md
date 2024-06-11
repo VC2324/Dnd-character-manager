@@ -1,6 +1,9 @@
 # Phase 4 Project Template
 
 ## Getting Started - Git & Github
+gotta add bycrypt to install
+
+pip install flask-bcrypt
 
 Elect one person to clone (DON'T FORK) this project to their local computer. That person will then run this command:
 
@@ -58,7 +61,7 @@ To start your React server, run:
 npm install --prefix client
 npm run dev --prefix client
 ```
-
+gotta addd
 When making fetch requests, leave out the `localhost:5555` portion since a proxy already exists to that domain and instead prefix every request with `/api` to properly utilize the proxy request feature.
 
 ## Conclusion

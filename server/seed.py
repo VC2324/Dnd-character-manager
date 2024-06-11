@@ -4,7 +4,7 @@ from app import app
 from models import db, User, Campaign, Role, Character, Stat, MiscStat, SavingThrow, Skill, Health, Personal, Attack, Feat, Equipment, Other
 from faker import Faker
 import random
-
+from werkzeug.security import generate_password_hash
 faker = Faker()
 
 if __name__ == '__main__':
@@ -28,11 +28,17 @@ if __name__ == '__main__':
 
 
         users = []
-        u1 = User(username="Player1", password='123')
+        u1 = User(username="Player1",)
+        u1.hashed_password='123'
+
         users.append(u1)
-        u2 = User(username="Player2", password='123')
+        u2 = User(username="Player2",)
+        u2.hashed_password='123'
+
         users.append(u2)
-        u3 = User(username="Player3", password='123')
+        u3 = User(username="Player3",)
+        u3.hashed_password='123'
+
         users.append(u3)
 
         db.session.add_all(users)
