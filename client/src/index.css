@@ -2,3 +2,13 @@ body {
   margin: 0;
   padding: 1em;
 }
+.nav{
+  width: 100%;
+  color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 40px;
+  border: 1px solid white;
+}

@@ -6,4 +6,7 @@ function Userprofile(){
         </div>
     )
 
+
 }
+
+export default Userprofile
