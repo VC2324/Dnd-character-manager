@@ -40,20 +40,39 @@ def index():
 #         return jsonify(stats=[stat.to_dict() for stat in stats]), 200
 #     return jsonify({'error': 'Character not found'}), 404
 
-# this grabs users characters with=================
-@app.get('/api/user/<user_id>/characters')
+# this grabs all of users characters without the inner tables=================
+@app.get('/api/user/<int:user_id>/characters')
 def get_all_char(user_id):
     user=User.query.get(user_id)
     # return [character.to_dict() for character in user.characters], 200
     characters =[character.to_dict(rules=['-stats', '-misc_stats','-saving_throws','-skills','-health','-personal','-attacks','-feats','-equipments','-other']) for character in user.characters]
-    
+
     return jsonify({
         'characters': characters
     }), 200
     # return [u.to_dict() for u in User.characters.query.all()],200
 
 
+# @app.get('/api/user/<int:user_id>/character/<int:character_id>')
+# def get_one_char(user_id, character_id):
+#     character=Character.query.where((Character.user_id == user_id ) & ( Character.id == character_id)).first()
+#     if character:
+#         return character.to_dict(), 200
+#     return {}, 404
+@app.get('/api/user/<int:user_id>/character/<int:character_id>')
+def get_one_char(user_id, character_id):
+    character = (db.session.query(Character)
+                 .join(Role)
+                 .filter(Role.user_id == user_id)
+                 .filter(Role.character_id == character_id)
+                 .filter(Character.id == character_id)
+                 .first())
+    if character:
+        return jsonify(character.to_dict()), 200
+    return jsonify({}), 404
 
+
+    
 #  this grabs characters with all the inner tables within it ============
 @app.get('/api/characters/<int:character_id>')
 def get_character(character_id):
