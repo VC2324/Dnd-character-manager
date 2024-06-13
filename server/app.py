@@ -23,6 +23,35 @@ db.init_app(app)
 def index():
     return "Hello world"
 
+
+# user login/auth and creator
+@app.post("/api/signup")
+def signup():
+    try:
+        new_user = User(
+            username=request.json.get('username'),
+            )
+        new_user.hashed_password = request.json['hashed_password']
+        db.session.add(new_user)
+        db.session.commit()
+
+       
+        session["user_id"] = new_user.id
+        return new_user.to_dict(), 201
+    except Exception as e:
+        return { 'error': str(e) }, 406
+    
+@app.get("/api/check_session")
+def check_session():
+    user_id = session.get('user_id')
+    if user_id:
+        user = User.query.filter(User.id == user_id).first()
+        if user:
+            return user.to_dict(), 200
+        return {'error': 'user not found'}, 404
+    return {}, 401
+
+
 # @app.get('/api/characters/<int:character_id>/skills')
 # def get_char_skills(character_id):
 #     character = Character.query.get(character_id)
