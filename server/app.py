@@ -31,7 +31,7 @@ def signup():
         new_user = User(
             username=request.json.get('username'),
             )
-        new_user.hashed_password = request.json['hashed_password']
+        new_user.hashed_password = request.json['password']
         db.session.add(new_user)
         db.session.commit()
 
