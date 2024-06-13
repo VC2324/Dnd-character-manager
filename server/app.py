@@ -95,7 +95,6 @@ def logout():
 # user id should b from session params
 def get_all_char():
     user_id = session.get('user_id')
-    breakpoint()
     user=User.query.get(user_id)
 
     # return [character.to_dict() for character in user.characters], 200

@@ -1,4 +1,5 @@
 import { useOutletContext } from "react-router-dom"
+import CharacterCards from "./CharactersCard"
 
 function Userprofile(){
     const {currentUser, setCurrentUser} = useOutletContext()
@@ -13,8 +14,9 @@ function Userprofile(){
     return(
             <div id="userprofile">
             <h1> Welcome {currentUser.username} </h1>
-                
-            <button id="logout-btn" onClick={handleLogout}>Log out</button></div>
+            <button id="logout-btn" onClick={handleLogout}>Log out</button>
+            <CharacterCards/>
+            </div>
     )
 
 
