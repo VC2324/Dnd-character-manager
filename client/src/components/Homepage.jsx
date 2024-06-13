@@ -1,9 +1,32 @@
+import Login from "./Login"
+import Signup from "./Signup"
+import Userprofile from "./Userprofile"
+import { useOutletContext } from "react-router-dom"
 
 function Homepage(){
-    return(
-        <div>
-           <h1> this is where login and signup component shall live</h1> 
+
+const {currentUser, setCurrentUser} = useOutletContext()
+if (!currentUser) { 
+    return (
+
+        <div className="home">
+
+          {/* <Signup setCurrentUser={setCurrentUser}/> */}
+          <Login setCurrentUser={setCurrentUser}/>
+
         </div>
+
     )
+
+    } else {
+
+return(
+    <div>
+        <Userprofile/>
+    </div>
+)
+pass
+
+}
 }
 export default Homepage

@@ -55,6 +55,24 @@ def check_session():
     return {}, 401
 
 
+@app.post("/api/login")
+def login():
+    user = User.query.filter(User.username == request.json['username']).first()
+    if user == None:
+        return {'error': 'username not found'}, 401
+    elif user.authenticate(request.json['password']):
+        session['user_id'] = user.id
+        return user.to_dict(), 200
+    return {'error': 'wrong password'}, 401
+
+
+@app.delete("/api/logout")
+def logout():
+    if session.get('user_id') == None:
+        return {}, 401
+    session['user_id'] = None
+    return {}, 204
+
 # @app.get('/api/characters/<int:character_id>/skills')
 # def get_char_skills(character_id):
 #     character = Character.query.get(character_id)
@@ -73,9 +91,13 @@ def check_session():
 #     return jsonify({'error': 'Character not found'}), 404
 
 # this grabs all of users characters with the inner tables=================
-@app.get('/api/user/<int:user_id>/characters')
-def get_all_char(user_id):
+@app.get('/api/characters')
+# user id should b from session params
+def get_all_char():
+    user_id = session.get('user_id')
+    breakpoint()
     user=User.query.get(user_id)
+
     # return [character.to_dict() for character in user.characters], 200
     characters =[character.to_dict() for character in user.characters]
 # rules=['-stats', '-misc_stats','-saving_throws','-skills','-health','-personal','-attacks','-feats','-equipments','-other']
