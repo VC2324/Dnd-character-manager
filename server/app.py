@@ -1,23 +1,26 @@
 #!/usr/bin/env python3
-
+import os
 from flask import Flask, request, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
 from config import app, db
 
+
 from models import db, User, Campaign, Role, Character, Stat, MiscStat, SavingThrow, Skill, Health, Personal, Attack, Feat, Equipment, Other
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.json.compact = False
+# app = Flask(__name__)
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
-CORS(app)
+# app.json.compact = False
+# # app.config.from_object('config')
+# CORS(app)
 
-migrate = Migrate(app, db)
+# migrate = Migrate(app, db)
 
-db.init_app(app)
+# db.init_app(app)
 
 @app.get('/')
 def index():

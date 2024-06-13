@@ -53,3 +53,4 @@ jspm_packages
 *.db
 */*.db
 */*/*.db
+.env
