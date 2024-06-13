@@ -30,30 +30,50 @@ if __name__ == '__main__':
         users = []
         u1 = User(username="Player1",)
         u1.hashed_password='123'
-
         users.append(u1)
+
         u2 = User(username="Player2",)
         u2.hashed_password='123'
-
         users.append(u2)
+
         u3 = User(username="Player3",)
         u3.hashed_password='123'
-
         users.append(u3)
+
+        u4 = User(username="Player4")
+        u4.hashed_password = generate_password_hash('123')
+        users.append(u4)
+
+        u5 = User(username="Player5")
+        u5.hashed_password = generate_password_hash('123')
+        users.append(u5)
+
 
         db.session.add_all(users)
         db.session.commit()
 
 
         characters = []
-        c1 = Character(name="Character1", klass="Rogue", level=5, background="Criminal", race="Human", xp=5000, alignment="Chaotic Neutral")
+        c1 = Character(name="Florb", klass="Rogue", level=5, background="Criminal", race="Human", xp=5000, alignment="Chaotic Neutral")
         characters.append(c1)
-        c2 = Character(name="Character2", klass="Fighter", level=3, background="Soldier", race="Dwarf", xp=3000, alignment="Lawful Good")
+        c2 = Character(name="Glorb", klass="Fighter", level=3, background="Soldier", race="Dwarf", xp=3000, alignment="Lawful Good")
         characters.append(c2)
-        c3 = Character(name="Character3", klass="Wizard", level=2, background="Sage", race="Elf", xp=2000, alignment="Neutral Good")
+        c3 = Character(name="Shleem", klass="Wizard", level=2, background="Sage", race="Elf", xp=2000, alignment="Neutral Good")
         characters.append(c3)
-        c4 = Character(name="Character4", klass="Cleric", level=4, background="Acolyte", race="Half-Orc", xp=4000, alignment="Lawful Neutral")
+        c4 = Character(name="Cthing", klass="Cleric", level=4, background="Acolyte", race="Half-Orc", xp=4000, alignment="Lawful Neutral")
         characters.append(c4)
+        c5 = Character(name="Ragnar", klass="Barbarian", level=3, background="Outlander", race="Dragonborn", xp=3000, alignment="Chaotic Good")
+        characters.append(c5)
+        c6 = Character(name="Aelar", klass="Monk", level=5, background="Hermit", race="Tiefling", xp=5000, alignment="Neutral")
+        characters.append(c6)
+        c7 = Character(name="Elowen", klass="Paladin", level=4, background="Noble", race="Human", xp=4000, alignment="Lawful Good")
+        characters.append(c7)
+        c8 = Character(name="Dorn", klass="Sorcerer", level=2, background="Charlatan", race="Half-Elf", xp=2000, alignment="Chaotic Neutral")
+        characters.append(c8)
+        c9 = Character(name="Seraphina", klass="Warlock", level=5, background="Folk Hero", race="Halfling", xp=5000, alignment="Chaotic Evil")
+        characters.append(c9)
+        c10 = Character(name="Varis", klass="Bard", level=3, background="Entertainer", race="Gnome", xp=3000, alignment="Neutral Good")
+        characters.append(c10)
 
         db.session.add_all(characters)
         db.session.commit()
@@ -211,23 +231,40 @@ if __name__ == '__main__':
             )
             db.session.add(other)
 
+        campaigns=[]
+        campaign1 = Campaign(name="The Great Adventure", description="An epic journey to save the world!")
+        campaigns.append(campaign1)
+        campaign2 = Campaign(name="Lost Treasures of Eldoria", description="Seeking ancient artifacts across the land.")
+        campaigns.append(campaign2)
 
-        campaign = Campaign(name="The Great Adventure", description="An epic journey to save the world!")
-        db.session.add(campaign)
+        db.session.add_all(campaigns)
         db.session.commit()
 
 
         roles = []
-        r1 = Role(dm=True, user_id=u3.id, campaign_id=campaign.id)
+        r1 = Role(dm=True, user_id=u3.id, campaign_id=campaign1.id)
         roles.append(r1)
-        r2 = Role(dm=False, user_id=u1.id, character_id=c1.id, campaign_id=campaign.id)
+        r2 = Role(dm=False, user_id=u1.id, character_id=c1.id, campaign_id=campaign1.id)
         roles.append(r2)
-        r3 = Role(dm=False, user_id=u1.id, character_id=c2.id, campaign_id=campaign.id)
+        r3 = Role(dm=False, user_id=u1.id, character_id=c2.id, campaign_id=campaign1.id)
         roles.append(r3)
-        r4 = Role(dm=False, user_id=u2.id, character_id=c3.id, campaign_id=campaign.id)
+        r4 = Role(dm=False, user_id=u2.id, character_id=c3.id, campaign_id=campaign1.id)
         roles.append(r4)
-        r5 = Role(dm=False, user_id=u2.id, character_id=c4.id, campaign_id=campaign.id)
+        r5 = Role(dm=False, user_id=u2.id, character_id=c4.id, campaign_id=campaign1.id)
         roles.append(r5)
+
+        r6 = Role(dm=False, user_id=u3.id, character_id=c5.id, campaign_id=campaign2.id)
+        roles.append(r6)
+        r7 = Role(dm=False, user_id=u3.id, character_id=c6.id, campaign_id=campaign2.id)
+        roles.append(r7)
+        r8 = Role(dm=False, user_id=u4.id, character_id=c7.id, campaign_id=campaign2.id)
+        roles.append(r8)
+        r9 = Role(dm=False, user_id=u4.id, character_id=c8.id, campaign_id=campaign2.id)
+        roles.append(r9)
+        r10 = Role(dm=False, user_id=u5.id, character_id=c9.id, campaign_id=campaign2.id)
+        roles.append(r10)
+        r11 = Role(dm=False, user_id=u5.id, character_id=c10.id, campaign_id=campaign2.id)
+        roles.append(r11)
 
         db.session.add_all(roles)
         db.session.commit()

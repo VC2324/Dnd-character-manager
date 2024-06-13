@@ -40,13 +40,13 @@ def index():
 #         return jsonify(stats=[stat.to_dict() for stat in stats]), 200
 #     return jsonify({'error': 'Character not found'}), 404
 
-# this grabs all of users characters without the inner tables=================
+# this grabs all of users characters with the inner tables=================
 @app.get('/api/user/<int:user_id>/characters')
 def get_all_char(user_id):
     user=User.query.get(user_id)
     # return [character.to_dict() for character in user.characters], 200
-    characters =[character.to_dict(rules=['-stats', '-misc_stats','-saving_throws','-skills','-health','-personal','-attacks','-feats','-equipments','-other']) for character in user.characters]
-
+    characters =[character.to_dict() for character in user.characters]
+# rules=['-stats', '-misc_stats','-saving_throws','-skills','-health','-personal','-attacks','-feats','-equipments','-other']
     return jsonify({
         'characters': characters
     }), 200
@@ -74,12 +74,12 @@ def get_one_char(user_id, character_id):
 
     
 #  this grabs characters with all the inner tables within it ============
-@app.get('/api/characters/<int:character_id>')
-def get_character(character_id):
-    character = Character.query.get(character_id)
-    if character:
-        return character.to_dict(), 200
-    return {}, 404
+# @app.get('/api/characters/<int:character_id>')
+# def get_character(character_id):
+#     character = Character.query.get(character_id)
+#     if character:
+#         return character.to_dict(), 200
+#     return {}, 404
 
 @app.patch('/api/characters/<int:id>')
 def update_character(id):
@@ -98,6 +98,27 @@ def update_character(id):
 # write your routes here! 
 # all routes should start with '/api' to account for the proxy
 
+
+# ======== campaign routes======
+
+
+# @app.get('/api/user/<int:id>/campaigns')
+# def get_user_campaigns(id):
+#     user = User.query.filter_by(id=id).first()
+#     if user:
+#         campaigns = user.campaings 
+#         campaigns_list = [campaign.to_dict() for campaign in campaigns]
+#         return jsonify(campaigns_list), 200
+#     return jsonify([]), 404
+
+
+@app.get('/api/users/<int:user_id>/campaigns')
+def get_user_campaigns(user_id):
+    user = User.query.filter_by(id=user_id).first()
+    if user:
+        campaigns = user.campaings  
+        return jsonify([campaign.to_dict() for campaign in campaigns]), 200
+    return jsonify([]), 404
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

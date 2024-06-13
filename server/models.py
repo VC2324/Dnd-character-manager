@@ -205,7 +205,7 @@ class MiscStat(db.Model, SerializerMixin):
 
 
 class SavingThrow(db.Model, SerializerMixin):
-    __tablename__ = "saving_throws"
+    __tablename__ = "saving_throws_table"
 
     id = db.Column(db.Integer, primary_key = True)
 
