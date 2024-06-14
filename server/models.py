@@ -142,8 +142,9 @@ class Character(db.Model, SerializerMixin):
     equipments = db.relationship('Equipment', back_populates='character')
     other = db.relationship('Other', back_populates='character')
 # add character.skills to test so we recieve when we call character 
+                    
     serialize_rules=('-roles', '-campaigns', '-users',)
-                    # '-stats', '-misc_stats','-saving_throws','-skills','-health','-personal','-attacks','-feats','-equipments','-other',)
+                    #  '-stats', '-misc_stats','-saving_throws','-skills','-health','-personal','-attacks','-feats','-equipments','-other',)
 
 
 # # - one to many 

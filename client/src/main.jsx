@@ -26,7 +26,7 @@ const routes = [{
       element: <CharacterCreator />
     },
     {
-      path: 'charactersheet',
+      path: 'character/:character_id',
       element: <CharacterSheet />
     }
   ]

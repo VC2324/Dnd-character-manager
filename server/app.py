@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import os
+import pdb
 from flask import Flask, request, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -105,24 +106,30 @@ def get_all_char():
     }), 200
     # return [u.to_dict() for u in User.characters.query.all()],200
 
+# get one character===================
+@app.get('/api/character/<int:character_id>')
+def get_one_char(character_id):
+    user_id = session.get('user_id')
+
+    user = User.query.get(user_id)
+    if user:
+        for character in user.characters:
+            if character.id == character_id:
+                return character.to_dict(), 200
+
+    return {}, 404
 
 # @app.get('/api/user/<int:user_id>/character/<int:character_id>')
 # def get_one_char(user_id, character_id):
-#     character=Character.query.where((Character.user_id == user_id ) & ( Character.id == character_id)).first()
+#     character = (db.session.query(Character)
+#                  .join(Role)
+#                  .filter(Role.user_id == user_id)
+#                  .filter(Role.character_id == character_id)
+#                  .filter(Character.id == character_id)
+#                  .first())
 #     if character:
-#         return character.to_dict(), 200
-#     return {}, 404
-@app.get('/api/user/<int:user_id>/character/<int:character_id>')
-def get_one_char(user_id, character_id):
-    character = (db.session.query(Character)
-                 .join(Role)
-                 .filter(Role.user_id == user_id)
-                 .filter(Role.character_id == character_id)
-                 .filter(Character.id == character_id)
-                 .first())
-    if character:
-        return jsonify(character.to_dict()), 200
-    return jsonify({}), 404
+#         return jsonify(character.to_dict()), 200
+#     return jsonify({}), 404
 
 
     
