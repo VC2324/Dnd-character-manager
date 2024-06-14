@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import CharacterProfile from "./CharacterProfile"
 
 
@@ -8,7 +8,7 @@ function CharacterSheet(){
     const [character, setCharacter] = useState(null);
     const [error, setError] = useState(null);
     
-    console.log(character_id)
+
 
     useEffect(() => {
         fetch(`/api/character/${character_id}`)
@@ -31,7 +31,7 @@ function CharacterSheet(){
     return(
         <div>
 
-            <CharacterProfile/>
+            <CharacterProfile character={character} />
             this is where the character sheet lives
         </div>
     )
