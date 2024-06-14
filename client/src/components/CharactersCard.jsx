@@ -48,7 +48,7 @@ console.log(characters)
                             <p>Level: {character.level}</p>
                             <p>Class: {character.klass}</p>
                             <p>Exp: {character.xp}</p>
-                            <h3>Skills</h3>
+                           
 
                     </div>
                     </Link>

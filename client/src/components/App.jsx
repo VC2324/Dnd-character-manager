@@ -8,8 +8,6 @@ function App() {
   const [currentUser, setCurrentUser]= useState(null)
 
 
-
-
   useEffect( () => {
     fetch('/api/check_session')
     .then(response => {
@@ -27,7 +25,7 @@ function App() {
     <div className='App'>
       <h1>Hello World</h1>
       <Navbar/>
-      <Outlet context={{currentUser:currentUser, setCurrentUser:setCurrentUser}} />
+      <Outlet context={{currentUser:currentUser, setCurrentUser:setCurrentUser,}} />
 
     </div>
   )
