@@ -194,6 +194,8 @@ def update_character(id):
             misc_stats_data = data.pop('misc_stats', {})  
             saving_throws_data = data.pop('saving_throws',[])
             skills_data = data.pop('skills',[])
+            health_data=data.pop('health', [])
+            personal_data=data.pop('personal',[])
 
 
             for key, value in data.items():
@@ -237,7 +239,26 @@ def update_character(id):
                 else:
                     skills= Skill.query.filter_by(character_id=id, **skills_data)
                     db.session.add(skills)
-
+            
+            if health_data:
+                health_data = health_data[0]
+                health=Health.query.filter_by(character_id=id).first()
+                if health:
+                    for key, value in health_data.items():
+                        setattr(health, key, value)
+                else:
+                    health= Health.query.filter_by(character_id=id, **health_data)
+                    db.session.add(health)
+            if personal_data:
+                personal_data = personal_data[0]
+                personal=Personal.query.filter_by(character_id=id).first()
+                if personal:
+                    for key, value in personal_data.items():
+                        setattr(personal, key, value)
+                else:
+                    personal= Personal.query.filter_by(character_id=id, **personal_data)
+                    db.session.add(personal)
+# add next post table here
             db.session.commit()
             return jsonify(character.to_dict()), 200
 

@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CharacterProfile from "./CharacterProfile";
@@ -8,6 +6,7 @@ import CharacterMisc from "./CharacterMisc";
 import CharacterSaving from "./CharacterSaving";
 import CharacterSkills from "./CharacterSkill";
 import CharacterHealth from "./CharacterHealth";
+import CharacterPersonal from "./CharacterPersonal";
 
 function CharacterSheet() {
     const { character_id } = useParams();
@@ -103,7 +102,13 @@ function CharacterSheet() {
             temp_hp: "",
             hit_total: "",
             hit_dice: "",    
-         }
+         },
+        personal:{
+            personality_traits: "",
+            ideals: "",
+            bonds: "",
+            flaws: ""
+        }
         // add here for next state
     });
 
@@ -122,6 +127,8 @@ function CharacterSheet() {
                 saving_throws: character.saving_throws[0],
                 skills: character.skills[0],
                 health: character.health[0],
+                personal: character.personal[0],
+                //next table here
             });
         }
     }, [character]);
@@ -179,6 +186,15 @@ function CharacterSheet() {
                     [name]: value
                 }
             });
+        } else if (name in profData.personal) {
+            // Handling  personal
+            setProfData({
+                ...profData,
+                personal: {
+                    ...profData.personal,
+                    [name]: value
+                }
+            });
             // add here for next table
         } else {
             // Default case for other inputs
@@ -218,6 +234,7 @@ function CharacterSheet() {
                 saving_throws: [profData.saving_throws],
                 skills: [profData.skills],
                 health: [profData.health],
+                personal:[profData.personal]
             }
         };
         try {
@@ -244,7 +261,8 @@ function CharacterSheet() {
             <CharacterSaving handleSubmit={handleSubmit} savingThrows={profData.saving_throws} handleChange={handleChange} />
             <CharacterSkills handleSubmit={handleSubmit} skills={profData.skills} handleChange={handleChange}/>
             <CharacterHealth handleSubmit={handleSubmit} health={profData.health} handleChange={handleChange}/>
-
+            {/* this is where deathsaving throws will be that is last cause its just front end */}
+            <CharacterPersonal handleSubmit={handleSubmit} personal={profData.personal} handleChange={handleChange}/>
             <button type="submit" onClick={handleSubmit}>Update Character</button>
 
         </div>
