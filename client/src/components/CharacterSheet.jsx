@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
-import { Outlet, useParams } from "react-router-dom";
-import CharacterProfile from "./CharacterProfile"
-import CharacterStats from "./CharacterStats"
+import { useParams } from "react-router-dom";
+import CharacterProfile from "./CharacterProfile";
+import CharacterStats from "./CharacterStats";
+import CharacterMisc from "./CharacterMisc";
 
-
-function CharacterSheet(){
+function CharacterSheet() {
     const { character_id } = useParams();
     const [character, setCharacter] = useState(null);
     const [error, setError] = useState(null);
-   
 
     const [profData, setProfData] = useState({
         name: "",
@@ -33,134 +32,108 @@ function CharacterSheet(){
             charisma: "",
             wis_perception: "",
             wis_perception_mod: ""
+        },
+        misc_stats: {
+            inspiration: "",
+            prof_bonus: ""
+          }
+      
+    })
+
+    useEffect(() => {
+        if (character) {
+            setProfData({
+                name: character.name,
+                klass: character.klass,
+                level: character.level,
+                background: character.background,
+                race: character.race,
+                xp: character.xp,
+                alignment: character.alignment,
+                stats: character.stats[0] ,
+                misc_stats: character.misc_stats ? character.misc_stats[0] : { inspiration: "", prof_bonus: "" }
+
+            });
         }
-      });
- 
-useEffect(() => {
-    if (character) {
-        setProfData({
-       
-        name: character.name,
-        klass: character.klass,
-        level: character.level,
-        background: character.background,
-        race: character.race,
-        xp: character.xp,
-        alignment: character.alignment,
-        stats: character.stats[0] //
-            
-        })
-    }
+    }, [character]);
 
-
-}, [character]);
-// ************able to get data from front end sending it can be in wrong format 
-
-
-// const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setProfData({
-//         ...profData,
-//         [name]: value
-        
-//     });
-// };
-const handleChange = (e) => {
+    
+  const handleChange = (e) => {
     const { name, value } = e.target;
     if (name in profData.stats) {
-        setProfData({
-            ...profData,
-            stats: {
-                ...profData.stats,
-                [name]: value
-            }
-        });
+      setProfData({
+        ...profData,
+        stats: {
+          ...profData.stats,
+          [name]: value
+        }
+      });
+    } else if (name in profData.misc_stats) {
+      setProfData({
+        ...profData,
+        misc_stats: {
+          ...profData.misc_stats,
+          [name]: value
+        }
+      });
     } else {
-        setProfData({
-            ...profData,
-            [name]: value
-        });
+      setProfData({
+        ...profData,
+        [name]: value
+      });
     }
-};
-const body = {character: { name: profData.name,
-    klass: profData.klass,
-    level:  profData.level,
-    background: profData.background,
-    race: profData.race,
-    xp: profData.xp,
-    alignment: profData.alignment,
-     stats:[{
-        strength:profData.stats.strength,
-        strength_mod:profData.stats.strength_mod
-     }]
-}}
-console.log(body)
-    useEffect(() => {
-        fetch(`/api/character/${character_id}`)
-        .then(res => {
-            if (res.ok) {
-                return res.json()
+  };
+    const fetchCharacter = async () => {
+        try {
+            const response = await fetch(`/api/character/${character_id}`);
+            if (response.ok) {
+                const data = await response.json();
+                setCharacter(data);
             } else {
                 throw new Error("Failed to fetch character");
             }
-        }) 
-        .then(data => {
-            console.log(data)
-            setCharacter(data)
-        })
-        .catch(error => {
-            setError(error.message)
-        });
-    }, [character_id]);
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Submitting with body:', body); 
-        fetch(`/api/character/${character_id}`, {
-            method: 'PATCH',
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(body)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Response from server:', data); 
-
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error); 
-
-        });
+        } catch (error) {
+            setError(error.message);
+        }
     };
-    
-    
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //         console.log('bout to fetch')
-    //         console.log('Submitting with body:', body)
-    //         fetch(`/api/character/${character_id}`,{
-          
-    //             method : 'PATCH',
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 "Accept": "application/json"
-    //             },
-    //             body: JSON.stringify(body)
-    //         })
-    //         console.log('finish to fetch')
 
-    //         console.log(body)
-    
-    // };
-    return(
+    useEffect(() => {
+        fetchCharacter();
+    }, [character_id]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const body = {
+            character: {
+                ...profData,
+                stats: [profData.stats],
+                misc_stats: [profData.misc_stats]
+            }
+        };
+        try {
+            const response = await fetch(`/api/character/${character_id}`, {
+                method: 'PATCH',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(body)
+            });
+            const data = await response.json();
+            console.log('Response from server:', data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    return (
         <div>
-
-            <CharacterProfile character={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData}/>
-            <CharacterStats character ={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData}  stats={profData.stats}/>
-            this is where the character sheet lives
+            <CharacterProfile character={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData}  />
+            <CharacterStats character={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData}  stats={profData.stats} />
+            <CharacterMisc handleChange={handleChange} profData={profData} />
             <button type="submit" onClick={handleSubmit}>Update Character</button>
         </div>
-    )
+    );
 }
-export default CharacterSheet
+
+export default CharacterSheet;
