@@ -191,7 +191,9 @@ def update_character(id):
         if character:
             data = request.json.get('character', {})
             stats_data = data.pop('stats', [])
-            misc_stats_data = data.pop('misc_stats', {})  # Changed from misc_stats_data=data.pop('misc_stats,',[])
+            misc_stats_data = data.pop('misc_stats', {})  
+            saving_throws_data = data.pop('saving_throws',[])
+
 
             for key, value in data.items():
                 setattr(character, key, value)
@@ -214,6 +216,16 @@ def update_character(id):
                 else:
                     misc_stats = MiscStat(character_id=id, **misc_stats_data)
                     db.session.add(misc_stats)
+            
+            if saving_throws_data:
+                saving_throws_data = saving_throws_data[0]  
+                saving_throws=SavingThrow.query.filter_by(character_id=id).first()
+                if saving_throws:
+                    for key, value in saving_throws_data.items():
+                        setattr(saving_throws, key, value)
+                else:
+                    saving_throws = SavingThrow(character_id=id, **saving_throws_data)
+                    db.session.add(saving_throws)
 
             db.session.commit()
             return jsonify(character.to_dict()), 200
