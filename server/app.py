@@ -133,6 +133,57 @@ def get_one_char(character_id):
 # ======UPDATE Current Characters user is on ====
 
 
+# @app.patch('/api/character/<int:id>')
+# def update_character(id):
+#     try:
+#         character = Character.query.get(id)
+#         if character:
+#             data = request.json.get('character', {})
+#             stats_data = data.pop('stats', [])
+#             misc_stats_data=data.pop('misc_stats,',{})
+
+#             for key, value in data.items():
+#                 setattr(character, key, value)
+
+#             if stats_data:
+#                 stats_data = stats_data[0]
+#                 stat = Stat.query.filter_by(character_id=id).first()
+#                 if stat:
+#                     for key, value in stats_data.items():
+#                         setattr(stat, key, value)
+#                 else:
+#                     stat = Stat(character_id=id, **stats_data)
+#                     db.session.add(stat)
+
+#             if misc_stats_data:
+                
+#                 misc_stats= MiscStat.query.filter_by(character_id=id).first()
+#                 if misc_stats:
+#                     for key, value in misc_stats_data.items():
+#                         setattr(misc_stats_data, key, value)
+#                 else:
+#                     misc_stats = MiscStat(character_id =id, **misc_stats_data)
+#                     db.session.add(misc_stats)
+
+#             db.session.commit()
+#             return character.to_dict(), 200
+
+#         return {'error': 'Character not found'}, 404
+
+#     except ValueError as ve:
+#         db.session.rollback()
+#         return {'error': str(ve)}, 400
+
+#     except IntegrityError as ie:
+#         db.session.rollback()
+#         return {'error': 'Integrity error occurred'}, 400
+
+#     except Exception as e:
+#         db.session.rollback()
+#         return {'error': str(e)}, 500
+
+
+
 @app.patch('/api/character/<int:id>')
 def update_character(id):
     try:
@@ -140,6 +191,7 @@ def update_character(id):
         if character:
             data = request.json.get('character', {})
             stats_data = data.pop('stats', [])
+            misc_stats_data = data.pop('misc_stats', {})  # Changed from misc_stats_data=data.pop('misc_stats,',[])
 
             for key, value in data.items():
                 setattr(character, key, value)
@@ -154,22 +206,31 @@ def update_character(id):
                     stat = Stat(character_id=id, **stats_data)
                     db.session.add(stat)
 
-            db.session.commit()
-            return character.to_dict(), 200
+            if misc_stats_data:  # Check if misc_stats_data is not empty
+                misc_stats = MiscStat.query.filter_by(character_id=id).first()
+                if misc_stats:
+                    for key, value in misc_stats_data.items():
+                        setattr(misc_stats, key, value)
+                else:
+                    misc_stats = MiscStat(character_id=id, **misc_stats_data)
+                    db.session.add(misc_stats)
 
-        return {'error': 'Character not found'}, 404
+            db.session.commit()
+            return jsonify(character.to_dict()), 200
+
+        return jsonify({'error': 'Character not found'}), 404
 
     except ValueError as ve:
         db.session.rollback()
-        return {'error': str(ve)}, 400
+        return jsonify({'error': str(ve)}), 400
 
     except IntegrityError as ie:
         db.session.rollback()
-        return {'error': 'Integrity error occurred'}, 400
+        return jsonify({'error': 'Integrity error occurred'}), 400
 
     except Exception as e:
         db.session.rollback()
-        return {'error': str(e)}, 500
+        return jsonify({'error': str(e)}), 500
 # ===============
 
 #  this grabs characters with all the inner tables within it ============

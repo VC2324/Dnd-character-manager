@@ -51,7 +51,8 @@ function CharacterSheet() {
                 xp: character.xp,
                 alignment: character.alignment,
                 stats: character.stats[0] ,
-                misc_stats: character.misc_stats ? character.misc_stats[0] : { inspiration: "", prof_bonus: "" }
+                misc_stats: character.misc_stats[0]
+
 
             });
         }
@@ -83,6 +84,9 @@ function CharacterSheet() {
       });
     }
   };
+
+
+
     const fetchCharacter = async () => {
         try {
             const response = await fetch(`/api/character/${character_id}`);
@@ -107,7 +111,7 @@ function CharacterSheet() {
             character: {
                 ...profData,
                 stats: [profData.stats],
-                misc_stats: [profData.misc_stats]
+                misc_stats: profData.misc_stats  // Ensure profData.misc_stats contains { inspiration: "", prof_bonus: "" }
             }
         };
         try {
@@ -125,7 +129,7 @@ function CharacterSheet() {
             console.error('Error fetching data:', error);
         }
     };
-
+    
     return (
         <div>
             <CharacterProfile character={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData}  />
