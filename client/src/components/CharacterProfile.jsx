@@ -55,6 +55,7 @@ return (
             value={profData.name}
             onChange={handleChange}
             required
+            
             />
         </label>
       </div>

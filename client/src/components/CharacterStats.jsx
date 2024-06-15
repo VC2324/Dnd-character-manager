@@ -1,5 +1,6 @@
 
 function CharacterStats({character, handleSubmit, handleChange, profData, setProfData,  stats}){
+console.log(stats.strength_mod)
     return(
         <div>
              <div>

@@ -54,7 +54,7 @@ useEffect(() => {
 
 
 }, [character]);
-
+// ************able to get data from front end sending it can be in wrong format 
 
 
 // const handleChange = (e) => {
@@ -88,9 +88,13 @@ const body = {character: { name: profData.name,
     background: profData.background,
     race: profData.race,
     xp: profData.xp,
-    alignment: profData.alignment
+    alignment: profData.alignment,
+     stats:[{
+        strength:profData.stats.strength,
+        strength_mod:profData.stats.strength_mod
+     }]
 }}
-
+console.log(body)
     useEffect(() => {
         fetch(`/api/character/${character_id}`)
         .then(res => {
@@ -108,24 +112,47 @@ const body = {character: { name: profData.name,
             setError(error.message)
         });
     }, [character_id]);
-    
     const handleSubmit = (e) => {
         e.preventDefault();
-            console.log('bout to fetch')
-            fetch(`/api/character/${character_id}`,{
-          
-                method : 'PATCH',
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify(body)
-            })
-            console.log('finish to fetch')
+        console.log('Submitting with body:', body); 
+        fetch(`/api/character/${character_id}`, {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(body)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Response from server:', data); 
 
-            console.log(body)
-    
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error); 
+
+        });
     };
+    
+    
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //         console.log('bout to fetch')
+    //         console.log('Submitting with body:', body)
+    //         fetch(`/api/character/${character_id}`,{
+          
+    //             method : 'PATCH',
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 "Accept": "application/json"
+    //             },
+    //             body: JSON.stringify(body)
+    //         })
+    //         console.log('finish to fetch')
+
+    //         console.log(body)
+    
+    // };
     return(
         <div>
 
