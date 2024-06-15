@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import CharacterProfile from "./CharacterProfile";
 import CharacterStats from "./CharacterStats";
 import CharacterMisc from "./CharacterMisc";
+import CharacterSaving from "./CharacterSaving";
 
 function CharacterSheet() {
     const { character_id } = useParams();
@@ -135,6 +136,7 @@ function CharacterSheet() {
             <CharacterProfile character={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData}  />
             <CharacterStats character={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData}  stats={profData.stats} />
             <CharacterMisc handleChange={handleChange} profData={profData} />
+            <CharacterSaving/>
             <button type="submit" onClick={handleSubmit}>Update Character</button>
         </div>
     );

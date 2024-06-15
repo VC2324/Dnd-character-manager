@@ -1,43 +1,4 @@
-// import React from 'react';
 
-// function CharacterMisc({ handleSubmit, profData, handleChange }) {
-//   return (
-//     <div>
-//       <form onSubmit={handleSubmit}>
-//         <div>
-//           <label>
-//             Inspiration:
-//             <input
-//               type="number"
-//               name="inspiration"
-//               value={profData.inspiration}
-//               onChange={handleChange}
-//               required
-//             />
-//           </label>
-//         </div>
-//         <div>
-//           <label>
-//             Proficiency Bonus:
-//             <input
-//               type="number"
-//               name="prof_bonus"
-//               value={profData.prof_bonus}
-//               onChange={handleChange}
-//               required
-//             />
-//           </label>
-//         </div>
-//         <div>
-//           <button type="submit">Save</button>
-//         </div>
-//       </form>
-//       <p>This is the misc stat</p>
-//     </div>
-//   );
-// }
-
-// export default CharacterMisc;
 
 import React from 'react';
 
@@ -71,7 +32,6 @@ console.log(profData)
           </label>
         </div>
       </form>
-      <p>This is the misc stat</p>
     </div>
   );
 }
