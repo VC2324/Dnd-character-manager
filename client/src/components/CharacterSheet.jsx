@@ -10,8 +10,6 @@ function CharacterSheet(){
     const [error, setError] = useState(null);
    
 
-    // const body = {character: { name: (Math.random() + 1).toString(36).substring(7)} }
-
     const [profData, setProfData] = useState({
         name: "",
         klass: "",
@@ -19,61 +17,37 @@ function CharacterSheet(){
         background: "",
         race: "",
         xp: "",
-        alignment: ""
+        alignment: "",
+        stats: {
+            strength_mod: "",
+            strength: "",
+            dexterity_mod: "",
+            dexterity: "",
+            constitution_mod: "",
+            constitution: "",
+            intelligence_mod: "",
+            intelligence: "",
+            wisdom_mod: "",
+            wisdom: "",
+            charisma_mod: "",
+            charisma: "",
+            wis_perception: "",
+            wis_perception_mod: ""
+        }
       });
  
-//       const [statData, setStatData] = useState({
-//         strength_mod: "",
-//         strength: "",
-//         dexterity_mod: "",
-//         dexterity: "",
-//         constitution_mod: "",
-//         constitution: "",
-//         intelligence_mod: "",
-//         intelligence: "",
-//         wisdom_mod: "",
-//         wisdom: "",
-//         charisma_mod: "",
-//         charisma: "",
-//         wis_perception: "",
-//         wis_perception_mod: ""
-//       });
-      
-// useEffect(() => {
-//     if (character) {
-//         setProfData({
-//         strength_mod: character.strength_mod,
-//         strength: character.strength,
-//         dexterity_mod: character.dexterity_mod,
-//         dexterity: character.dexterity,
-//         constitution_mod: character.constitution_mod,
-//         constitution: character.constitution,
-//         intelligence_mod: character.intelligence_mod,
-//         intelligence: character.intelligence,
-//         wisdom_mod: character.wisdom_mod,
-//         wisdom: character.wisdom,
-//         charisma_mod: character.charisma_mod,
-//         charisma: character.charisma,
-//         wis_perception: character.wis_perception,
-//         wis_perception_mod: character.wis_perception_mod
-
-            
-//         })
-//     }
-
-
-// }, [character]);
-
 useEffect(() => {
     if (character) {
         setProfData({
-            name: character.name,
-            klass: character.klass,
-            level: character.level,
-            background: character.background,
-            race: character.race,
-            xp: character.xp,
-            alignment: character.alignment,
+       
+        name: character.name,
+        klass: character.klass,
+        level: character.level,
+        background: character.background,
+        race: character.race,
+        xp: character.xp,
+        alignment: character.alignment,
+        stats: character.stats[0] //
             
         })
     }
@@ -83,15 +57,31 @@ useEffect(() => {
 
 
 
+// const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setProfData({
+//         ...profData,
+//         [name]: value
+        
+//     });
+// };
 const handleChange = (e) => {
     const { name, value } = e.target;
-    setProfData({
-        ...profData,
-        [name]: value
-        
-    });
+    if (name in profData.stats) {
+        setProfData({
+            ...profData,
+            stats: {
+                ...profData.stats,
+                [name]: value
+            }
+        });
+    } else {
+        setProfData({
+            ...profData,
+            [name]: value
+        });
+    }
 };
-
 const body = {character: { name: profData.name,
     klass: profData.klass,
     level:  profData.level,
@@ -111,7 +101,7 @@ const body = {character: { name: profData.name,
             }
         }) 
         .then(data => {
-            // console.log(data)
+            console.log(data)
             setCharacter(data)
         })
         .catch(error => {
@@ -140,8 +130,9 @@ const body = {character: { name: profData.name,
         <div>
 
             <CharacterProfile character={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData}/>
-            <CharacterStats character ={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData}/>
+            <CharacterStats character ={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData}  stats={profData.stats}/>
             this is where the character sheet lives
+            <button type="submit" onClick={handleSubmit}>Update Character</button>
         </div>
     )
 }

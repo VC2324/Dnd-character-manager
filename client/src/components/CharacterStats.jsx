@@ -1,12 +1,12 @@
 
-function CharacterStats({character, handleSubmit, handleChange, profData, setProfData}){
+function CharacterStats({character, handleSubmit, handleChange, profData, setProfData,  stats}){
     return(
         <div>
              <div>
                 <label>Strength Mod:<input
                     type="number"
                     name="strength_mod"
-                    value={profData.strength_mod}
+                    value={stats.strength_mod}
                     onChange={handleChange}
                     required
                 />
@@ -15,7 +15,7 @@ function CharacterStats({character, handleSubmit, handleChange, profData, setPro
                     <label>Strength:<input
                         type="number"
                         name="strength"
-                        value={profData.strength}
+                        value={stats.strength}
                         onChange={handleChange}
                         required
                     />
@@ -26,7 +26,7 @@ function CharacterStats({character, handleSubmit, handleChange, profData, setPro
                 <label>Dexterity Mod:<input
                     type="number"
                     name="dexterity_mod"
-                    value={profData.dexterity_mod}
+                    value={stats.dexterity_mod}
                     onChange={handleChange}
                     required
                 />
@@ -35,7 +35,7 @@ function CharacterStats({character, handleSubmit, handleChange, profData, setPro
                     <label>Dexterity:<input
                         type="number"
                         name="dexterity"
-                        value={profData.dexterity}
+                        value={stats.dexterity}
                         onChange={handleChange}
                         required
                     />
@@ -46,7 +46,7 @@ function CharacterStats({character, handleSubmit, handleChange, profData, setPro
                 <label>Constitution Mod:<input
                     type="number"
                     name="constitution_mod"
-                    value={profData.constitution_mod}
+                    value={stats.constitution_mod}
                     onChange={handleChange}
                     required
                 />
@@ -55,7 +55,7 @@ function CharacterStats({character, handleSubmit, handleChange, profData, setPro
                     <label>Constitution:<input
                         type="number"
                         name="constitution"
-                        value={profData.constitution}
+                        value={stats.constitution}
                         onChange={handleChange}
                         required
                     />
@@ -66,7 +66,7 @@ function CharacterStats({character, handleSubmit, handleChange, profData, setPro
                 <label>Intelligence Mod:<input
                     type="number"
                     name="intelligence_mod"
-                    value={profData.intelligence_mod}
+                    value={stats.intelligence_mod}
                     onChange={handleChange}
                     required
                 />
@@ -75,7 +75,7 @@ function CharacterStats({character, handleSubmit, handleChange, profData, setPro
                     <label>Intelligence:<input
                         type="number"
                         name="intelligence"
-                        value={profData.intelligence}
+                        value={stats.intelligence}
                         onChange={handleChange}
                         required
                     />
@@ -86,7 +86,7 @@ function CharacterStats({character, handleSubmit, handleChange, profData, setPro
                 <label>Wisdom Mod:<input
                     type="number"
                     name="wisdom_mod"
-                    value={profData.wisdom_mod}
+                    value={stats.wisdom_mod}
                     onChange={handleChange}
                     required
                 />
@@ -95,7 +95,7 @@ function CharacterStats({character, handleSubmit, handleChange, profData, setPro
                     <label>Wisdom:<input
                         type="number"
                         name="wisdom"
-                        value={profData.wisdom}
+                        value={stats.wisdom}
                         onChange={handleChange}
                         required
                     />
@@ -106,7 +106,7 @@ function CharacterStats({character, handleSubmit, handleChange, profData, setPro
                 <label>Charisma Mod:<input
                     type="number"
                     name="charisma_mod"
-                    value={profData.charisma_mod}
+                    value={stats.charisma_mod}
                     onChange={handleChange}
                     required
                 />
@@ -115,7 +115,7 @@ function CharacterStats({character, handleSubmit, handleChange, profData, setPro
                     <label>Charisma:<input
                         type="number"
                         name="charisma"
-                        value={profData.charisma}
+                        value={stats.charisma}
                         onChange={handleChange}
                         required
                     />
@@ -126,7 +126,7 @@ function CharacterStats({character, handleSubmit, handleChange, profData, setPro
                 <label>Wisdom Perception:<input
                     type="number"
                     name="wis_perception"
-                    value={profData.wis_perception}
+                    value={stats.wis_perception}
                     onChange={handleChange}
                     required
                 />
@@ -136,7 +136,7 @@ function CharacterStats({character, handleSubmit, handleChange, profData, setPro
                 <label>Wisdom Perception Mod:<input
                     type="number"
                     name="wis_perception_mod"
-                    value={profData.wis_perception_mod}
+                    value={stats.wis_perception_mod}
                     onChange={handleChange}
                     required
                 />

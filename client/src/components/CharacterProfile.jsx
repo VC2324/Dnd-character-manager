@@ -118,7 +118,7 @@ return (
             />
         </label>
       </div>
-      <button type="submit">Update Character</button>
+      {/* <button type="submit">Update Character</button> */}
     </form>
   );
 }
