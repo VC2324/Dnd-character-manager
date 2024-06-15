@@ -1,57 +1,55 @@
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 
-function CharacterProfile({character} ){
+function CharacterProfile({character, handleSubmit, handleChange, profData, setProfData} ){
 
-    console.log(character)
+    // console.log(character)
 
-    const [profData, setProfData] = useState({
-        name: "",
-        klass: "",
-        level: "",
-        background: "",
-        race: "",
-        xp: "",
-        alignment: ""
-      });
+//     const [profData, setProfData] = useState({
+//         name: "",
+//         klass: "",
+//         level: "",
+//         background: "",
+//         race: "",
+//         xp: "",
+//         alignment: ""
+//       });
+ 
 
-  
 
+// useEffect(() => {
+//     if (character) {
+//         setProfData({
+//             name: character.name,
+//             klass: character.klass,
+//             level: character.level,
+//             background: character.background,
+//             race: character.race,
+//             xp: character.xp,
+//             alignment: character.alignment
+//         });
+//     }
+// }, [character]);
 
-useEffect(() => {
-    if (character) {
-        setProfData({
-            name: character.name,
-            klass: character.klass,
-            level: character.level,
-            background: character.background,
-            race: character.race,
-            xp: character.xp,
-            alignment: character.alignment
-        });
-    }
-}, [character]);
+// const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setProfData({
+//         ...profData,
+//         [name]: value
+        
+//     });
+// };
 
-const handleChange = (e) => {
-    const { name, value } = e.target;
-    setProfData({
-        ...profData,
-        [name]: value
-    });
-};
-
-const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add the submission logic here
-    console.log("Form Submitted:", profData);
-};
+// const handleSubmit = (e) => {
+//     e.preventDefault();
+// // nned to add some of  the submission logic here
+//     console.log("Form Submitted:", profData);
+// };
 
 return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>
-          Name:
-          <input
+        <label>Name:<input
             type="text"
             name="name"
             value={profData.name}
@@ -61,9 +59,7 @@ return (
         </label>
       </div>
       <div>
-        <label>
-          Class:
-          <input
+        <label>Class:<input
             type="text"
             name="klass"
             value={profData.klass}
@@ -73,9 +69,7 @@ return (
         </label>
       </div>
       <div>
-        <label>
-          Level:
-          <input
+        <label>Level:<input
             type="number"
             name="level"
             value={profData.level}
@@ -85,9 +79,7 @@ return (
         </label>
       </div>
       <div>
-        <label>
-          Background:
-          <input
+        <label>Background:<input
             type="text"
             name="background"
             value={profData.background}
@@ -97,9 +89,7 @@ return (
         </label>
       </div>
       <div>
-        <label>
-          Race:
-          <input
+        <label>Race:<input
             type="text"
             name="race"
             value={profData.race}
@@ -109,9 +99,7 @@ return (
         </label>
       </div>
       <div>
-        <label>
-          XP:
-          <input
+        <label>XP:<input
             type="number"
             name="xp"
             value={profData.xp}
@@ -121,9 +109,7 @@ return (
         </label>
       </div>
       <div>
-        <label>
-          Alignment:
-          <input
+        <label>Alignment:<input
             type="text"
             name="alignment"
             value={profData.alignment}

@@ -1,0 +1,151 @@
+
+function CharacterStats({character, handleSubmit, handleChange, profData, setProfData}){
+    return(
+        <div>
+             <div>
+                <label>Strength Mod:<input
+                    type="number"
+                    name="strength_mod"
+                    value={profData.strength_mod}
+                    onChange={handleChange}
+                    required
+                />
+                </label>
+                <div>
+                    <label>Strength:<input
+                        type="number"
+                        name="strength"
+                        value={profData.strength}
+                        onChange={handleChange}
+                        required
+                    />
+                    </label>
+                </div>
+            </div>
+            <div>
+                <label>Dexterity Mod:<input
+                    type="number"
+                    name="dexterity_mod"
+                    value={profData.dexterity_mod}
+                    onChange={handleChange}
+                    required
+                />
+                </label>
+                <div>
+                    <label>Dexterity:<input
+                        type="number"
+                        name="dexterity"
+                        value={profData.dexterity}
+                        onChange={handleChange}
+                        required
+                    />
+                    </label>
+                </div>
+            </div>
+            <div>
+                <label>Constitution Mod:<input
+                    type="number"
+                    name="constitution_mod"
+                    value={profData.constitution_mod}
+                    onChange={handleChange}
+                    required
+                />
+                </label>
+                <div>
+                    <label>Constitution:<input
+                        type="number"
+                        name="constitution"
+                        value={profData.constitution}
+                        onChange={handleChange}
+                        required
+                    />
+                    </label>
+                </div>
+            </div>
+            <div>
+                <label>Intelligence Mod:<input
+                    type="number"
+                    name="intelligence_mod"
+                    value={profData.intelligence_mod}
+                    onChange={handleChange}
+                    required
+                />
+                </label>
+                <div>
+                    <label>Intelligence:<input
+                        type="number"
+                        name="intelligence"
+                        value={profData.intelligence}
+                        onChange={handleChange}
+                        required
+                    />
+                    </label>
+                </div>
+            </div>
+            <div>
+                <label>Wisdom Mod:<input
+                    type="number"
+                    name="wisdom_mod"
+                    value={profData.wisdom_mod}
+                    onChange={handleChange}
+                    required
+                />
+                </label>
+                <div>
+                    <label>Wisdom:<input
+                        type="number"
+                        name="wisdom"
+                        value={profData.wisdom}
+                        onChange={handleChange}
+                        required
+                    />
+                    </label>
+                </div>
+            </div>
+            <div>
+                <label>Charisma Mod:<input
+                    type="number"
+                    name="charisma_mod"
+                    value={profData.charisma_mod}
+                    onChange={handleChange}
+                    required
+                />
+                </label>
+                <div>
+                    <label>Charisma:<input
+                        type="number"
+                        name="charisma"
+                        value={profData.charisma}
+                        onChange={handleChange}
+                        required
+                    />
+                    </label>
+                </div>
+            </div>
+            <div>
+                <label>Wisdom Perception:<input
+                    type="number"
+                    name="wis_perception"
+                    value={profData.wis_perception}
+                    onChange={handleChange}
+                    required
+                />
+                </label>
+            </div>
+            <div>
+                <label>Wisdom Perception Mod:<input
+                    type="number"
+                    name="wis_perception_mod"
+                    value={profData.wis_perception_mod}
+                    onChange={handleChange}
+                    required
+                />
+                </label>
+            </div>
+            
+
+        </div>
+    )
+}
+
+export default CharacterStats
