@@ -196,6 +196,10 @@ def update_character(id):
             skills_data = data.pop('skills',[])
             health_data=data.pop('health', [])
             personal_data=data.pop('personal',[])
+            attacks_data=data.pop('attacks',[])
+            feats_data=data.pop('feats',[])
+
+
 
 
             for key, value in data.items():
@@ -249,6 +253,7 @@ def update_character(id):
                 else:
                     health= Health.query.filter_by(character_id=id, **health_data)
                     db.session.add(health)
+                    
             if personal_data:
                 personal_data = personal_data[0]
                 personal=Personal.query.filter_by(character_id=id).first()
@@ -258,6 +263,28 @@ def update_character(id):
                 else:
                     personal= Personal.query.filter_by(character_id=id, **personal_data)
                     db.session.add(personal)
+
+            if attacks_data:
+                attacks_data = attacks_data[0]
+                attacks=Attack.query.filter_by(character_id=id).first()
+                if attacks:
+                    for key, value in attacks_data.items():
+                        setattr(attacks, key, value)
+                else:
+                    attacks= Attack.query.filter_by(character_id=id, **attacks_data)
+                    db.session.add(attacks)
+
+            if feats_data:
+                feats_data = feats_data[0]
+                feats=Feat.query.filter_by(character_id=id).first()
+                if feats:
+                    for key, value in feats_data.items():
+                        setattr(feats, key, value)
+                else:
+                    feats= Feat.query.filter_by(character_id=id, **feats_data)
+                    db.session.add(feats)
+                    
+
 # add next post table here
             db.session.commit()
             return jsonify(character.to_dict()), 200

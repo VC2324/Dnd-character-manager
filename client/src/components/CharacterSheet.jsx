@@ -7,6 +7,8 @@ import CharacterSaving from "./CharacterSaving";
 import CharacterSkills from "./CharacterSkill";
 import CharacterHealth from "./CharacterHealth";
 import CharacterPersonal from "./CharacterPersonal";
+import CharacterAttack from "./CharacterAttack";
+import CharacterFeat from "./CharacterFeat";
 
 function CharacterSheet() {
     const { character_id } = useParams();
@@ -108,7 +110,19 @@ function CharacterSheet() {
             ideals: "",
             bonds: "",
             flaws: ""
-        }
+        },
+        attacks: 
+            {
+                name: "",
+                attack_bonus: "",
+                dmg: "",
+                tipe: ""
+            },
+        feats: 
+            {
+                features: "",
+                traits: ""
+            }   
         // add here for next state
     });
 
@@ -128,6 +142,8 @@ function CharacterSheet() {
                 skills: character.skills[0],
                 health: character.health[0],
                 personal: character.personal[0],
+                attacks: character.attacks[0],
+                feats: character.feats[0],
                 //next table here
             });
         }
@@ -195,6 +211,24 @@ function CharacterSheet() {
                     [name]: value
                 }
             });
+        } else if (name in profData.attacks) {
+            // Handling  attacks
+            setProfData({
+                ...profData,
+                attacks: {
+                    ...profData.attacks,
+                    [name]: value
+                }
+            });
+        } else if (name in profData.feats) {
+            // Handling  feats
+            setProfData({
+                ...profData,
+                feats: {
+                    ...profData.feats,
+                    [name]: value
+                }
+            });
             // add here for next table
         } else {
             // Default case for other inputs
@@ -227,14 +261,16 @@ function CharacterSheet() {
         e.preventDefault();
         const body = {
             character: {
-                // add the tables here as we go 
                 ...profData,
                 stats: [profData.stats],
                 misc_stats: profData.misc_stats, 
                 saving_throws: [profData.saving_throws],
                 skills: [profData.skills],
                 health: [profData.health],
-                personal:[profData.personal]
+                personal:[profData.personal],
+                attacks:[profData.attacks],
+                feats: [profData.feats],
+                // add the tables here as we go 
             }
         };
         try {
@@ -263,6 +299,8 @@ function CharacterSheet() {
             <CharacterHealth handleSubmit={handleSubmit} health={profData.health} handleChange={handleChange}/>
             {/* this is where deathsaving throws will be that is last cause its just front end */}
             <CharacterPersonal handleSubmit={handleSubmit} personal={profData.personal} handleChange={handleChange}/>
+            <CharacterAttack handleSubmit={handleSubmit} attacks={profData.attacks} handleChange={handleChange}/>
+            <CharacterFeat handleSubmit={handleSubmit} feats={profData.feats} handleChange={handleChange}/>
             <button type="submit" onClick={handleSubmit}>Update Character</button>
 
         </div>

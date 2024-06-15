@@ -1,6 +1,7 @@
 function CharacterPersonal({handleChange, personal, handleSubmit}){
     return(
     <div>
+         <form onSubmit={handleSubmit}>
         <div>
             <label>Personality Traits:</label>
             <textarea name="personality_traits" value={personal.personality_traits} onChange={handleChange} />
@@ -17,6 +18,7 @@ function CharacterPersonal({handleChange, personal, handleSubmit}){
             <label>Flaws:</label>
             <textarea name="flaws" value={personal.flaws} onChange={handleChange} />
         </div>
+        </form>
     </div>
 )
 }
