@@ -193,6 +193,7 @@ def update_character(id):
             stats_data = data.pop('stats', [])
             misc_stats_data = data.pop('misc_stats', {})  
             saving_throws_data = data.pop('saving_throws',[])
+            skills_data = data.pop('skills',[])
 
 
             for key, value in data.items():
@@ -226,9 +227,20 @@ def update_character(id):
                 else:
                     saving_throws = SavingThrow(character_id=id, **saving_throws_data)
                     db.session.add(saving_throws)
+            
+            if skills_data:
+                skills_data = skills_data[0]
+                skills=Skill.query.filter_by(character_id=id).first()
+                if skills:
+                    for key, value in skills_data.items():
+                        setattr(skills, key, value)
+                else:
+                    skills= Skill.query.filter_by(character_id=id, **skills_data)
+                    db.session.add(skills)
 
             db.session.commit()
             return jsonify(character.to_dict()), 200
+
 
         return jsonify({'error': 'Character not found'}), 404
 

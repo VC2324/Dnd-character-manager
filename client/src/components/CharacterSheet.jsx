@@ -6,6 +6,8 @@ import CharacterProfile from "./CharacterProfile";
 import CharacterStats from "./CharacterStats";
 import CharacterMisc from "./CharacterMisc";
 import CharacterSaving from "./CharacterSaving";
+import CharacterSkills from "./CharacterSkill";
+import CharacterHealth from "./CharacterHealth";
 
 function CharacterSheet() {
     const { character_id } = useParams();
@@ -53,7 +55,56 @@ function CharacterSheet() {
             wisdom_pro: false,
             charisma: "",
             charisma_pro: false,
-        }
+        },
+        skills: {
+            acrobatics: "",
+            acrobatics_pro: false,
+            animal_handling: "",
+            animal_handling_pro: false,
+            arcana: "",
+            arcana_pro: false,
+            athletics: "",
+            athletics_pro: false,
+            deception: "",
+            deception_pro: false,
+            history: "",
+            history_pro: false,
+            insight: "",
+            insight_pro: false,
+            intimidation: "",
+            intimidation_pro: false,
+            investigation: "",
+            investigation_pro: false,
+            medicine: "",
+            medicine_pro: false,
+            nature: "",
+            nature_pro: false,
+            perception: "",
+            perception_pro: false,
+            performance: "",
+            performance_pro: false,
+            persuasion: "",
+            persuasion_pro: false,
+            religion: "",
+            religion_pro: false,
+            sleight_of_hand: "",
+            sleight_of_hand_pro: false,
+            stealth: "",
+            stealth_pro: false,
+            survival: "",
+            survival_pro: false
+        },
+        health:{
+            armor_class: "",
+            initiative: "",
+            speed: "",
+            max_hp: "",
+            current_hp: "",
+            temp_hp: "",
+            hit_total: "",
+            hit_dice: "",    
+         }
+        // add here for next state
     });
 
     useEffect(() => {
@@ -68,12 +119,15 @@ function CharacterSheet() {
                 alignment: character.alignment,
                 stats: character.stats[0],
                 misc_stats: character.misc_stats[0],
-                saving_throws: character.saving_throws[0]
+                saving_throws: character.saving_throws[0],
+                skills: character.skills[0],
+                health: character.health[0],
             });
         }
     }, [character]);
 
     console.log(character);
+
   
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -88,6 +142,16 @@ function CharacterSheet() {
                     [savingThrowsName]: type === "checkbox" ? checked : value
                 }
             });
+        }else if (name.startsWith("skills.")) {
+            // Handling saving throws
+            const skillsName = name.split('.')[1]; // Extracting the specific saving throw property
+            setProfData({
+                ...profData,
+                skills: {
+                    ...profData.skills,
+                    [skillsName]: type === "checkbox" ? checked : value
+                }
+            });
         } else if (name in profData.stats) {
             // Handling regular stats
             setProfData({
@@ -98,7 +162,7 @@ function CharacterSheet() {
                 }
             });
         } else if (name in profData.misc_stats) {
-            // Handling misc stats
+            // misc stats
             setProfData({
                 ...profData,
                 misc_stats: {
@@ -106,6 +170,16 @@ function CharacterSheet() {
                     [name]: value
                 }
             });
+        } else if (name in profData.health) {
+            // health
+            setProfData({
+                ...profData,
+                health: {
+                    ...profData.health,
+                    [name]: value
+                }
+            });
+            // add here for next table
         } else {
             // Default case for other inputs
             setProfData({
@@ -137,10 +211,13 @@ function CharacterSheet() {
         e.preventDefault();
         const body = {
             character: {
+                // add the tables here as we go 
                 ...profData,
                 stats: [profData.stats],
-                misc_stats: profData.misc_stats,  // Ensure profData.misc_stats contains { inspiration: "", prof_bonus: "" }
-                saving_throws: [profData.saving_throws]
+                misc_stats: profData.misc_stats, 
+                saving_throws: [profData.saving_throws],
+                skills: [profData.skills],
+                health: [profData.health],
             }
         };
         try {
@@ -165,7 +242,11 @@ function CharacterSheet() {
             <CharacterStats character={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData} stats={profData.stats} />
             <CharacterMisc handleChange={handleChange} profData={profData} />
             <CharacterSaving handleSubmit={handleSubmit} savingThrows={profData.saving_throws} handleChange={handleChange} />
+            <CharacterSkills handleSubmit={handleSubmit} skills={profData.skills} handleChange={handleChange}/>
+            <CharacterHealth handleSubmit={handleSubmit} health={profData.health} handleChange={handleChange}/>
+
             <button type="submit" onClick={handleSubmit}>Update Character</button>
+
         </div>
     );
 }

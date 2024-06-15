@@ -1,10 +1,8 @@
-
 import React from 'react';
 
 function CharacterSaving({ handleSubmit, savingThrows, handleChange }) {
     return (
         <div>
-            <h2>Saving Throws</h2>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>

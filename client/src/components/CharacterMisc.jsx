@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 
 function CharacterMisc({ handleSubmit, profData, handleChange }) {
