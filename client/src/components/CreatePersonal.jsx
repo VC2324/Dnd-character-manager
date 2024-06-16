@@ -7,7 +7,7 @@ function CreatePersonal({ handleSubmit, handleChange, charData }) {
         <label>
           Personality Traits:
           <textarea
-            name="personality_traits"
+            name="personal.personality_traits"
             value={charData.personality_traits}
             onChange={handleChange}
             required
@@ -18,7 +18,7 @@ function CreatePersonal({ handleSubmit, handleChange, charData }) {
         <label>
           Ideals:
           <textarea
-            name="ideals"
+            name="personal.ideals"
             value={charData.ideals}
             onChange={handleChange}
             required
@@ -29,7 +29,7 @@ function CreatePersonal({ handleSubmit, handleChange, charData }) {
         <label>
           Bonds:
           <textarea
-            name="bonds"
+            name="personal.bonds"
             value={charData.bonds}
             onChange={handleChange}
             required
@@ -40,7 +40,7 @@ function CreatePersonal({ handleSubmit, handleChange, charData }) {
         <label>
           Flaws:
           <textarea
-            name="flaws"
+            name="personal.flaws"
             value={charData.flaws}
             onChange={handleChange}
             required

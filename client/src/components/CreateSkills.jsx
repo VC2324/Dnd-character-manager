@@ -9,7 +9,7 @@ function CreateSkills({ handleChange, charData }) {
           Acrobatics:
           <input
             type="number"
-            name="acrobatics"
+            name="skills.acrobatics"
             value={charData.acrobatics}
             onChange={handleChange}
             required
@@ -17,7 +17,7 @@ function CreateSkills({ handleChange, charData }) {
           Proficient:
           <input
             type="checkbox"
-            name="acrobatics_pro"
+            name="skills.acrobatics_pro"
             checked={charData.acrobatics_pro}
             onChange={handleChange}
           />
@@ -28,7 +28,7 @@ function CreateSkills({ handleChange, charData }) {
           Animal Handling:
           <input
             type="number"
-            name="animal_handling"
+            name="skills.animal_handling"
             value={charData.animal_handling}
             onChange={handleChange}
             required
@@ -36,7 +36,7 @@ function CreateSkills({ handleChange, charData }) {
           Proficient:
           <input
             type="checkbox"
-            name="animal_handling_pro"
+            name="skills.animal_handling_pro"
             checked={charData.animal_handling_pro}
             onChange={handleChange}
           />
@@ -47,7 +47,7 @@ function CreateSkills({ handleChange, charData }) {
           Arcana:
           <input
             type="number"
-            name="arcana"
+            name="skills.arcana"
             value={charData.arcana}
             onChange={handleChange}
             required
@@ -55,7 +55,7 @@ function CreateSkills({ handleChange, charData }) {
           Proficient:
           <input
             type="checkbox"
-            name="arcana_pro"
+            name="skills.arcana_pro"
             checked={charData.arcana_pro}
             onChange={handleChange}
           />
@@ -66,7 +66,7 @@ function CreateSkills({ handleChange, charData }) {
           Athletics:
           <input
             type="number"
-            name="athletics"
+            name="skills.athletics"
             value={charData.athletics}
             onChange={handleChange}
             required
@@ -74,7 +74,7 @@ function CreateSkills({ handleChange, charData }) {
           Proficient:
           <input
             type="checkbox"
-            name="athletics_pro"
+            name="skills.athletics_pro"
             checked={charData.athletics_pro}
             onChange={handleChange}
           />
@@ -85,7 +85,7 @@ function CreateSkills({ handleChange, charData }) {
           Deception:
           <input
             type="number"
-            name="deception"
+            name="skills.deception"
             value={charData.deception}
             onChange={handleChange}
             required
@@ -93,7 +93,7 @@ function CreateSkills({ handleChange, charData }) {
           Proficient:
           <input
             type="checkbox"
-            name="deception_pro"
+            name="skills.deception_pro"
             checked={charData.deception_pro}
             onChange={handleChange}
           />
@@ -104,7 +104,7 @@ function CreateSkills({ handleChange, charData }) {
           History:
           <input
             type="number"
-            name="history"
+            name="skills.history"
             value={charData.history}
             onChange={handleChange}
             required
@@ -112,7 +112,7 @@ function CreateSkills({ handleChange, charData }) {
           Proficient:
           <input
             type="checkbox"
-            name="history_pro"
+            name="skills.history_pro"
             checked={charData.history_pro}
             onChange={handleChange}
           />
@@ -123,7 +123,7 @@ function CreateSkills({ handleChange, charData }) {
           Insight:
           <input
             type="number"
-            name="insight"
+            name="skills.insight"
             value={charData.insight}
             onChange={handleChange}
             required
@@ -131,7 +131,7 @@ function CreateSkills({ handleChange, charData }) {
           Proficient:
           <input
             type="checkbox"
-            name="insight_pro"
+            name="skills.insight_pro"
             checked={charData.insight_pro}
             onChange={handleChange}
           />
@@ -142,7 +142,7 @@ function CreateSkills({ handleChange, charData }) {
           Intimidation:
           <input
             type="number"
-            name="intimidation"
+            name="skills.intimidation"
             value={charData.intimidation}
             onChange={handleChange}
             required
@@ -150,7 +150,7 @@ function CreateSkills({ handleChange, charData }) {
           Proficient:
           <input
             type="checkbox"
-            name="intimidation_pro"
+            name="skills.intimidation_pro"
             checked={charData.intimidation_pro}
             onChange={handleChange}
           />
@@ -161,7 +161,7 @@ function CreateSkills({ handleChange, charData }) {
           Investigation:
           <input
             type="number"
-            name="investigation"
+            name="skills.investigation"
             value={charData.investigation}
             onChange={handleChange}
             required
@@ -169,7 +169,7 @@ function CreateSkills({ handleChange, charData }) {
           Proficient:
           <input
             type="checkbox"
-            name="investigation_pro"
+            name="skills.investigation_pro"
             checked={charData.investigation_pro}
             onChange={handleChange}
           />
@@ -180,7 +180,7 @@ function CreateSkills({ handleChange, charData }) {
           Medicine:
           <input
             type="number"
-            name="medicine"
+            name="skills.medicine"
             value={charData.medicine}
             onChange={handleChange}
             required
@@ -188,7 +188,7 @@ function CreateSkills({ handleChange, charData }) {
           Proficient:
           <input
             type="checkbox"
-            name="medicine_pro"
+            name="skills.medicine_pro"
             checked={charData.medicine_pro}
             onChange={handleChange}
           />
@@ -199,7 +199,7 @@ function CreateSkills({ handleChange, charData }) {
           Nature:
           <input
             type="number"
-            name="nature"
+            name="skills.nature"
             value={charData.nature}
             onChange={handleChange}
             required
@@ -207,7 +207,7 @@ function CreateSkills({ handleChange, charData }) {
           Proficient:
           <input
             type="checkbox"
-            name="nature_pro"
+            name="skills.nature_pro"
             checked={charData.nature_pro}
             onChange={handleChange}
           />
@@ -218,7 +218,7 @@ function CreateSkills({ handleChange, charData }) {
           Perception:
           <input
             type="number"
-            name="perception"
+            name="skills.perception"
             value={charData.perception}
             onChange={handleChange}
             required
@@ -226,7 +226,7 @@ function CreateSkills({ handleChange, charData }) {
           Proficient:
           <input
             type="checkbox"
-            name="perception_pro"
+            name="skills.perception_pro"
             checked={charData.perception_pro}
             onChange={handleChange}
           />
@@ -237,7 +237,7 @@ function CreateSkills({ handleChange, charData }) {
           Performance:
           <input
             type="number"
-            name="performance"
+            name="skills.performance"
             value={charData.performance}
             onChange={handleChange}
             required
@@ -245,7 +245,7 @@ function CreateSkills({ handleChange, charData }) {
           Proficient:
           <input
             type="checkbox"
-            name="performance_pro"
+            name="skills.performance_pro"
             checked={charData.performance_pro}
             onChange={handleChange}
           />
@@ -256,7 +256,7 @@ function CreateSkills({ handleChange, charData }) {
           Persuasion:
           <input
             type="number"
-            name="persuasion"
+            name="skills.persuasion"
             value={charData.persuasion}
             onChange={handleChange}
             required
@@ -264,7 +264,7 @@ function CreateSkills({ handleChange, charData }) {
           Proficient:
           <input
             type="checkbox"
-            name="persuasion_pro"
+            name="skills.persuasion_pro"
             checked={charData.persuasion_pro}
             onChange={handleChange}
           />
@@ -275,7 +275,7 @@ function CreateSkills({ handleChange, charData }) {
           Religion:
           <input
             type="number"
-            name="religion"
+            name="skills.religion"
             value={charData.religion}
             onChange={handleChange}
             required
@@ -283,7 +283,7 @@ function CreateSkills({ handleChange, charData }) {
           Proficient:
           <input
             type="checkbox"
-            name="religion_pro"
+            name="skills.religion_pro"
             checked={charData.religion_pro}
             onChange={handleChange}
           />
@@ -294,7 +294,7 @@ function CreateSkills({ handleChange, charData }) {
           Sleight of Hand:
           <input
             type="number"
-            name="sleight_of_hand"
+            name="skills.sleight_of_hand"
             value={charData.sleight_of_hand}
             onChange={handleChange}
             required
@@ -302,7 +302,7 @@ function CreateSkills({ handleChange, charData }) {
           Proficient:
           <input
             type="checkbox"
-            name="sleight_of_hand_pro"
+            name="skills.sleight_of_hand_pro"
             checked={charData.sleight_of_hand_pro}
             onChange={handleChange}
           />
@@ -313,7 +313,7 @@ function CreateSkills({ handleChange, charData }) {
           Stealth:
           <input
             type="number"
-            name="stealth"
+            name="skills.stealth"
             value={charData.stealth}
             onChange={handleChange}
             required
@@ -321,7 +321,7 @@ function CreateSkills({ handleChange, charData }) {
           Proficient:
           <input
             type="checkbox"
-            name="stealth_pro"
+            name="skills.stealth_pro"
             checked={charData.stealth_pro}
             onChange={handleChange}
           />
@@ -332,7 +332,7 @@ function CreateSkills({ handleChange, charData }) {
           Survival:
           <input
             type="number"
-            name="survival"
+            name="skills.survival"
             value={charData.survival}
             onChange={handleChange}
             required
@@ -340,7 +340,7 @@ function CreateSkills({ handleChange, charData }) {
           Proficient:
           <input
             type="checkbox"
-            name="survival_pro"
+            name="skills.survival_pro"
             checked={charData.survival_pro}
             onChange={handleChange}
           />

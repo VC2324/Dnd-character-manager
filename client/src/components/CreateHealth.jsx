@@ -8,7 +8,7 @@ function CreateHealth({ handleSubmit, handleChange, charData }) {
           Armor Class:
           <input
             type="number"
-            name="armor_class"
+            name="health.armor_class"
             value={charData.armor_class}
             onChange={handleChange}
             required
@@ -20,7 +20,7 @@ function CreateHealth({ handleSubmit, handleChange, charData }) {
           Initiative:
           <input
             type="number"
-            name="initiative"
+            name="health.initiative"
             value={charData.initiative}
             onChange={handleChange}
             required
@@ -32,7 +32,7 @@ function CreateHealth({ handleSubmit, handleChange, charData }) {
           Speed:
           <input
             type="number"
-            name="speed"
+            name="health.speed"
             value={charData.speed}
             onChange={handleChange}
             required
@@ -44,7 +44,7 @@ function CreateHealth({ handleSubmit, handleChange, charData }) {
           Max HP:
           <input
             type="number"
-            name="max_hp"
+            name="health.max_hp"
             value={charData.max_hp}
             onChange={handleChange}
             required
@@ -56,7 +56,7 @@ function CreateHealth({ handleSubmit, handleChange, charData }) {
           Current HP:
           <input
             type="number"
-            name="current_hp"
+            name="health.current_hp"
             value={charData.current_hp}
             onChange={handleChange}
             required
@@ -68,7 +68,7 @@ function CreateHealth({ handleSubmit, handleChange, charData }) {
           Temporary HP:
           <input
             type="number"
-            name="temp_hp"
+            name="health.temp_hp"
             value={charData.temp_hp}
             onChange={handleChange}
             required
@@ -80,7 +80,7 @@ function CreateHealth({ handleSubmit, handleChange, charData }) {
           Hit Dice Total:
           <input
             type="number"
-            name="hit_total"
+            name="health.hit_total"
             value={charData.hit_total}
             onChange={handleChange}
             required
@@ -92,7 +92,7 @@ function CreateHealth({ handleSubmit, handleChange, charData }) {
           Hit Dice:
           <input
             type="number"
-            name="hit_dice"
+            name="health.hit_dice"
             value={charData.hit_dice}
             onChange={handleChange}
             required

@@ -6,6 +6,10 @@ import CreateSavingThrows from "./CreateSavingThrows";
 import CreateSkills from "./CreateSkills";
 import CreateHealth from "./CreateHealth";
 import CreatePersonal from "./CreatePersonal";
+import CreateAttack from "./CreateAttack"
+import CreateFeats from "./CreateFeats";
+import CreateOther from "./CreateOther";
+import CreateEquipment from "./CreateEquipment";
 
 function CharacterCreator() {
     const [charData, setCharData] = useState({
@@ -104,24 +108,24 @@ function CharacterCreator() {
             bonds: "",
             flaws: ""
         },
-        // attacks: {
-        //     name: "",
-        //     attack_bonus: "",
-        //     dmg: "",
-        //     tipe: ""
-        // },
-        // feats: {
-        //     features: "",
-        //     traits: ""
-        // },
-        // other: {
-        //     other_prof: "",
-        //     languages: ""
-        // },
-        // equipments: {
-        //     equipment: "",
-        //     equipment_stat: "",
-        // }
+        attacks: {
+            name: "",
+            attack_bonus: "",
+            dmg: "",
+            tipe: ""
+        },
+        feats: {
+            features: "",
+            traits: ""
+        },
+        other: {
+            other_prof: "",
+            languages: ""
+        },
+        equipments: {
+            equipment: "",
+            equipment_stat: "",
+        }
     });
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -155,10 +159,10 @@ function CharacterCreator() {
                 skills: [charData.skills],
                 health: [charData.health],
                 personal: [charData.personal],
-                // attacks: [charData.attacks],
-                // feats: [charData.feats],
-                // other: [charData.other],
-                // equipments: [charData.equipments]
+                attacks: [charData.attacks],
+                feats: [charData.feats],
+                other: [charData.other],
+                equipments: [charData.equipments]
             }
         };
         try {
@@ -187,6 +191,10 @@ function CharacterCreator() {
             <CreateSkills handleChange={handleChange} charData={charData} />
             <CreateHealth handleChange={handleChange} charData={charData} />
             <CreatePersonal handleChange={handleChange} charData={charData} />
+            <CreateAttack handleChange={handleChange} charData={charData} />
+            <CreateFeats handleChange={handleChange} charData={charData} />
+            <CreateOther handleChange={handleChange} charData={charData} />
+            <CreateEquipment handleChange={handleChange} charData={charData}/>
 
 
 
