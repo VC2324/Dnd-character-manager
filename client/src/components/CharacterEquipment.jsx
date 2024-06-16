@@ -1,7 +1,7 @@
 import React from "react";
 
 function CharacterEquipment({ handleChange, equipments, handleSubmit }){
-    console.log(equipments)
+    // console.log(equipments)
     return (
         <div>
             <div>

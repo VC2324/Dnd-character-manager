@@ -61,7 +61,7 @@ def logout():
         return {}, 401
     session['user_id'] = None
     return {}, 204
-
+# this creates character 
 @app.post('/api/create_character')
 def create_character():
     try:

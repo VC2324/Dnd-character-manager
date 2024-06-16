@@ -261,7 +261,7 @@ function CharacterSheet() {
             });
             // add here for next table
         } else {
-            // Default case for other inputs
+         
             setProfData({
                 ...profData,
                 [name]: value
