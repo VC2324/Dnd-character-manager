@@ -11,6 +11,7 @@ import CharacterAttack from "./CharacterAttack";
 import CharacterFeat from "./CharacterFeat";
 import CharacterOther from "./CharacterOther";
 import CharacterEquipment from "./CharacterEquipment";
+import CharacterDeathSaves from "./CharacterDeathSaves";
 
 function CharacterSheet() {
     const { character_id } = useParams();
@@ -328,7 +329,7 @@ function CharacterSheet() {
             <CharacterSaving handleSubmit={handleSubmit} savingThrows={profData.saving_throws} handleChange={handleChange} />
             <CharacterSkills handleSubmit={handleSubmit} skills={profData.skills} handleChange={handleChange}/>
             <CharacterHealth handleSubmit={handleSubmit} health={profData.health} handleChange={handleChange}/>
-            {/* this is where deathsaving throws will be that is last cause its just front end */}
+            <CharacterDeathSaves/>
             <CharacterPersonal handleSubmit={handleSubmit} personal={profData.personal} handleChange={handleChange}/>
             <CharacterAttack handleSubmit={handleSubmit} attacks={profData.attacks} handleChange={handleChange}/>
             <CharacterFeat handleSubmit={handleSubmit} feats={profData.feats} handleChange={handleChange}/>
