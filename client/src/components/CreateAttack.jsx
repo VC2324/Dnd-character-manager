@@ -60,17 +60,17 @@
 // export default CharacterAttack;
 import React from "react";
 
-function CreateAttack({ handleSubmit, handleChange, charData }) {
+function CreateAttack({ handleChange, charData }) {
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+
         <div>
           <label>
             Name:
             <input
               type="text"
               name="attacks.name"
-              value={charData.name}
+              value={charData.attacks.name}
               onChange={handleChange}
               required
             />
@@ -112,7 +112,7 @@ function CreateAttack({ handleSubmit, handleChange, charData }) {
             />
           </label>
         </div>
-      </form>
+      
     </div>
   );
 }
