@@ -169,7 +169,7 @@ function CharacterSheet() {
 
         if (name.startsWith("saving_throws.")) {
             // Handling saving throws
-            const savingThrowsName = name.split('.')[1]; // Extracting the specific saving throw property
+            const savingThrowsName = name.split('.')[1]; 
             setProfData({
                 ...profData,
                 saving_throws: {
@@ -178,7 +178,7 @@ function CharacterSheet() {
                 }
             });
         }else if (name.startsWith("skills.")) {
-            // Handling saving throws
+            // handling saving throws
             const skillsName = name.split('.')[1]; // Extracting the specific saving throw property
             setProfData({
                 ...profData,
@@ -188,7 +188,7 @@ function CharacterSheet() {
                 }
             });
         } else if (name in profData.stats) {
-            // Handling regular stats
+            // handling regular stats
             setProfData({
                 ...profData,
                 stats: {
@@ -215,7 +215,7 @@ function CharacterSheet() {
                 }
             });
         } else if (name in profData.personal) {
-            // Handling  personal
+            // handling  personal
             setProfData({
                 ...profData,
                 personal: {
@@ -224,7 +224,7 @@ function CharacterSheet() {
                 }
             });
         } else if (name in profData.attacks) {
-            // Handling  attacks
+            // handling  attacks
             setProfData({
                 ...profData,
                 attacks: {
@@ -233,7 +233,7 @@ function CharacterSheet() {
                 }
             });
         } else if (name in profData.feats) {
-            // Handling  feats
+            // handling  feats
             setProfData({
                 ...profData,
                 feats: {
@@ -242,7 +242,7 @@ function CharacterSheet() {
                 }
             });
         } else if (name in profData.other) {
-            // Handling  other
+            // handling  other
             setProfData({
                 ...profData,
                 other: {
@@ -251,7 +251,7 @@ function CharacterSheet() {
                 }
             });
         } else if (name in profData.equipments) {
-            // Handling  equipments
+            // handling  equipments
             setProfData({
                 ...profData,
                 equipments: {

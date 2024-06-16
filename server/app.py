@@ -11,19 +11,6 @@ from config import app, db
 
 from models import db, User, Campaign, Role, Character, Stat, MiscStat, SavingThrow, Skill, Health, Personal, Attack, Feat, Equipment, Other
 
-# app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
-
-# app.json.compact = False
-# # app.config.from_object('config')
-# CORS(app)
-
-# migrate = Migrate(app, db)
-
-# db.init_app(app)
-
 @app.get('/')
 def index():
     return "Hello world"
@@ -170,14 +157,7 @@ def create_character():
     except Exception as e:
         db.session.rollback()
         return jsonify({'error': str(e)}), 500
-#  in serialization rules i could add character.skills so i can get it all in one get ?? 
-# @app.get('/api/characters/<int:character_id>/stats')
-# def get_char_stats(character_id):
-#     character = Character.query.get(character_id)
-#     if character:
-#         stats = character.stats
-#         return jsonify(stats=[stat.to_dict() for stat in stats]), 200
-#     return jsonify({'error': 'Character not found'}), 404
+
 
 # this grabs all of users characters with the inner tables=================
 @app.get('/api/characters')
