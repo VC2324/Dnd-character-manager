@@ -75,14 +75,101 @@ def logout():
     session['user_id'] = None
     return {}, 204
 
-# @app.get('/api/characters/<int:character_id>/skills')
-# def get_char_skills(character_id):
-#     character = Character.query.get(character_id)
-#     if character:
-#         skills = character.skills
-#         return jsonify(skills=[skill.to_dict() for skill in skills]), 200
-#     return jsonify({'error': 'Character not found'}), 404
+@app.post('/api/create_character')
+def create_character():
+    try:
+        data = request.json.get('character', {})
+        stats_data = data.pop('stats', [])
+        misc_stats_data = data.pop('misc_stats', {})
+        saving_throws_data = data.pop('saving_throws', [])
+        skills_data = data.pop('skills', [])
+        health_data = data.pop('health', [])
+        personal_data = data.pop('personal', [])
+        attacks_data = data.pop('attacks', [])
+        feats_data = data.pop('feats', [])
+        other_data = data.pop('other', [])
+        equipments_data = data.pop('equipments', [])
 
+        # Retrieve user_id from session
+        user_id = session.get('user_id')
+        if not user_id:
+            return jsonify({'error': 'User is not logged in.'}), 401
+
+        # Ensure user exists
+        user = User.query.get(user_id)
+        if not user:
+            return jsonify({'error': 'User does not exist.'}), 404
+
+        # Create a new character
+        new_character = Character(
+            name=data.get('name'),
+            klass=data.get('klass'),
+            level=data.get('level'),
+            background=data.get('background'),
+            race=data.get('race'),
+            xp=data.get('xp'),
+            alignment=data.get('alignment')
+        )
+
+        db.session.add(new_character)
+        db.session.commit()
+
+        # Create a new role to link the user and the character
+        new_role = Role(
+            user_id=user_id,
+            character_id=new_character.id,
+            dm=False  # Assuming false if character is being created
+        )
+        db.session.add(new_role)
+
+        # Handle nested data
+        if stats_data:
+            new_stat = Stat(character_id=new_character.id, **stats_data[0])
+            db.session.add(new_stat)
+
+        if misc_stats_data:
+            new_misc_stat = MiscStat(character_id=new_character.id, **misc_stats_data)
+            db.session.add(new_misc_stat)
+
+        if saving_throws_data:
+            new_saving_throw = SavingThrow(character_id=new_character.id, **saving_throws_data[0])
+            db.session.add(new_saving_throw)
+
+        if skills_data:
+            new_skill = Skill(character_id=new_character.id, **skills_data[0])
+            db.session.add(new_skill)
+
+        if health_data:
+            new_health = Health(character_id=new_character.id, **health_data[0])
+            db.session.add(new_health)
+
+        if personal_data:
+            new_personal = Personal(character_id=new_character.id, **personal_data[0])
+            db.session.add(new_personal)
+
+        if attacks_data:
+            new_attack = Attack(character_id=new_character.id, **attacks_data[0])
+            db.session.add(new_attack)
+
+        if feats_data:
+            new_feat = Feat(character_id=new_character.id, **feats_data[0])
+            db.session.add(new_feat)
+
+        if other_data:
+            new_other = Other(character_id=new_character.id, **other_data[0])
+            db.session.add(new_other)
+
+        if equipments_data:
+            new_equipment = Equipment(character_id=new_character.id, **equipments_data[0])
+            db.session.add(new_equipment)
+
+        db.session.commit()
+
+        return jsonify(new_character.to_dict()), 201
+
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
 #  in serialization rules i could add character.skills so i can get it all in one get ?? 
 # @app.get('/api/characters/<int:character_id>/stats')
 # def get_char_stats(character_id):
