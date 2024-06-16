@@ -9,6 +9,8 @@ import CharacterHealth from "./CharacterHealth";
 import CharacterPersonal from "./CharacterPersonal";
 import CharacterAttack from "./CharacterAttack";
 import CharacterFeat from "./CharacterFeat";
+import CharacterOther from "./CharacterOther";
+import CharacterEquipment from "./CharacterEquipment";
 
 function CharacterSheet() {
     const { character_id } = useParams();
@@ -111,18 +113,25 @@ function CharacterSheet() {
             bonds: "",
             flaws: ""
         },
-        attacks: 
-            {
+        attacks:{
                 name: "",
                 attack_bonus: "",
                 dmg: "",
                 tipe: ""
             },
-        feats: 
-            {
+        feats:{
                 features: "",
                 traits: ""
-            }   
+            },
+        other:{
+            other_prof:"",
+            languages:""
+
+        },
+        equipments:{
+            equipment:"",
+            equipment_stat:"",
+        }
         // add here for next state
     });
 
@@ -144,6 +153,8 @@ function CharacterSheet() {
                 personal: character.personal[0],
                 attacks: character.attacks[0],
                 feats: character.feats[0],
+                other: character.other[0],
+                equipments: character.equipments[0],
                 //next table here
             });
         }
@@ -229,6 +240,24 @@ function CharacterSheet() {
                     [name]: value
                 }
             });
+        } else if (name in profData.other) {
+            // Handling  other
+            setProfData({
+                ...profData,
+                other: {
+                    ...profData.other,
+                    [name]: value
+                }
+            });
+        } else if (name in profData.equipments) {
+            // Handling  equipments
+            setProfData({
+                ...profData,
+                equipments: {
+                    ...profData.equipments,
+                    [name]: value
+                }
+            });
             // add here for next table
         } else {
             // Default case for other inputs
@@ -270,6 +299,8 @@ function CharacterSheet() {
                 personal:[profData.personal],
                 attacks:[profData.attacks],
                 feats: [profData.feats],
+                other: [profData.other],
+                equipments:[profData.equipments]
                 // add the tables here as we go 
             }
         };
@@ -301,6 +332,9 @@ function CharacterSheet() {
             <CharacterPersonal handleSubmit={handleSubmit} personal={profData.personal} handleChange={handleChange}/>
             <CharacterAttack handleSubmit={handleSubmit} attacks={profData.attacks} handleChange={handleChange}/>
             <CharacterFeat handleSubmit={handleSubmit} feats={profData.feats} handleChange={handleChange}/>
+            <CharacterOther handleSubmit={handleSubmit} other={profData.other} handleChange={handleChange}/>
+            <CharacterEquipment handleSubmit={handleSubmit} equipments={profData.equipments} handleChange={handleChange}/>
+
             <button type="submit" onClick={handleSubmit}>Update Character</button>
 
         </div>

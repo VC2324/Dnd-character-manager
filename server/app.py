@@ -133,57 +133,6 @@ def get_one_char(character_id):
 # ======UPDATE Current Characters user is on ====
 
 
-# @app.patch('/api/character/<int:id>')
-# def update_character(id):
-#     try:
-#         character = Character.query.get(id)
-#         if character:
-#             data = request.json.get('character', {})
-#             stats_data = data.pop('stats', [])
-#             misc_stats_data=data.pop('misc_stats,',{})
-
-#             for key, value in data.items():
-#                 setattr(character, key, value)
-
-#             if stats_data:
-#                 stats_data = stats_data[0]
-#                 stat = Stat.query.filter_by(character_id=id).first()
-#                 if stat:
-#                     for key, value in stats_data.items():
-#                         setattr(stat, key, value)
-#                 else:
-#                     stat = Stat(character_id=id, **stats_data)
-#                     db.session.add(stat)
-
-#             if misc_stats_data:
-                
-#                 misc_stats= MiscStat.query.filter_by(character_id=id).first()
-#                 if misc_stats:
-#                     for key, value in misc_stats_data.items():
-#                         setattr(misc_stats_data, key, value)
-#                 else:
-#                     misc_stats = MiscStat(character_id =id, **misc_stats_data)
-#                     db.session.add(misc_stats)
-
-#             db.session.commit()
-#             return character.to_dict(), 200
-
-#         return {'error': 'Character not found'}, 404
-
-#     except ValueError as ve:
-#         db.session.rollback()
-#         return {'error': str(ve)}, 400
-
-#     except IntegrityError as ie:
-#         db.session.rollback()
-#         return {'error': 'Integrity error occurred'}, 400
-
-#     except Exception as e:
-#         db.session.rollback()
-#         return {'error': str(e)}, 500
-
-
-
 @app.patch('/api/character/<int:id>')
 def update_character(id):
     try:
@@ -198,6 +147,8 @@ def update_character(id):
             personal_data=data.pop('personal',[])
             attacks_data=data.pop('attacks',[])
             feats_data=data.pop('feats',[])
+            other_data=data.pop('other', [])
+            equipments_data=data.pop('equipments', [])
 
 
 
@@ -283,6 +234,28 @@ def update_character(id):
                 else:
                     feats= Feat.query.filter_by(character_id=id, **feats_data)
                     db.session.add(feats)
+
+            if other_data:
+                other_data = other_data[0]
+                other=Other.query.filter_by(character_id=id).first()
+                if other:
+                    for key, value in other_data.items():
+                        setattr(other, key, value)
+                else:
+                    other= Other.query.filter_by(character_id=id, **other_data)
+                    db.session.add(other)
+
+            if equipments_data:
+                equipments_data = equipments_data[0]
+                equipments=Equipment.query.filter_by(character_id=id).first()
+                if equipments:
+                    for key, value in equipments_data.items():
+                        setattr(equipments, key, value)
+                else:
+                    equipments= Equipment.query.filter_by(character_id=id, **equipments_data)
+                    db.session.add(equipments)
+                           
+                           
                     
 
 # add next post table here
