@@ -17,7 +17,15 @@ export default {
     extend: {
       fontFamily:{
         'dragon': ['DRAGONHUNTER', 'cursive']
-      }
+      },
+      colors: {
+        brown: {
+          900: '#4b2e20',
+          800: '#5d3a27',
+          700: '#6f4830',
+        },
+        gold: '#FFD700'
+      },
     },
   },
   plugins: [],
