@@ -1,5 +1,5 @@
 
-function CharacterProfile({ character, handleSubmit, handleChange, profData }) {
+function CharacterProfile({handleSubmit, handleChange, profData }) {
   return (
       <form onSubmit={handleSubmit}>
           <div>
