@@ -12,7 +12,8 @@ import CharacterFeat from "./CharacterFeat";
 import CharacterOther from "./CharacterOther";
 import CharacterEquipment from "./CharacterEquipment";
 import CharacterDeathSaves from "./CharacterDeathSaves";
-
+import Navbar from "./Navbar";
+import { Outlet } from "react-router-dom";
 function CharacterSheet() {
     const { character_id } = useParams();
     const [character, setCharacter] = useState(null);
@@ -323,6 +324,8 @@ function CharacterSheet() {
 
     return (
         <div>
+            <Navbar/>
+            <Outlet/>
             <CharacterProfile character={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData} />
             <CharacterStats character={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData} stats={profData.stats} />
             <CharacterMisc handleChange={handleChange} profData={profData} />

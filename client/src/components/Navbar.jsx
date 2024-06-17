@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom"
 
 function Navbar(){
     return(
-        <div className=" bg-slate-500 ">
+        <div className="font-dragon bg-slate-500 text-font= ">
             <NavLink to ="/"> Home </NavLink>
             {/* <Link to ="/userprofile"> Profile </Link> */}
             <NavLink to ="/charactercreator"> Creator Character </NavLink>

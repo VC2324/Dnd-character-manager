@@ -26,7 +26,7 @@ function CharacterCards(){
 console.log(characters)
     return(  
       
-      <div class="p-8">
+      <div className="grid grid-cols-3 gap-4">
         {error ? (
           <div>Error: {error}</div>
         ) : (
@@ -34,12 +34,12 @@ console.log(characters)
             {characters.length === 0 ? (
               <div>
                 <p>No characters in roster.</p>
-                <Link to="/charactercreator">
+                {/* <Link to="/charactercreator">
                   <button>Create a Character</button>
-                </Link>
+                </Link> */}
               </div>
             ) : (
-                <div className="cards-grid">
+                <div className="grid grid-cols-3 gap-4">
                   {characters.map(character => (
                     <Link to={`/character/${character.id}`} key={character.id}>
                         <div className="character-card">

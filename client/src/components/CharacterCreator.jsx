@@ -10,6 +10,8 @@ import CreateAttack from "./CreateAttack"
 import CreateFeats from "./CreateFeats";
 import CreateOther from "./CreateOther";
 import CreateEquipment from "./CreateEquipment";
+import Navbar from "./Navbar";
+import { Outlet } from "react-router-dom";
 
 function CharacterCreator() {
     const [charData, setCharData] = useState({
@@ -183,6 +185,8 @@ function CharacterCreator() {
 
     return (
         <div className="charcreator">
+            <Navbar/>
+            <Outlet/>
             <h1>Create a Character</h1>
             <CreateProfile handleSubmit={handleSubmit} handleChange={handleChange} charData={charData} />
             <CreateStats handleChange={handleChange} charData={charData} />

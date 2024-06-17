@@ -23,8 +23,8 @@ function App() {
   
   return (
     <div className='App'>
-      <h1>Hello World</h1>
-      <Navbar/>
+      <h1 class="font-dragon">Hello World</h1>
+      {/* <Navbar/> */}
       <Outlet context={{currentUser:currentUser, setCurrentUser:setCurrentUser,}} />
 
     </div>
