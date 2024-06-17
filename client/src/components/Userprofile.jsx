@@ -14,8 +14,8 @@ function Userprofile(){
     return(
             <div id="userprofile">
             <h1> Welcome {currentUser.username} </h1>
-            <button id="logout-btn" onClick={handleLogout}>Log out</button>
-            <CharacterCards/>
+            <button  class ="py-3 border-spacing-10"  onClick={handleLogout}>Log out</button>
+            <CharacterCards class="p-8 ..."/>
             </div>
     )
 

@@ -25,8 +25,8 @@ function CharacterCards(){
   
 console.log(characters)
     return(  
-    
-    <div>
+      
+      <div class="p-8">
         {error ? (
           <div>Error: {error}</div>
         ) : (
@@ -48,7 +48,7 @@ console.log(characters)
                             <p>Level: {character.level}</p>
                             <p>Class: {character.klass}</p>
                             <p>Exp: {character.xp}</p>
-                           
+
 
                     </div>
                     </Link>

@@ -1,4 +1,8 @@
-body {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* body {
   margin: 0;
   padding: 1em;
 }
@@ -36,8 +40,8 @@ body {
 
 .character-card h3 {
   margin-top: 0;
-}
-
+} */
+/* 
 .create-character-button {
   display: inline-block;
   margin-top: 20px;
@@ -53,4 +57,4 @@ body {
 
 .create-character-button:hover {
   background-color: #0056b3;
-}
+} */

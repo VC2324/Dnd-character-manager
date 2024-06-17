@@ -57,7 +57,7 @@ function Login(){
     }
         if (!isClicked) {
             return(
-                <div className="login-div">
+                <div className="login-div p-10">
                     <h2>Log in</h2>
                     <form onSubmit = {handleLogin} >
                         <input onChange ={e => setUsername(e.target.value)} type="'text" name="username" placeholder="Username" value={username}/>
@@ -72,7 +72,7 @@ function Login(){
             )
         } else {
             return(
-                <div className="login-div">
+                <div className="login-div p-10">
                     <h2>Sign up</h2>
                     <form onSubmit={handleSignup} >
                         <input onChange ={e => setUsername(e.target.value)} type="'text" name="username" placeholder="Username" value={username} />
