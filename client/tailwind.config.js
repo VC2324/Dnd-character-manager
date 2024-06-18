@@ -39,6 +39,7 @@ export default {
         iriswarlock: '#7B469B',
         skymonky: '#51A5C5',
         cobaltwizard: '#2A50A1',
+        tavernGreen: '#004B48',
 
 
 

@@ -40,11 +40,11 @@ console.log(characters)
           {characters.map(character => (
             <Link to={`/character/${character.id}`} key={character.id}>
               <div className="character-card m-5 bg-greenranger  bg-opacity-70 p-4 rounded-lg shadow-lg border-double border-4 borde-black-500">
-                <h3 className="text-xl font-bold text-white">{character.name}</h3>
+                <h3 className="text-xl font-bold text-black-500">{character.name}</h3>
                 <p className="text-black-500">Race: {character.race}</p>
-                <p className="text-gray-300">Level: {character.level}</p>
-                <p className="text-gray-300">Class: {character.klass}</p>
-                <p className="text-gray-300">Exp: {character.xp}</p>
+                <p className="text-black-500">Level: {character.level}</p>
+                <p className="text-black-500">Class: {character.klass}</p>
+                <p className="text-black-500">Exp: {character.xp}</p>
               </div>
             </Link>
           ))}

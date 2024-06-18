@@ -61,10 +61,10 @@
 // export default Navbar
 
 import { NavLink } from "react-router-dom";
-import { useOutletContext } from "react-router-dom"; // Adjust the import based on your context setup
+import { useOutletContext } from "react-router-dom"; 
 
 function Navbar() {
-    const { currentUser, setCurrentUser } = useOutletContext(); // Adjust context usage based on your application
+    const { currentUser, setCurrentUser } = useOutletContext()
 
     function handleLogout() {
         setCurrentUser(null);
@@ -74,12 +74,12 @@ function Navbar() {
     }
 
     return (
-        <nav className="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+        <nav className="border-gray-200 bg-tavernGreen">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <NavLink to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="./Assets/dndlogo.png" className="h-8" alt="Dnd Logo" />
+
+                <img src="./Assets/dndlogo.png" className="h-8 flex items-center space-x-3 rtl:space-x-reverse" alt="Dnd Logo" />
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
-                </NavLink>
+                
                 <button
                     type="button"
                     className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -96,7 +96,7 @@ function Navbar() {
                         <li>
                             <NavLink
                                 to="/"
-                                className="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
+                                className="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-white md:dark:text-white dark:bg-white md:dark:bg-transparent"
                                 activeClassName="text-blue-700 dark:text-blue-500"
                                 exact
                             >
