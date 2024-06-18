@@ -324,7 +324,7 @@ function CharacterSheet() {
     };
 
     return (
-        <div>
+        <div >
             <Navbar/>
             <Outlet/>
             <CharacterProfile character={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData} />
@@ -342,6 +342,7 @@ function CharacterSheet() {
 
             <button type="submit" onClick={handleSubmit}>Update Character</button>
 
+        
         </div>
     );
 }

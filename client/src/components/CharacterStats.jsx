@@ -18,7 +18,7 @@ function CharacterStats({ handleChange, stats }) {
                             name="strength"
                             value={stats.strength}
                             onChange={handleChange}
-                            className="block w-12 p-2 rounded shadow-sm outline-none"
+                            className="rounded shadow-sm outline-none text-center text-2xl"
                             required
                         />
                     </div>
@@ -34,7 +34,7 @@ function CharacterStats({ handleChange, stats }) {
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
                                 outline: 'none',
-                                textAlign: 'center', // Center-align the input value
+                                textAlign: 'center', 
                             }}
                             required
                         />
@@ -52,7 +52,10 @@ function CharacterStats({ handleChange, stats }) {
                             name="dexterity"
                             value={stats.dexterity}
                             onChange={handleChange}
-                            className="block w-12 p-2 rounded border focus:border-blue-500 outline-none"
+                            // className="block w-12 p-2 rounded border focus:border-blue-500 outline-none"
+                            // className="block w-12 p-2 rounded shadow-sm outline-none text-center"
+                            className="rounded shadow-sm outline-none text-center text-2xl"
+
                             required
                         />
                     </div>
@@ -68,7 +71,7 @@ function CharacterStats({ handleChange, stats }) {
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
                                 outline: 'none',
-                                textAlign: 'center', // Center-align the input value
+                                textAlign: 'center',
                             }}
                             required
                         />
@@ -85,7 +88,10 @@ function CharacterStats({ handleChange, stats }) {
                             name="constitution"
                             value={stats.constitution}
                             onChange={handleChange}
-                            className="block w-12 p-2 rounded border focus:border-blue-500 outline-none"
+                            // className="block w-12 p-2 rounded border focus:border-blue-500 outline-none"
+                            // className="block w-12 p-2 rounded shadow-sm outline-none text-center"
+                            className="rounded shadow-sm outline-none text-center text-2xl"
+
                             required
                         />
                     </div>
@@ -101,7 +107,7 @@ function CharacterStats({ handleChange, stats }) {
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
                                 outline: 'none',
-                                textAlign: 'center', // Center-align the input value
+                                textAlign: 'center',
                             }}
                             required
                         />
@@ -118,7 +124,10 @@ function CharacterStats({ handleChange, stats }) {
                             name="intelligence"
                             value={stats.intelligence}
                             onChange={handleChange}
-                            className="block w-12 p-2 rounded border focus:border-blue-500 outline-none"
+                            // className="block w-12 p-2 rounded border focus:border-blue-500 outline-none"
+                            // className="block w-12 p-2 rounded shadow-sm outline-none text-center"
+                            className="rounded shadow-sm outline-none text-center text-2xl"
+
                             required
                         />
                     </div>
@@ -134,7 +143,7 @@ function CharacterStats({ handleChange, stats }) {
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
                                 outline: 'none',
-                                textAlign: 'center', // Center-align the input value
+                                textAlign: 'center',
                             }}
                             required
                         />
@@ -150,7 +159,10 @@ function CharacterStats({ handleChange, stats }) {
                             name="wisdom"
                             value={stats.wisdom}
                             onChange={handleChange}
-                            className="block w-12 p-2 rounded border focus:border-blue-500 outline-none"
+                            // className="block w-12 p-2 rounded border focus:border-blue-500 outline-none"
+                            // className="block w-12 p-2 rounded shadow-sm outline-none text-center"
+                            className="rounded shadow-sm outline-none text-center text-2xl"
+
                             required
                         />
                     </div>
@@ -166,7 +178,7 @@ function CharacterStats({ handleChange, stats }) {
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
                                 outline: 'none',
-                                textAlign: 'center', // Center-align the input value
+                                textAlign: 'center',
                             }}
                             required
                         />
@@ -182,7 +194,10 @@ function CharacterStats({ handleChange, stats }) {
                             name="charisma"
                             value={stats.charisma}
                             onChange={handleChange}
-                            className="block w-12 p-2 rounded border focus:border-blue-500 outline-none"
+                            // className="block w-12 p-2 rounded border focus:border-blue-500 outline-none"
+                            // className="block w-12 p-2 rounded shadow-sm outline-none text-center"
+                            className="rounded shadow-sm outline-none text-center text-2xl"
+
                             required
                         />
                     </div>
@@ -198,7 +213,7 @@ function CharacterStats({ handleChange, stats }) {
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
                                 outline: 'none',
-                                textAlign: 'center', // Center-align the input value
+                                textAlign: 'center',
                             }}
                             required
                         />
@@ -214,7 +229,10 @@ function CharacterStats({ handleChange, stats }) {
                             name="wis_perception"
                             value={stats.wis_perception}
                             onChange={handleChange}
-                            className="block w-12 p-2 rounded border focus:border-blue-500 outline-none"
+                            // className="block w-12 p-2 rounded border focus:border-blue-500 outline-none"
+                            // className="block w-12 p-2 rounded shadow-sm outline-none text-center"
+                            className="rounded shadow-sm outline-none text-center text-2xl"
+
                             required
                         />
                     </div>
@@ -230,7 +248,7 @@ function CharacterStats({ handleChange, stats }) {
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
                                 outline: 'none',
-                                textAlign: 'center', // Center-align the input value
+                                textAlign: 'center',
                             }}
                             required
                         />
