@@ -4,9 +4,11 @@ import React from 'react';
 function CharacterStats({ handleChange, stats }) {
     return (
         <form className="w-full max-w-md p-4">
+            {/* // <form className="w-full max-w-md sm:max-w-sm p-4 bg-slate-400"> */}
             <div className="flex flex-col gap-4">
                 {/* Strength */}
-                        <label className="block  underline font-dragon">Strength:</label>
+                        <label className="block  underline font-dragon text-xl">Strength:</label>
+                        
               
                 <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double w-1/4">
 
@@ -40,7 +42,7 @@ function CharacterStats({ handleChange, stats }) {
                 </div>
 
                 {/* Dexterity */}
-                        <label className="block mb-1 underline font-dragon">Dexterity:</label>
+                        <label className="block mb-1 underline font-dragon text-xl">Dexterity:</label>
                 {/* <div className="border border-gray-300 rounded-lg shadow-md p-4"> */}
                 <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double w-1/4">
 
@@ -74,7 +76,7 @@ function CharacterStats({ handleChange, stats }) {
                 </div>
 
                 {/* Constitution */}
-                        <label className="block mb-1 underline font-dragon">Constitution:</label>
+                        <label className="block mb-1 underline font-dragon text-xl">Constitution:</label>
                         <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double w-1/4">
 
                     <div className="flex flex-col mb-2">
@@ -107,7 +109,7 @@ function CharacterStats({ handleChange, stats }) {
                 </div>
 
                 {/* Intelligence */}
-                        <label className="block mb-1 underline font-dragon">Intelligence:</label>
+                        <label className="block mb-1 underline font-dragon text-xl">Intelligence:</label>
                 <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double w-1/4">
                             
                     <div className="flex flex-col mb-2">
@@ -140,7 +142,7 @@ function CharacterStats({ handleChange, stats }) {
                 </div>
 
                 {/* Wisdom */}
-                        <label className="block mb-1 underline font-dragon">Wisdom:</label>
+                        <label className="block mb-1 underline font-dragon text-xl">Wisdom:</label>
                         <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double w-1/4">
                     <div className="flex flex-col mb-2">
                         <input
@@ -172,7 +174,7 @@ function CharacterStats({ handleChange, stats }) {
                 </div>
 
                 {/* Charisma */}
-                        <label className="block mb-1 underline font-dragon">Charisma:</label>
+                        <label className="block mb-1 underline font-dragon text-xl">Charisma:</label>
                         <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double w-1/4">
                     <div className="flex flex-col mb-2">
                         <input
@@ -204,7 +206,7 @@ function CharacterStats({ handleChange, stats }) {
                 </div>
 
                 {/* Wisdom Perception */}
-                        <label className="block mb-1 underline font-dragon">Wisdom Perception:</label>
+                        <label className="block mb-1 underline font-dragon text-xl">Wisdom Perception:</label>
                         <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double w-1/4">
                     <div className="flex flex-col mb-2">
                         <input
