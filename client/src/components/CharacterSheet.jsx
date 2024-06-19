@@ -464,6 +464,20 @@ function CharacterSheet() {
             handleChange={handleChange}
         />
     </div>
+    <div className="w-full mb-4 border border-gray-300 rounded-lg shadow-md p-2 outline-double">
+        <CharacterEquipment
+            handleSubmit={handleSubmit}
+            equipments={profData.equipments}
+            handleChange={handleChange}
+        />
+    </div>
+    <div className="w-full mb-4 border border-gray-300 rounded-lg shadow-md p-2 outline-double">
+        <CharacterOther
+            handleSubmit={handleSubmit}
+            other={profData.other}
+            handleChange={handleChange}
+        />
+    </div>
     </div>
 
     <div className="w-full m-2">
@@ -483,22 +497,8 @@ function CharacterSheet() {
     </div>
 
     {/* Character Other (1/4 width) */}
-    <div className="w-half sm:w-1/4">
-        <CharacterOther
-            handleSubmit={handleSubmit}
-            other={profData.other}
-            handleChange={handleChange}
-        />
-    </div>
 
     {/* Character Equipment (full width) */}
-    <div className="w-full m-2">
-        <CharacterEquipment
-            handleSubmit={handleSubmit}
-            equipments={profData.equipments}
-            handleChange={handleChange}
-        />
-    </div>
 </div>
 <button type="submit" onClick={handleSubmit}>Update Character</button>
 
