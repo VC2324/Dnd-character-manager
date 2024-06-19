@@ -357,14 +357,14 @@ function CharacterSheet() {
             </div>
 
             {/* Character Misc and Character Saving Throws (1/4 width each) */}
-            <div className="w-half my-4 bg-slate-400 sm:w-1/4">
-                <div className="w-full mb-4">
+            <div className="w-half my-4 bg-slate-400 sm:w-1/4 ">
+                <div className="w-full mb-4 border border-gray-300 rounded-lg shadow-md p-4 outline-double">
                     <CharacterMisc
                         handleChange={handleChange}
                         profData={profData}
                     />
                 </div>
-                <div className="w-full">
+                <div className="w-half m-2 border border-gray-300 rounded-lg shadow-md  outline-double">
                     <CharacterSaving
                         handleSubmit={handleSubmit}
                         savingThrows={profData.saving_throws}
@@ -373,7 +373,7 @@ function CharacterSheet() {
                 </div>
 
             {/* Character Skills (full width) */}
-                <div className="w-full l-1/2">
+                <div className="w-half m-2 border border-gray-300 rounded-lg shadow-md  outline-double">
                 <CharacterSkills
                     handleSubmit={handleSubmit}
                     skills={profData.skills}

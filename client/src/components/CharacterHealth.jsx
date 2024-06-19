@@ -39,12 +39,12 @@ import React from 'react';
 
 function CharacterHealth({ handleSubmit, health, handleChange }) {
     return (
-        <div className="p-4 w-1/4">
+        <div className="p-4 w-1/4 bg-green-400">
             <form onSubmit={handleSubmit}>
-                <div className="flex flex-wrap mb-4">
+                <div className="flex flex-wrap mb-4 " >
                     {/* Row 1: Armor Class, Initiative, Speed */}
-                    <div className="w-full sm:w-1/3 mb-4 sm:mb-0">
-                        <label className="block text-center">Armor Class:</label>
+                    <div className="w-full sm:w-1/3 mb-4 sm:mb-0 ">
+                        <label className="block text-center underline font-dragon">Armor Class</label>
                         <input
                             type="number"
                             name="armor_class"
@@ -55,7 +55,7 @@ function CharacterHealth({ handleSubmit, health, handleChange }) {
                         />
                     </div>
                     <div className="w-full sm:w-1/3 mb-4 sm:mb-0">
-                        <label className="block m-3 text-center">Initiative</label>
+                        <label className="block m-3 text-center font-dragon underline">Initiative</label>
                         <input
                             type="number"
                             name="initiative"
@@ -66,7 +66,7 @@ function CharacterHealth({ handleSubmit, health, handleChange }) {
                         />
                     </div>
                     <div className="w-full sm:w-1/3">
-                        <label className="block m-3  text-center">Speed</label>
+                        <label className="block m-3 text-center font-dragon underline">Speed</label>
                         <input
                             type="number"
                             name="speed"
@@ -80,7 +80,7 @@ function CharacterHealth({ handleSubmit, health, handleChange }) {
                 <div className="flex flex-wrap">
                     {/* Row 2: Max HP, Current HP, Temporary HP */}
                     <div className="w-full sm:w-1/3 mb-4 sm:mb-0">
-                        <label className="block text-center">Max HP</label>
+                        <label className="block text-center font-dragon underline">Max <br></br> HP</label>
                         <input
                             type="number"
                             name="max_hp"
@@ -91,7 +91,7 @@ function CharacterHealth({ handleSubmit, health, handleChange }) {
                         />
                     </div>
                     <div className="w-full sm:w-1/3 mb-4 sm:mb-0">
-                        <label className="block text-center">Current HP</label>
+                        <label className="block text-center font-dragon underline">Current HP</label>
                         <input
                             type="number"
                             name="current_hp"
@@ -101,8 +101,9 @@ function CharacterHealth({ handleSubmit, health, handleChange }) {
                             className="border rounded p-1 w-full"
                         />
                     </div>
+                    
                     <div className="w-full sm:w-1/3">
-                        <label className="block text-center">Temporary HP</label>
+                        <label className="block text-center font-dragon underline">Temporary HP</label>
                         <input
                             type="number"
                             name="temp_hp"
@@ -113,27 +114,31 @@ function CharacterHealth({ handleSubmit, health, handleChange }) {
                         />
                     </div>
                 </div>
-                <div className="mb-4">
-                    <label className="block text-center">Hit Dice Total</label>
+                
+                <div className="flex flex-wrap my-4">
+
+                <div className="w-full sm:w-1/2 mb-4 sm:mb-0">
+                    <label className="block text-center font-dragon underline">Hit Dice Total</label>
                     <input
                         type="number"
                         name="hit_total"
                         value={health.hit_total}
                         onChange={handleChange}
                         required
-                        className="border rounded p-1 w-full"
+                        className="border rounded p-1 w-1/2 text-center"
                     />
                 </div>
-                <div>
-                    <label className="block text-center">Hit Dice</label>
+                <div className="w-full sm:w-1/3 mb-4 sm:mb-0">
+                    <label className="block text-center font-dragon underline">Hit Dice</label>
                     <input
                         type="number"
                         name="hit_dice"
                         value={health.hit_dice}
                         onChange={handleChange}
                         required
-                        className="border rounded p-1 w-1/4 text-center"
+                        className="border rounded p-1 w-1/2 text-center"
                     />
+                </div>
                 </div>
             </form>
         </div>
