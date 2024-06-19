@@ -334,7 +334,7 @@ function CharacterSheet() {
             <CharacterSkills handleSubmit={handleSubmit} skills={profData.skills} handleChange={handleChange}/> */}
               <div className="flex flex-wrap">
             {/* Character Profile (full width) */}
-            <div className="w-full">
+            <div className="w-full m-2">
                 <CharacterProfile
                     character={character}
                     handleSubmit={handleSubmit}
@@ -357,7 +357,7 @@ function CharacterSheet() {
             </div>
 
             {/* Character Misc and Character Saving Throws (1/4 width each) */}
-            <div className="w-full sm:w-1/2">
+            <div className="w-half my-4 bg-slate-400 sm:w-1/4">
                 <div className="w-full mb-4">
                     <CharacterMisc
                         handleChange={handleChange}
@@ -371,18 +371,18 @@ function CharacterSheet() {
                         handleChange={handleChange}
                     />
                 </div>
-            </div>
 
             {/* Character Skills (full width) */}
-            <div className="w-full l-1/2">
+                <div className="w-full l-1/2">
                 <CharacterSkills
                     handleSubmit={handleSubmit}
                     skills={profData.skills}
                     handleChange={handleChange}
-                />
+                    />
+                </div>
             </div>
-        </div>
             <CharacterHealth handleSubmit={handleSubmit} health={profData.health} handleChange={handleChange}/>
+        </div>
             <CharacterDeathSaves/>
             <CharacterPersonal handleSubmit={handleSubmit} personal={profData.personal} handleChange={handleChange}/>
             <CharacterAttack handleSubmit={handleSubmit} attacks={profData.attacks} handleChange={handleChange}/>

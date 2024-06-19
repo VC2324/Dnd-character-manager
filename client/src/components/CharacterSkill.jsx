@@ -2,7 +2,7 @@ import React from 'react';
 
 function CharacterSkills({ handleSubmit, skills, handleChange }) {
     return (
-        <div className="p-4 w-1/4 mx-auto">
+        <div className="p-4  mx-auto">
             <label className='text-xl underline font-dragon'>Skills</label>
 
             <form onSubmit={handleSubmit}>

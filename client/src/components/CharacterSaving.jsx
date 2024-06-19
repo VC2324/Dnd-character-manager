@@ -2,7 +2,7 @@ import React from 'react';
 
 function CharacterSaving({ handleSubmit, savingThrows, handleChange }) {
     return (
-        <div className="p-4 w-1/4 mx-auto">
+        <div className="p-4 mx-auto">
             <label className='text-xl underline font-dragon'>Saving Throws</label>
             <form onSubmit={handleSubmit}>
                 <div className="flex items-center mb-4">
