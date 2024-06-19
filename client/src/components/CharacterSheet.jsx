@@ -332,8 +332,8 @@ function CharacterSheet() {
             <CharacterMisc handleChange={handleChange} profData={profData} />
             <CharacterSaving handleSubmit={handleSubmit} savingThrows={profData.saving_throws} handleChange={handleChange} />
             <CharacterSkills handleSubmit={handleSubmit} skills={profData.skills} handleChange={handleChange}/> */}
-            <div className="flex flex-wrap">
-                {/* Character Profile (full width) */}
+            {/* <div className="flex flex-wrap">
+
                 <div className="w-full m-2">
                     <CharacterProfile
                         character={character}
@@ -344,7 +344,7 @@ function CharacterSheet() {
                     />
                 </div>
 
-                {/* Character Stats (1/4 width) */}
+
             <div className="w-half sm:w-1/6">
                 <CharacterStats
                     character={character}
@@ -356,7 +356,6 @@ function CharacterSheet() {
                 />
             </div>
 
-            {/* Character Misc and Character Saving Throws (1/4 width each) */}
             <div className="w-half my-4 bg-slate-400 sm:w-1/4 ">
                 <div className="w-full mb-4 border border-gray-300 rounded-lg shadow-md p-4 outline-double">
                     <CharacterMisc
@@ -372,7 +371,7 @@ function CharacterSheet() {
                     />
                 </div>
 
-                {/* Character Skills (full width) */}
+
                 <div className="w-half m-2 border border-gray-300 rounded-lg shadow-md  outline-double">
                 <CharacterSkills
                     handleSubmit={handleSubmit}
@@ -380,9 +379,9 @@ function CharacterSheet() {
                     handleChange={handleChange}
                     />
                 </div>
-            </div>
             <CharacterHealth handleSubmit={handleSubmit} health={profData.health} handleChange={handleChange}/>
             <CharacterDeathSaves/>
+            </div>
         </div>
             <CharacterPersonal handleSubmit={handleSubmit} personal={profData.personal} handleChange={handleChange}/>
             <CharacterAttack handleSubmit={handleSubmit} attacks={profData.attacks} handleChange={handleChange}/>
@@ -393,7 +392,119 @@ function CharacterSheet() {
             <button type="submit" onClick={handleSubmit}>Update Character</button>
 
         
+
+        </div> */}
+        
+        <div className="flex flex-wrap">
+
+    <div className="w-full m-2">
+        <CharacterProfile
+            character={character}
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            profData={profData}
+            setProfData={setProfData}
+        />
+    </div>
+
+
+    <div className="w-half sm:w-1/6">
+        <CharacterStats
+            character={character}
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            profData={profData}
+            setProfData={setProfData}
+            stats={profData.stats}
+        />
+    </div>
+
+
+    <div className="w-half sm:w-1/4 my-4 bg-slate-400 mr-2">
+        <div className="w-full mb-4 border border-gray-300 rounded-lg shadow-md p-4 outline-double">
+            <CharacterMisc
+                handleChange={handleChange}
+                profData={profData}
+            />
         </div>
+        <div className="w-full mb-4 border border-gray-300 rounded-lg shadow-md p-4 outline-double">
+            <CharacterSaving
+                handleSubmit={handleSubmit}
+                savingThrows={profData.saving_throws}
+                handleChange={handleChange}
+            />
+        </div>
+        <div className="w-full mb-4 border border-gray-300 rounded-lg shadow-md p-4 outline-double">
+            <CharacterSkills
+                handleSubmit={handleSubmit}
+                skills={profData.skills}
+                handleChange={handleChange}
+            />
+        </div>
+    </div>
+
+    {/* Character Health and Death Saves (1/4 width each) */}
+    <div className="w-half sm:w-1/4 my-4 bg-slate-400">
+        <div className="w-full mb-4 border border-gray-300 rounded-lg shadow-md p-4 outline-double">
+            <CharacterHealth
+                handleSubmit={handleSubmit}
+                health={profData.health}
+                handleChange={handleChange}
+            />
+        </div>
+        <div className="w-full mb-4 border border-gray-300 rounded-lg shadow-md p-4 outline-double">
+            <CharacterDeathSaves />
+        </div>
+    {/* <div className="w-half sm:w-1/6"> */}
+    <div className="w-full mb-4 border border-gray-300 rounded-lg shadow-md p-4 outline-double">
+
+        <CharacterAttack
+            handleSubmit={handleSubmit}
+            attacks={profData.attacks}
+            handleChange={handleChange}
+        />
+    </div>
+    </div>
+
+    <div className="w-full m-2">
+        <CharacterPersonal
+            handleSubmit={handleSubmit}
+            personal={profData.personal}
+            handleChange={handleChange}
+        />
+    </div>
+
+    <div className="w-half sm:w-1/4">
+        <CharacterFeat
+            handleSubmit={handleSubmit}
+            feats={profData.feats}
+            handleChange={handleChange}
+        />
+    </div>
+
+    {/* Character Other (1/4 width) */}
+    <div className="w-half sm:w-1/4">
+        <CharacterOther
+            handleSubmit={handleSubmit}
+            other={profData.other}
+            handleChange={handleChange}
+        />
+    </div>
+
+    {/* Character Equipment (full width) */}
+    <div className="w-full m-2">
+        <CharacterEquipment
+            handleSubmit={handleSubmit}
+            equipments={profData.equipments}
+            handleChange={handleChange}
+        />
+    </div>
+</div>
+<button type="submit" onClick={handleSubmit}>Update Character</button>
+
+</div>
+
+
     );
 }
 
