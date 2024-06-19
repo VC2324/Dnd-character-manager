@@ -30,7 +30,7 @@ console.log(characters)
   {error ? (
     <div>Error: {error}</div>
   ) : (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 " >
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-dragon " >
       {characters.length === 0 ? (
         <div>
           <p>No characters in roster.</p> 
@@ -39,12 +39,12 @@ console.log(characters)
         <>
           {characters.map(character => (
             <Link to={`/character/${character.id}`} key={character.id}>
-              <div className="character-card m-5 bg-greenranger  bg-opacity-70 p-4 rounded-lg shadow-lg border-double border-4 borde-black-500">
-                <h3 className="text-xl font-bold text-black-500">{character.name}</h3>
-                <p className="text-black-500">Race: {character.race}</p>
-                <p className="text-black-500">Level: {character.level}</p>
-                <p className="text-black-500">Class: {character.klass}</p>
-                <p className="text-black-500">Exp: {character.xp}</p>
+              <div className="character-card m-5 bg-silvercleric  bg-opacity-40 p-4 rounded-lg shadow-lg border-double border-4 borde-black-500 ">
+                <h3 className="mb-2 font-bold text-white text-center underline text-3xl">{character.name}</h3>
+                <p className="text-white text-xl">Race: {character.race}</p>
+                <p className="text-white text-xl">Level: {character.level}</p>
+                <p className="text-white text-xl">Class: {character.klass}</p>
+                <p className="text-white text-xl">Exp: {character.xp}</p>
               </div>
             </Link>
           ))}

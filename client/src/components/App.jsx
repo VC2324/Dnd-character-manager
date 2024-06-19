@@ -1,7 +1,11 @@
 import { Outlet } from "react-router-dom"
 import { useState, useEffect } from "react"
+import backgroundImage from "/Assets/bettercastle.jpg"
+
+
 
 import Navbar from "./Navbar"
+
 
 function App() {
 
@@ -22,7 +26,9 @@ function App() {
 
   
   return (
-    <div className='App'>
+    <div
+    className='App relative bg-cover bg-center bg-no-repeat min-h-screen'
+    style={{ backgroundImage: `url(${backgroundImage})` }}>
 
       {/* <Navbar/> */}
       <Outlet context={{currentUser:currentUser, setCurrentUser:setCurrentUser,}} />

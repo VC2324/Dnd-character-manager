@@ -12,6 +12,8 @@ import CreateOther from "./CreateOther";
 import CreateEquipment from "./CreateEquipment";
 import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
+import backgroundImage from '/Assets/partchsmall.jpg'
+
 
 function CharacterCreator() {
     const [charData, setCharData] = useState({
@@ -184,24 +186,64 @@ function CharacterCreator() {
     };
 
     return (
-        <div className="charcreator">
+    
+        <div className="charcreator relative bg-cover bg-center bg-no-repeat min-h-screen"
+        style={{ backgroundImage: `url(${backgroundImage})` }}>
             <Navbar/>
             <Outlet/>
-            <h1>Create a Character</h1>
-            <CreateProfile handleSubmit={handleSubmit} handleChange={handleChange} charData={charData} />
-            <CreateStats handleChange={handleChange} charData={charData} />
-            <CreateMiscStats handleChange={handleChange} charData={charData} />
-            <CreateSavingThrows handleChange={handleChange} charData={charData} />
-            <CreateSkills handleChange={handleChange} charData={charData} />
-            <CreateHealth handleChange={handleChange} charData={charData} />
-            <CreatePersonal handleChange={handleChange} charData={charData} />
-            <CreateAttack handleChange={handleChange} charData={charData} />
-            <CreateFeats handleChange={handleChange} charData={charData} />
-            <CreateOther handleChange={handleChange} charData={charData} />
-            <CreateEquipment handleChange={handleChange} charData={charData}/>
+            <div className="flex flex-wrap">
+                <div className="w-full m-2 ">
+                        {/* <h1 className="font-dragon text-2xl text-center underline">Create New Character</h1> */}
+                        <CreateProfile className="w-full m-2 " handleSubmit={handleSubmit} handleChange={handleChange} charData={charData} />
+                </div>
+                    <div className="w-full sm:w-1/6 mx-2 mb-4">
+                        <CreateStats className="w-full sm:w-1/6 mx-2 mb-4" handleChange={handleChange} charData={charData} />
+                    </div>
+                    <div className="w-full sm:w-1/4 mx-2 my-4">
+                        <div className="w-full mb-4 border border-black rounded-lg shadow-md p-4 outline-double">
+                            <CreateMiscStats handleChange={handleChange} charData={charData} />
+                            </div>
+                    <div className="w-full mb-4 border border-black rounded-lg shadow-md p-4 outline-double">
+                        <CreateSavingThrows handleChange={handleChange} charData={charData} />
+                        </div>
+                    <div className="w-full mb-4 border border-black rounded-lg shadow-md p-4 outline-double">
+
+                        <CreateSkills handleChange={handleChange} charData={charData} />
+                    </div>
+                </div>
+                
+                <div className="w-full sm:w-1/4 mx-2 my-4">
+                    <div className="w-full mb-4 border border-black rounded-lg shadow-md p-4 outline-double">
+                        <CreateHealth handleChange={handleChange} charData={charData} />
+                        </div>
+                
+                <div className="w-full mb-4 border border-black rounded-lg shadow-md p-4 outline-double">
+                    <CreateAttack handleChange={handleChange} charData={charData} />
+                    </div>
+                    
+                <div className="w-full mb-4 border border-black rounded-lg shadow-md p-4 outline-double">
+                    <CreateEquipment handleChange={handleChange} charData={charData}/>
+                   </div>
+
+                <div className="w-full mb-4 border border-black rounded-lg shadow-md p-4 outline-double">
+   
+                    <CreateOther handleChange={handleChange} charData={charData} />
+                   </div>
+            </div>
+
+            <div className="w-full sm:w-1/4 mx-2 mb-4  border-black rounded-lg shadow-md p-4 outline-double">
+                    
+                    <CreatePersonal handleChange={handleChange} charData={charData} />
+                <div className="w-full sm:w-1/4 mx-2 mb-4">
+                       
+                        
+                        <CreateFeats handleChange={handleChange} charData={charData} />
+                    </div>
+                    </div>
 
 
 
+            </div>
             <button type="submit" onClick={handleSubmit}>Create Character</button>
         </div>
     );
