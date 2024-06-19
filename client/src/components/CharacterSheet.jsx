@@ -272,18 +272,33 @@ function CharacterSheet() {
         }
     };
 
-    const fetchCharacter = async () => {
-        try {
-            const response = await fetch(`/api/character/${character_id}`);
-            if (response.ok) {
-                const data = await response.json();
+    // const fetchCharacter = async () => {
+    //     try {
+    //         const response = await fetch(`/api/character/${character_id}`);
+    //         if (response.ok) {
+    //             const data = await response.json();
+    //             setCharacter(data);
+    //         } else {
+    //             throw new Error("Failed to fetch character");
+    //         }
+    //     } catch (error) {
+    //         setError(error.message);
+    //     }
+    // };
+    const fetchCharacter = () => {
+        fetch(`/api/character/${character_id}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Failed to fetch character");
+                }
+                return response.json();
+            })
+            .then(data => {
                 setCharacter(data);
-            } else {
-                throw new Error("Failed to fetch character");
-            }
-        } catch (error) {
-            setError(error.message);
-        }
+            })
+            .catch(error => {
+                setError(error.message);
+            });
     };
 
     useEffect(() => {
@@ -325,7 +340,7 @@ function CharacterSheet() {
     // };
     const [showNotification, setShowNotification] = useState(false);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         const body = {
             character: {
@@ -342,24 +357,66 @@ function CharacterSheet() {
                 equipments: [profData.equipments]
             }
         };
-        try {
-            const response = await fetch(`/api/character/${character_id}`, {
-                method: 'PATCH',
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify(body)
-            });
-            const data = await response.json();
+    
+        fetch(`/api/character/${character_id}`, {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(body)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to update character');
+            }
+            return response.json();
+        })
+        .then(data => {
             console.log('Response from server:', data);
             setShowNotification(true);
             setTimeout(() => setShowNotification(false), 3000);
-
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
+        })
+        .catch(error => {
+            console.error('Error updating character:', error);
+        });
     };
+    
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     const body = {
+    //         character: {
+    //             ...profData,
+    //             stats: [profData.stats],
+    //             misc_stats: profData.misc_stats, 
+    //             saving_throws: [profData.saving_throws],
+    //             skills: [profData.skills],
+    //             health: [profData.health],
+    //             personal: [profData.personal],
+    //             attacks: [profData.attacks],
+    //             feats: [profData.feats],
+    //             other: [profData.other],
+    //             equipments: [profData.equipments]
+    //         }
+    //     };
+    //     try {
+    //         const response = await fetch(`/api/character/${character_id}`, {
+    //             method: 'PATCH',
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 "Accept": "application/json"
+    //             },
+    //             body: JSON.stringify(body)
+    //         });
+    //         const data = await response.json();
+    //         console.log('Response from server:', data);
+    //         setShowNotification(true);
+    //         setTimeout(() => setShowNotification(false), 3000);
+
+    //     } catch (error) {
+    //         console.error('Error fetching data:', error);
+    //     }
+    // };
     return (
     <div className="relative bg-cover bg-center bg-no-repeat min-h-screen"
         style={{ backgroundImage: `url(${backgroundImage})` }}>
