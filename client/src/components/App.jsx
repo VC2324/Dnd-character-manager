@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
 import { useState, useEffect } from "react"
-import backgroundImage from "/Assets/bettercastle.jpg"
+import backgroundImage from "/Assets/Logincastle.png"
 
 
 

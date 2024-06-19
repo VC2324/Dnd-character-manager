@@ -1,7 +1,7 @@
 import { Outlet, useOutletContext } from "react-router-dom"
 import CharacterCards from "./CharactersCard"
 import Navbar from "./Navbar"
-import backgroundImage from "/Assets/cozytavern.jpg"
+import backgroundImage from "/Assets/cardtavern.png"
 
 
 function Userprofile(){

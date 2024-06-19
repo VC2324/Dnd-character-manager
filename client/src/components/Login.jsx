@@ -57,7 +57,7 @@ function Login(){
     }
         if (!isClicked) {
             return(
-            <div className="login-div flex flex-col items-center text-gray-200 p-10 rounded-lg shadow-lg max-w-md mx-auto mt-32 bg-gradient-to-b from-brown-900 via-brown-800 to-brown-700">
+            <div className="login-div flex flex-col items-center text-gray-200 p-10 rounded-lg shadow-lg max-w-md mx-auto bg-gradient-to-b from-brown-900 via-brown-800 to-brown-700">
             <h2 className="text-3xl font-bold mb-6">Log in</h2>
             <form onSubmit={handleLogin} className="w-full">
                 <input

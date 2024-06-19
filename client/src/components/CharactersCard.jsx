@@ -33,7 +33,7 @@ console.log(characters)
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-dragon " >
       {characters.length === 0 ? (
         <div>
-          <p>No characters in roster.</p> 
+          <p className="font-dragon m-5 underline text-4xl text-white text-left">No characters in roster.</p> 
         </div>
       ) : (
         <>

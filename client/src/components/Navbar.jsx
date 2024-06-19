@@ -77,7 +77,7 @@ function Navbar() {
         <nav className="border-gray-200 bg-tavernGreen">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
-                <img src="./Assets/dndlogo.png" className="h-8 flex items-center space-x-3 rtl:space-x-reverse" alt="Dnd Logo" />
+                <img src="/Assets/dndlogo.png" className="h-8 flex items-center space-x-3 rtl:space-x-reverse" alt="Dnd Logo" />
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
                 
                 <button

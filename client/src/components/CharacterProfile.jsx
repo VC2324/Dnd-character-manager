@@ -93,6 +93,13 @@ function CharacterProfile({ handleSubmit, handleChange, profData }) {
                         required
                     />
                 </div>
+            <button
+                    className="text-gray-900 bg-gradient-to-r from-brown-200 via-brown-300 to-brown-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-brown-100 dark:focus:ring-brown-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                    type="submit"
+                    onClick={handleSubmit}
+                    >
+                    Update Character
+                    </button>
             </div>
         </form>
     );

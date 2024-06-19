@@ -290,6 +290,41 @@ function CharacterSheet() {
         fetchCharacter();
     }, [character_id]);
 
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     const body = {
+    //         character: {
+    //             ...profData,
+    //             stats: [profData.stats],
+    //             misc_stats: profData.misc_stats, 
+    //             saving_throws: [profData.saving_throws],
+    //             skills: [profData.skills],
+    //             health: [profData.health],
+    //             personal:[profData.personal],
+    //             attacks:[profData.attacks],
+    //             feats: [profData.feats],
+    //             other: [profData.other],
+    //             equipments:[profData.equipments]
+    //             // add the tables here as we go 
+    //         }
+    //     };
+    //     try {
+    //         const response = await fetch(`/api/character/${character_id}`, {
+    //             method: 'PATCH',
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 "Accept": "application/json"
+    //             },
+    //             body: JSON.stringify(body)
+    //         });
+    //         const data = await response.json();
+    //         console.log('Response from server:', data);
+    //     } catch (error) {
+    //         console.error('Error fetching data:', error);
+    //     }
+    // };
+    const [showNotification, setShowNotification] = useState(false);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const body = {
@@ -300,12 +335,11 @@ function CharacterSheet() {
                 saving_throws: [profData.saving_throws],
                 skills: [profData.skills],
                 health: [profData.health],
-                personal:[profData.personal],
-                attacks:[profData.attacks],
+                personal: [profData.personal],
+                attacks: [profData.attacks],
                 feats: [profData.feats],
                 other: [profData.other],
-                equipments:[profData.equipments]
-                // add the tables here as we go 
+                equipments: [profData.equipments]
             }
         };
         try {
@@ -319,44 +353,29 @@ function CharacterSheet() {
             });
             const data = await response.json();
             console.log('Response from server:', data);
+            setShowNotification(true);
+            setTimeout(() => setShowNotification(false), 3000);
+
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     };
-
     return (
     <div className="relative bg-cover bg-center bg-no-repeat min-h-screen"
         style={{ backgroundImage: `url(${backgroundImage})` }}>
             <Navbar/>
             <Outlet/>
-            
-        
-
         <div className="flex flex-wrap">
-
-
+        <div className="relative">
+            {showNotification && (
+                <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-500 text-white p-3 rounded-md shadow-lg z-50">
+                    Your character has been updated!
+                </div>
+            )}
+        </div>
                 <div className="w-full m-2 ">
-
-                        <CharacterProfile
-                            character={character}
-                            handleSubmit={handleSubmit}
-                            handleChange={handleChange}
-                            profData={profData}
-                            setProfData={setProfData}
-                            
-                            
-                        />
-                    <button
-                    className="text-gray-900 bg-gradient-to-r from-brown-200 via-brown-300 to-brown-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-brown-100 dark:focus:ring-brown-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                    type="submit"
-                    onClick={handleSubmit}
-                    >
-                    Update Character
-                    </button>
-
+                          <CharacterProfile character={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData}/>
                     </div>
-
-
             <div className="w-full sm:w-1/6 mx-2 mb-4">
                 <CharacterStats
                     character={character}
@@ -367,8 +386,6 @@ function CharacterSheet() {
                     stats={profData.stats}
                 />
             </div>
-
-
             <div className="w-full sm:w-1/4 mx-2 my-4">
                 <div className="w-full mb-4 border border-black rounded-lg shadow-md p-4 outline-double">
                     <CharacterMisc
@@ -439,7 +456,7 @@ function CharacterSheet() {
                     feats={profData.feats}
                     handleChange={handleChange}
                 />
-                <button  className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" type="submit" onClick={handleSubmit}>Update Character</button>
+                <button  className=" text-gray-900 bg-gradient-to-r from-brown-200 via-brown-300 to-brown-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-brown-100 dark:focus:ring-brown-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" type="submit" onClick={handleSubmit}>Update Character</button>
                 </div>
             </div>
 

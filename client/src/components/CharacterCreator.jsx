@@ -196,6 +196,7 @@ function CharacterCreator() {
                         {/* <h1 className="font-dragon text-2xl text-center underline">Create New Character</h1> */}
                         <CreateProfile className="w-full m-2 " handleSubmit={handleSubmit} handleChange={handleChange} charData={charData} />
                 </div>
+                
                     <div className="w-full sm:w-1/6 mx-2 mb-4">
                         <CreateStats className="w-full sm:w-1/6 mx-2 mb-4" handleChange={handleChange} charData={charData} />
                     </div>
@@ -229,6 +230,7 @@ function CharacterCreator() {
    
                     <CreateOther handleChange={handleChange} charData={charData} />
                    </div>
+            <button  className=" text-gray-900 bg-gradient-to-r from-brown-200 via-brown-300 to-brown-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-brown-100 dark:focus:ring-brown-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" type="submit" onClick={handleSubmit}>Create Character</button>
             </div>
 
             <div className="w-full sm:w-1/4 mx-2 mb-4  border-black rounded-lg shadow-md p-4 outline-double">
@@ -244,7 +246,6 @@ function CharacterCreator() {
 
 
             </div>
-            <button type="submit" onClick={handleSubmit}>Create Character</button>
         </div>
     );
 }
