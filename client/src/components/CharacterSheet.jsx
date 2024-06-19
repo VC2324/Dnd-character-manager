@@ -433,14 +433,14 @@ function CharacterSheet() {
                     personal={profData.personal}
                     handleChange={handleChange}
                 />
-            <div className="w-full sm:w-1/4 mx-2 mb-4">
+                <div className="w-full sm:w-1/4 mx-2 mb-4">
                 <CharacterFeat
                     handleSubmit={handleSubmit}
                     feats={profData.feats}
                     handleChange={handleChange}
                 />
-            <button  className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" type="submit" onClick={handleSubmit}>Update Character</button>
-            </div>
+                <button  className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" type="submit" onClick={handleSubmit}>Update Character</button>
+                </div>
             </div>
 
         </div>
