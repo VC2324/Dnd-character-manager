@@ -20,8 +20,9 @@ function CharacterFeat({handleChange, feats, handleSubmit}){
                 name="features"
                 value={feats.features}
                 onChange={handleChange}
-                className="w-full p-2 border rounded-lg shadow-sm text-center "
-                required
+                className=" p-2 border rounded-lg shadow-sm text-center "
+                rows="6"
+
             />
         </div>
         <div>
@@ -30,8 +31,9 @@ function CharacterFeat({handleChange, feats, handleSubmit}){
                 name="traits"
                 value={feats.traits}
                 onChange={handleChange}
-                className="w-full p-2 border rounded-lg shadow-sm text-center" 
-                required
+                className="p-2 border rounded-lg shadow-sm " 
+                rows="6"
+                
             />
         </div>
     </form>

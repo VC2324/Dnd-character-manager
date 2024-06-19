@@ -24,7 +24,7 @@ function CharacterSaving({ handleSubmit, savingThrows, handleChange }) {
                         onChange={handleChange}
                         required
                         // className="border rounded p-1 mr-2 w-16"
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16  bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">Strength</label>
                 </div>
@@ -45,7 +45,7 @@ function CharacterSaving({ handleSubmit, savingThrows, handleChange }) {
                         onChange={handleChange}
                         required
                         // className="border rounded p-1 mr-2 w-16"
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16  bg-transparent border-b-2 border-black outline-none text-center"
 
                     />
                     <label className="text-lg font-dragon">Dexterity</label>
@@ -67,7 +67,7 @@ function CharacterSaving({ handleSubmit, savingThrows, handleChange }) {
                         onChange={handleChange}
                         required
                         // className="border rounded p-1 mr-2 w-16"
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16  bg-transparent border-b-2 border-black outline-none text-center"
 
                     />
                     <label className="text-lg font-dragon">Constitution</label>
@@ -89,7 +89,7 @@ function CharacterSaving({ handleSubmit, savingThrows, handleChange }) {
                         onChange={handleChange}
                         required
                         // className="border rounded p-1 mr-2 w-16"
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16  bg-transparent border-b-2 border-black outline-none text-center"
 
                     />
                     <label className="text-lg font-dragon">Intelligence</label>
@@ -111,7 +111,7 @@ function CharacterSaving({ handleSubmit, savingThrows, handleChange }) {
                         onChange={handleChange}
                         required
                         // className="border rounded p-1 mr-2 w-16"
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16  bg-transparent border-b-2 border-black outline-none text-center"
 
                     />
                     <label className="text-lg font-dragon">Wisdom</label>
@@ -133,7 +133,7 @@ function CharacterSaving({ handleSubmit, savingThrows, handleChange }) {
                         onChange={handleChange}
                         required
                         // className="border rounded p-1 mr-2 w-16"
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16  bg-transparent border-b-2 border-black outline-none text-center"
 
                     />
                     <label className="text-lg font-dragon">Charisma</label>

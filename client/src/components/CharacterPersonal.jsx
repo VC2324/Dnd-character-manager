@@ -29,7 +29,7 @@ function CharacterPersonal({handleChange, personal, handleSubmit}){
                 value={personal.personality_traits}
                 onChange={handleChange}
                 className="w-full p-2 border rounded-lg shadow-sm "
-                rows="3"
+                rows="9"
             />
         </div>
         <div>
@@ -39,7 +39,8 @@ function CharacterPersonal({handleChange, personal, handleSubmit}){
                 value={personal.ideals}
                 onChange={handleChange}
                 className="w-full p-2 border rounded-lg shadow-sm "
-                rows="3"
+                rows="9"
+
             />
         </div>
         <div>
@@ -49,7 +50,8 @@ function CharacterPersonal({handleChange, personal, handleSubmit}){
                 value={personal.bonds}
                 onChange={handleChange}
                 className="w-full p-2 border rounded-lg shadow-sm"
-                rows="3"
+                rows="7"
+
             />
         </div>
         <div>
@@ -59,7 +61,8 @@ function CharacterPersonal({handleChange, personal, handleSubmit}){
                 value={personal.flaws}
                 onChange={handleChange}
                 className="w-full p-2 border rounded-lg shadow-sm "
-                rows="3"
+                rows="7"
+
             />
         </div>
     </form>

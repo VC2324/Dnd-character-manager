@@ -7,15 +7,19 @@ function CharacterStats({ handleChange, stats }) {
             {/* // <form className="w-full max-w-md sm:max-w-sm p-4 bg-slate-400"> */}
                 <div className="flex flex-col gap-4">
                 {/* Strength */}
-                        <label className="block  underline font-dragon text-xl">Strength:</label>
-                    <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double ">
-             <div className="flex flex-col mb-2">
+                        <label className="block  underline  font-dragon text-xl">Strength:</label>
+                    <div className="border border-gray-300  rounded-lg shadow-md p-4 outline-double ">
+             {/* <div className="flex flex-col mb-2"> */}
+             <div className="flex flex-col mb-2 items-center">
+
                         <input
                             type="number"
                             name="strength"
                             value={stats.strength}
                             onChange={handleChange}
-                            className="rounded shadow-sm outline-none text-center text-2xl"
+                            // className="rounded shadow-sm outline-none text-center text-2xl"
+                        className="w-16 border-b-2 bg-transparent border-black outline-none text-center text-2xl"
+
                             required
                         />
                     </div>
@@ -28,7 +32,8 @@ function CharacterStats({ handleChange, stats }) {
                             name="strength_mod"
                             value={stats.strength_mod}
                             onChange={handleChange}
-                            className="block w-16 p-2 rounded"
+                            // className="block w-16 p-2 rounded"
+                            className="block w-16 p-2 bg-transparent rounded font-bold text-lg"
                             style={{
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
@@ -45,7 +50,8 @@ function CharacterStats({ handleChange, stats }) {
                 {/* <div className="border border-gray-300 rounded-lg shadow-md p-4"> */}
                 <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double ">
 
-                    <div className="flex flex-col mb-2">
+                <div className="flex flex-col mb-2 items-center">
+
                         <input
                             type="number"
                             name="dexterity"
@@ -53,7 +59,9 @@ function CharacterStats({ handleChange, stats }) {
                             onChange={handleChange}
                             // className="block w-12 p-2 rounded border focus:border-blue-500 outline-none"
                             // className="block w-12 p-2 rounded shadow-sm outline-none text-center"
-                            className="rounded shadow-sm outline-none text-center text-2xl"
+                            // className="rounded bg-transparent shadow-sm outline-none text-center "
+                        className="w-16 border-b-2 bg-transparent border-black outline-none text-center text-2xl"
+
 
                             required
                         />
@@ -67,7 +75,8 @@ function CharacterStats({ handleChange, stats }) {
                             name="dexterity_mod"
                             value={stats.dexterity_mod}
                             onChange={handleChange}
-                            className="block w-16 p-2 rounded"
+                            // className="block w-16 p-2 rounded"
+                            className="block w-16 p-2 bg-transparent rounded font-bold text-lg"
                             style={{
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
@@ -83,7 +92,9 @@ function CharacterStats({ handleChange, stats }) {
                         <label className="block mb-1 underline font-dragon text-xl">Constitution:</label>
                         <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double ">
 
-                    <div className="flex flex-col mb-2">
+                    {/* <div className="flex flex-col mb-2"> */}
+             <div className="flex flex-col mb-2 items-center">
+
                         <input
                             type="number"
                             name="constitution"
@@ -91,8 +102,8 @@ function CharacterStats({ handleChange, stats }) {
                             onChange={handleChange}
                             // className="block w-12 p-2 rounded border focus:border-blue-500 outline-none"
                             // className="block w-12 p-2 rounded shadow-sm outline-none text-center"
-                            className="rounded shadow-sm outline-none text-center text-2xl"
-
+                            // className="rounded shadow-sm outline-none text-center text-2xl"
+                            className="w-16 border-b-2 bg-transparent border-black outline-none text-center text-2xl"
                             required
                         />
                     </div>
@@ -105,7 +116,8 @@ function CharacterStats({ handleChange, stats }) {
                             name="constitution_mod"
                             value={stats.constitution_mod}
                             onChange={handleChange}
-                            className="block w-16 p-2 rounded"
+                            // className="block w-16 p-2 rounded"
+                            className="block w-16 p-2 bg-transparent rounded font-bold text-lg"
                             style={{
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
@@ -121,7 +133,9 @@ function CharacterStats({ handleChange, stats }) {
                         <label className="block mb-1 underline font-dragon text-xl">Intelligence:</label>
                 <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double ">
                             
-                    <div className="flex flex-col mb-2">
+                    {/* <div className="flex flex-col mb-2"> */}
+             <div className="flex flex-col mb-2 items-center">
+
                         <input
                             type="number"
                             name="intelligence"
@@ -129,8 +143,8 @@ function CharacterStats({ handleChange, stats }) {
                             onChange={handleChange}
                             // className="block w-12 p-2 rounded border focus:border-blue-500 outline-none"
                             // className="block w-12 p-2 rounded shadow-sm outline-none text-center"
-                            className="rounded shadow-sm outline-none text-center text-2xl"
-
+                            // className="rounded shadow-sm outline-none text-center text-2xl"
+                            className="w-16 border-b-2 bg-transparent border-black outline-none text-center text-2xl"
                             required
                         />
                     </div>
@@ -143,7 +157,8 @@ function CharacterStats({ handleChange, stats }) {
                             name="intelligence_mod"
                             value={stats.intelligence_mod}
                             onChange={handleChange}
-                            className="block w-16 p-2 rounded"
+                            // className="block w-16 p-2 rounded"
+                            className="block w-16 p-2 bg-transparent rounded font-bold text-lg"
                             style={{
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
@@ -158,7 +173,9 @@ function CharacterStats({ handleChange, stats }) {
                 {/* Wisdom */}
                         <label className="block mb-1 underline font-dragon text-xl">Wisdom:</label>
                         <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double ">
-                    <div className="flex flex-col mb-2">
+                    {/* <div className="flex flex-col mb-2"> */}
+             <div className="flex flex-col mb-2 items-center">
+
                         <input
                             type="number"
                             name="wisdom"
@@ -166,8 +183,8 @@ function CharacterStats({ handleChange, stats }) {
                             onChange={handleChange}
                             // className="block w-12 p-2 rounded border focus:border-blue-500 outline-none"
                             // className="block w-12 p-2 rounded shadow-sm outline-none text-center"
-                            className="rounded shadow-sm outline-none text-center text-2xl"
-
+                            // className="rounded shadow-sm outline-none text-center text-2xl"
+                            className="w-16 border-b-2 bg-transparent border-black outline-none text-center text-2xl"
                             required
                         />
                     </div>
@@ -180,7 +197,8 @@ function CharacterStats({ handleChange, stats }) {
                             name="wisdom_mod"
                             value={stats.wisdom_mod}
                             onChange={handleChange}
-                            className="block w-16 p-2 rounded"
+                            // className="block w-16 p-2 rounded"
+                            className="block w-16 p-2 bg-transparent rounded font-bold text-lg"
                             style={{
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
@@ -195,7 +213,9 @@ function CharacterStats({ handleChange, stats }) {
                 {/* Charisma */}
                         <label className="block mb-1 underline font-dragon text-xl">Charisma:</label>
                         <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double ">
-                    <div className="flex flex-col mb-2">
+                    {/* <div className="flex flex-col mb-2"> */}
+             <div className="flex flex-col mb-2 items-center">
+
                         <input
                             type="number"
                             name="charisma"
@@ -203,8 +223,8 @@ function CharacterStats({ handleChange, stats }) {
                             onChange={handleChange}
                             // className="block w-12 p-2 rounded border focus:border-blue-500 outline-none"
                             // className="block w-12 p-2 rounded shadow-sm outline-none text-center"
-                            className="rounded shadow-sm outline-none text-center text-2xl"
-
+                            // className="rounded shadow-sm outline-none text-center text-2xl"
+                            className="w-16 border-b-2 bg-transparent border-black outline-none text-center text-2xl"
                             required
                         />
                     </div>
@@ -217,7 +237,7 @@ function CharacterStats({ handleChange, stats }) {
                             name="charisma_mod"
                             value={stats.charisma_mod}
                             onChange={handleChange}
-                            className="block w-16 p-2 rounded"
+                            className="block w-16 p-2 bg-transparent rounded font-bold text-lg"
                             style={{
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
@@ -232,7 +252,9 @@ function CharacterStats({ handleChange, stats }) {
                 {/* Wisdom Perception */}
                         <label className="block mb-1 underline font-dragon text-xl">Wisdom Perception:</label>
                         <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double ">
-                    <div className="flex flex-col mb-2">
+                    {/* <div className="flex flex-col mb-2"> */}
+             <div className="flex flex-col mb-2 items-center">
+
                         <input
                             type="number"
                             name="wis_perception"
@@ -240,8 +262,8 @@ function CharacterStats({ handleChange, stats }) {
                             onChange={handleChange}
                             // className="block w-12 p-2 rounded border focus:border-blue-500 outline-none"
                             // className="block w-12 p-2 rounded shadow-sm outline-none text-center"
-                            className="rounded shadow-sm outline-none text-center text-2xl"
-
+                            // className="rounded shadow-sm outline-none text-center text-2xl"
+                            className="w-16 border-b-2 bg-transparent border-black outline-none text-center text-2xl"
                             required
                         />
                     </div>
@@ -254,7 +276,8 @@ function CharacterStats({ handleChange, stats }) {
                             name="wis_perception_mod"
                             value={stats.wis_perception_mod}
                             onChange={handleChange}
-                            className="block w-16 p-2 rounded"
+                            // className="block w-16 p-2 rounded"
+                            className="block w-16 p-2 bg-transparent rounded font-bold text-lg"
                             style={{
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',

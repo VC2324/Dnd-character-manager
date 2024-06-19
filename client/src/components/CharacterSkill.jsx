@@ -20,7 +20,7 @@ function CharacterSkills({ handleSubmit, skills, handleChange }) {
                         value={skills.acrobatics}
                         onChange={handleChange}
                         required
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">Acrobatics</label>
                 </div>
@@ -38,7 +38,7 @@ function CharacterSkills({ handleSubmit, skills, handleChange }) {
                         value={skills.animal_handling}
                         onChange={handleChange}
                         required
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">Animal Handling</label>
                 </div>
@@ -56,7 +56,7 @@ function CharacterSkills({ handleSubmit, skills, handleChange }) {
                         value={skills.arcana}
                         onChange={handleChange}
                         required
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">Arcana</label>
                 </div>
@@ -74,7 +74,7 @@ function CharacterSkills({ handleSubmit, skills, handleChange }) {
                         value={skills.athletics}
                         onChange={handleChange}
                         required
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">Athletics</label>
                 </div>
@@ -92,7 +92,7 @@ function CharacterSkills({ handleSubmit, skills, handleChange }) {
                         value={skills.deception}
                         onChange={handleChange}
                         required
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">Deception</label>
                 </div>
@@ -110,7 +110,7 @@ function CharacterSkills({ handleSubmit, skills, handleChange }) {
                         value={skills.history}
                         onChange={handleChange}
                         required
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">History</label>
                 </div>
@@ -128,7 +128,7 @@ function CharacterSkills({ handleSubmit, skills, handleChange }) {
                         value={skills.insight}
                         onChange={handleChange}
                         required
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">Insight</label>
                 </div>
@@ -146,7 +146,7 @@ function CharacterSkills({ handleSubmit, skills, handleChange }) {
                         value={skills.intimidation}
                         onChange={handleChange}
                         required
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">Intimidation</label>
                 </div>
@@ -164,7 +164,7 @@ function CharacterSkills({ handleSubmit, skills, handleChange }) {
                         value={skills.investigation}
                         onChange={handleChange}
                         required
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">Investigation</label>
                 </div>
@@ -182,7 +182,7 @@ function CharacterSkills({ handleSubmit, skills, handleChange }) {
                         value={skills.medicine}
                         onChange={handleChange}
                         required
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">Medicine</label>
                 </div>
@@ -200,7 +200,7 @@ function CharacterSkills({ handleSubmit, skills, handleChange }) {
                         value={skills.nature}
                         onChange={handleChange}
                         required
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">Nature</label>
                 </div>
@@ -218,7 +218,7 @@ function CharacterSkills({ handleSubmit, skills, handleChange }) {
                         value={skills.perception}
                         onChange={handleChange}
                         required
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">Perception</label>
                 </div>
@@ -236,7 +236,7 @@ function CharacterSkills({ handleSubmit, skills, handleChange }) {
                         value={skills.performance}
                         onChange={handleChange}
                         required
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">Performance</label>
                 </div>
@@ -254,7 +254,7 @@ function CharacterSkills({ handleSubmit, skills, handleChange }) {
                         value={skills.persuasion}
                         onChange={handleChange}
                         required
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">Persuasion</label>
                 </div>
@@ -272,7 +272,7 @@ function CharacterSkills({ handleSubmit, skills, handleChange }) {
                         value={skills.religion}
                         onChange={handleChange}
                         required
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">Religion</label>
                 </div>
@@ -290,7 +290,7 @@ function CharacterSkills({ handleSubmit, skills, handleChange }) {
                         value={skills.sleight_of_hand}
                         onChange={handleChange}
                         required
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">Sleight of Hand</label>
                 </div>
@@ -308,7 +308,7 @@ function CharacterSkills({ handleSubmit, skills, handleChange }) {
                         value={skills.stealth}
                         onChange={handleChange}
                         required
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">Stealth</label>
                 </div>
@@ -326,7 +326,7 @@ function CharacterSkills({ handleSubmit, skills, handleChange }) {
                         value={skills.survival}
                         onChange={handleChange}
                         required
-                        className="w-16 border-b-2 border-black outline-none text-center"
+                        className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
                     />
                     <label className="text-lg font-dragon">Survival</label>
                 </div>
