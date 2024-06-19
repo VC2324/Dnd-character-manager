@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 
 function CharacterSkills({ handleSubmit, skills, handleChange }) {

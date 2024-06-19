@@ -5,14 +5,11 @@ function CharacterStats({ handleChange, stats }) {
     return (
         <form className="w-full max-w-md p-4">
             {/* // <form className="w-full max-w-md sm:max-w-sm p-4 bg-slate-400"> */}
-            <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4">
                 {/* Strength */}
                         <label className="block  underline font-dragon text-xl">Strength:</label>
-                        
-              
-                <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double w-1/4">
-
-                    <div className="flex flex-col mb-2">
+                    <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double ">
+             <div className="flex flex-col mb-2">
                         <input
                             type="number"
                             name="strength"
@@ -22,7 +19,9 @@ function CharacterStats({ handleChange, stats }) {
                             required
                         />
                     </div>
-                    <div >
+                    {/* <div > */}
+                    {/* <div className="flex items-center justify-center"> */}
+                    <div className="flex flex-col items-center justify-center">
                         <label className="block mb-1 underline font-dragon">Modifier:</label>
                         <input
                             type="number"
@@ -44,7 +43,7 @@ function CharacterStats({ handleChange, stats }) {
                 {/* Dexterity */}
                         <label className="block mb-1 underline font-dragon text-xl">Dexterity:</label>
                 {/* <div className="border border-gray-300 rounded-lg shadow-md p-4"> */}
-                <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double w-1/4">
+                <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double ">
 
                     <div className="flex flex-col mb-2">
                         <input
@@ -59,7 +58,9 @@ function CharacterStats({ handleChange, stats }) {
                             required
                         />
                     </div>
-                    <div >
+                    {/* <div > */}
+                    <div className="flex flex-col items-center justify-center">
+
                         <label className="block mb-1 underline font-dragon">Modifier:</label>
                         <input
                             type="number"
@@ -71,7 +72,7 @@ function CharacterStats({ handleChange, stats }) {
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
                                 outline: 'none',
-                                textAlign: 'center',
+                                textAlign: 'center', 
                             }}
                             required
                         />
@@ -80,7 +81,7 @@ function CharacterStats({ handleChange, stats }) {
 
                 {/* Constitution */}
                         <label className="block mb-1 underline font-dragon text-xl">Constitution:</label>
-                        <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double w-1/4">
+                        <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double ">
 
                     <div className="flex flex-col mb-2">
                         <input
@@ -95,7 +96,9 @@ function CharacterStats({ handleChange, stats }) {
                             required
                         />
                     </div>
-                    <div >
+                    {/* <div > */}
+                    <div className="flex flex-col items-center justify-center">
+
                         <label className="block mb-1 underline font-dragon">Modifier:</label>
                         <input
                             type="number"
@@ -107,7 +110,7 @@ function CharacterStats({ handleChange, stats }) {
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
                                 outline: 'none',
-                                textAlign: 'center',
+                                textAlign: 'center', 
                             }}
                             required
                         />
@@ -116,7 +119,7 @@ function CharacterStats({ handleChange, stats }) {
 
                 {/* Intelligence */}
                         <label className="block mb-1 underline font-dragon text-xl">Intelligence:</label>
-                <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double w-1/4">
+                <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double ">
                             
                     <div className="flex flex-col mb-2">
                         <input
@@ -131,7 +134,9 @@ function CharacterStats({ handleChange, stats }) {
                             required
                         />
                     </div>
-                    <div >
+                    {/* <div > */}
+                    <div className="flex flex-col items-center justify-center">
+
                         <label className="block mb-1 underline font-dragon">Modifier:</label>
                         <input
                             type="number"
@@ -143,7 +148,7 @@ function CharacterStats({ handleChange, stats }) {
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
                                 outline: 'none',
-                                textAlign: 'center',
+                                textAlign: 'center', 
                             }}
                             required
                         />
@@ -152,7 +157,7 @@ function CharacterStats({ handleChange, stats }) {
 
                 {/* Wisdom */}
                         <label className="block mb-1 underline font-dragon text-xl">Wisdom:</label>
-                        <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double w-1/4">
+                        <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double ">
                     <div className="flex flex-col mb-2">
                         <input
                             type="number"
@@ -166,7 +171,9 @@ function CharacterStats({ handleChange, stats }) {
                             required
                         />
                     </div>
-                    <div >
+                    {/* <div > */}
+                    <div className="flex flex-col items-center justify-center">
+
                         <label className="block mb-1 underline font-dragon">Modifier:</label>
                         <input
                             type="number"
@@ -178,7 +185,7 @@ function CharacterStats({ handleChange, stats }) {
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
                                 outline: 'none',
-                                textAlign: 'center',
+                                textAlign: 'center', 
                             }}
                             required
                         />
@@ -187,7 +194,7 @@ function CharacterStats({ handleChange, stats }) {
 
                 {/* Charisma */}
                         <label className="block mb-1 underline font-dragon text-xl">Charisma:</label>
-                        <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double w-1/4">
+                        <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double ">
                     <div className="flex flex-col mb-2">
                         <input
                             type="number"
@@ -201,7 +208,9 @@ function CharacterStats({ handleChange, stats }) {
                             required
                         />
                     </div>
-                    <div >
+                    {/* <div > */}
+                    <div className="flex flex-col items-center justify-center">
+
                         <label className="block mb-1 underline font-dragon">Modifier:</label>
                         <input
                             type="number"
@@ -213,7 +222,7 @@ function CharacterStats({ handleChange, stats }) {
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
                                 outline: 'none',
-                                textAlign: 'center',
+                                textAlign: 'center', 
                             }}
                             required
                         />
@@ -222,7 +231,7 @@ function CharacterStats({ handleChange, stats }) {
 
                 {/* Wisdom Perception */}
                         <label className="block mb-1 underline font-dragon text-xl">Wisdom Perception:</label>
-                        <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double w-1/4">
+                        <div className="border border-gray-300 rounded-lg shadow-md p-4 outline-double ">
                     <div className="flex flex-col mb-2">
                         <input
                             type="number"
@@ -236,7 +245,9 @@ function CharacterStats({ handleChange, stats }) {
                             required
                         />
                     </div>
-                    <div >
+                    {/* <div > */}
+                    <div className="flex flex-col items-center justify-center">
+
                         <label className="block mb-1 underline font-dragon">Modifier:</label>
                         <input
                             type="number"
@@ -248,7 +259,7 @@ function CharacterStats({ handleChange, stats }) {
                                 border: '5px solid #000',
                                 borderRadius: '0px 0px 40px 40px',
                                 outline: 'none',
-                                textAlign: 'center',
+                                textAlign: 'center', 
                             }}
                             required
                         />

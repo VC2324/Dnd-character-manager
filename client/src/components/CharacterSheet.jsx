@@ -327,11 +327,61 @@ function CharacterSheet() {
         <div >
             <Navbar/>
             <Outlet/>
-            <CharacterProfile character={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData} />
+            {/* <CharacterProfile character={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData} />
             <CharacterStats character={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData} stats={profData.stats} />
             <CharacterMisc handleChange={handleChange} profData={profData} />
             <CharacterSaving handleSubmit={handleSubmit} savingThrows={profData.saving_throws} handleChange={handleChange} />
-            <CharacterSkills handleSubmit={handleSubmit} skills={profData.skills} handleChange={handleChange}/>
+            <CharacterSkills handleSubmit={handleSubmit} skills={profData.skills} handleChange={handleChange}/> */}
+              <div className="flex flex-wrap">
+            {/* Character Profile (full width) */}
+            <div className="w-full">
+                <CharacterProfile
+                    character={character}
+                    handleSubmit={handleSubmit}
+                    handleChange={handleChange}
+                    profData={profData}
+                    setProfData={setProfData}
+                />
+            </div>
+
+            {/* Character Stats (1/4 width) */}
+            <div className="w-half sm:w-1/6">
+                <CharacterStats
+                    character={character}
+                    handleSubmit={handleSubmit}
+                    handleChange={handleChange}
+                    profData={profData}
+                    setProfData={setProfData}
+                    stats={profData.stats}
+                />
+            </div>
+
+            {/* Character Misc and Character Saving Throws (1/4 width each) */}
+            <div className="w-full sm:w-1/2">
+                <div className="w-full mb-4">
+                    <CharacterMisc
+                        handleChange={handleChange}
+                        profData={profData}
+                    />
+                </div>
+                <div className="w-full">
+                    <CharacterSaving
+                        handleSubmit={handleSubmit}
+                        savingThrows={profData.saving_throws}
+                        handleChange={handleChange}
+                    />
+                </div>
+            </div>
+
+            {/* Character Skills (full width) */}
+            <div className="w-full l-1/2">
+                <CharacterSkills
+                    handleSubmit={handleSubmit}
+                    skills={profData.skills}
+                    handleChange={handleChange}
+                />
+            </div>
+        </div>
             <CharacterHealth handleSubmit={handleSubmit} health={profData.health} handleChange={handleChange}/>
             <CharacterDeathSaves/>
             <CharacterPersonal handleSubmit={handleSubmit} personal={profData.personal} handleChange={handleChange}/>
