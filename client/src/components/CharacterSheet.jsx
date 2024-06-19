@@ -495,10 +495,6 @@ function CharacterSheet() {
             handleChange={handleChange}
         />
     </div>
-
-    {/* Character Other (1/4 width) */}
-
-    {/* Character Equipment (full width) */}
 </div>
 <button type="submit" onClick={handleSubmit}>Update Character</button>
 

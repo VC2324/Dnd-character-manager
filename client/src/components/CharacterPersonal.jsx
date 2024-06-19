@@ -23,42 +23,42 @@ function CharacterPersonal({handleChange, personal, handleSubmit}){
     <div className="p-4">
     <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-            <label className="block mb-1 font-bold text-gray-700">Personality Traits:</label>
+            <label className="block mb-1 font-dragon text-black-700 underline">Personality Traits</label>
             <textarea
                 name="personality_traits"
                 value={personal.personality_traits}
                 onChange={handleChange}
-                className="w-full p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full p-2 border rounded-lg shadow-sm "
                 rows="3"
             />
         </div>
         <div>
-            <label className="block mb-1 font-bold text-gray-700">Ideals:</label>
+            <label className="block mb-1 font-dragon text-black-700 underline">Ideals</label>
             <textarea
                 name="ideals"
                 value={personal.ideals}
                 onChange={handleChange}
-                className="w-full p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full p-2 border rounded-lg shadow-sm "
                 rows="3"
             />
         </div>
         <div>
-            <label className="block mb-1 font-bold text-gray-700">Bonds:</label>
+            <label className="block mb-1 font-dragon text-black-700 underline">Bonds</label>
             <textarea
                 name="bonds"
                 value={personal.bonds}
                 onChange={handleChange}
-                className="w-full p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full p-2 border rounded-lg shadow-sm"
                 rows="3"
             />
         </div>
         <div>
-            <label className="block mb-1 font-bold text-gray-700">Flaws:</label>
+            <label className="block mb-1 font-dragon text-black-700 underline">Flaws</label>
             <textarea
                 name="flaws"
                 value={personal.flaws}
                 onChange={handleChange}
-                className="w-full p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full p-2 border rounded-lg shadow-sm "
                 rows="3"
             />
         </div>
