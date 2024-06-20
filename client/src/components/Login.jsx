@@ -98,7 +98,7 @@ function Login(){
             )
         } else {
             return(
-                <div className="login-div p-10 bg-gradient-to-b  text-gray-200 from-brown-900 via-brown-800 to-brown-700 rounded-lg shadow-lg max-w-md mx-auto mt-32">
+                <div className="login-div p-10 bg-gradient-to-b  text-gray-200 from-brown-900 via-brown-800 to-brown-700 rounded-lg shadow-lg max-w-md mx-auto ">
     <h2 className="text-3xl  font-bold mb-6 text-center" >Sign up</h2>
     <form onSubmit={handleSignup} className="w-full">
         <input
