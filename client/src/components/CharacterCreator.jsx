@@ -13,9 +13,14 @@ import CreateEquipment from "./CreateEquipment";
 import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
 import backgroundImage from '/Assets/partchsmall.jpg'
+import { useNavigate } from 'react-router-dom';
+
+
 
 
 function CharacterCreator() {
+    const navigate = useNavigate();
+
     const [charData, setCharData] = useState({
         name: "",
         klass: "",
@@ -152,7 +157,84 @@ function CharacterCreator() {
 
 
 
-    const handleSubmit = async (e) => {
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     const body = {
+    //         character: {
+    //             ...charData,
+    //             stats: [charData.stats],  
+    //             misc_stats: { ...charData.misc_stats },
+    //             saving_throws: [charData.saving_throws],
+    //             skills: [charData.skills],
+    //             health: [charData.health],
+    //             personal: [charData.personal],
+    //             attacks: [charData.attacks],
+    //             feats: [charData.feats],
+    //             other: [charData.other],
+    //             equipments: [charData.equipments]
+    //         }
+    //     };
+    //     try {
+    //         const response = await fetch('/api/create_character', {
+    //             method: 'POST',
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 "Accept": "application/json"
+    //             },
+    //             body: JSON.stringify(body)
+    //         });
+    //         const data = await response.json();
+    //         console.log('Response from server:', data);
+    //     } catch (error) {
+    //         console.error('Error submitting data:', error);
+    //     }
+    // };
+// ==================÷÷
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     const body = {
+    //         character: {
+    //             ...charData,
+    //             stats: [charData.stats],  
+    //             misc_stats: { ...charData.misc_stats },
+    //             saving_throws: [charData.saving_throws],
+    //             skills: [charData.skills],
+    //             health: [charData.health],
+    //             personal: [charData.personal],
+    //             attacks: [charData.attacks],
+    //             feats: [charData.feats],
+    //             other: [charData.other],
+    //             equipments: [charData.equipments]
+    //         }
+    //     };
+
+    //     fetch('/api/create_character', {
+    //         method: 'POST',
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "Accept": "application/json"
+    //         },
+    //         body: JSON.stringify(body)
+    //     })
+    //     .then(response => {
+    //         if (!response.ok) {
+    //             throw new Error('Failed to create character');
+    //         }
+    //         return response.json();
+    //     })
+    //     .then(data => {
+    //         console.log('Response from server:', data);
+    //         // Redirect to userprofile page
+    //         navigate('/userprofile');
+    //     })
+    //     .catch(error => {
+    //         console.error('Error submitting data:', error);
+    //     });
+    // };
+
+    const [showAlert, setShowAlert] = useState(false);
+
+    const handleSubmit = (e) => {
         e.preventDefault();
         const body = {
             character: {
@@ -169,21 +251,36 @@ function CharacterCreator() {
                 equipments: [charData.equipments]
             }
         };
-        try {
-            const response = await fetch('/api/create_character', {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify(body)
-            });
-            const data = await response.json();
+
+        fetch('/api/create_character', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(body)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to create character');
+            }
+            return response.json();
+        })
+        .then(data => {
             console.log('Response from server:', data);
-        } catch (error) {
+            // Show the alert
+            setShowAlert(true);
+            // Hide the alert after 3 seconds and navigate to userprofile
+            setTimeout(() => {
+                setShowAlert(false);
+                navigate('/userprofile');
+            }, 3000);
+        })
+        .catch(error => {
             console.error('Error submitting data:', error);
-        }
+        });
     };
+
 
     return (
     
@@ -195,6 +292,18 @@ function CharacterCreator() {
                 <div className="w-full m-2 ">
                         {/* <h1 className="font-dragon text-2xl text-center underline">Create New Character</h1> */}
                         <CreateProfile className="w-full m-2 " handleSubmit={handleSubmit} handleChange={handleChange} charData={charData} />
+                        <div className="relative">
+            {showAlert && (
+                  <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purplerogue via-pink-500 to-iriswarlock text-white px-4 py-2 rounded-md shadow-md">
+                {/* <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded-md shadow-md"> */}
+                    Character has been created successfully!
+                </div>
+            )}
+            <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Your form elements go here */}
+                {/* <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md">Submit</button> */}
+            </form>
+        </div>
                 </div>
                 
                     <div className="w-full sm:w-1/6 mx-2 mb-4">
