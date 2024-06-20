@@ -100,6 +100,7 @@ function CharacterProfile({ handleSubmit, handleChange, profData }) {
                     >
                     Update Character
                     </button>
+                    
             </div>
         </form>
     );

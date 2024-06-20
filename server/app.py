@@ -185,6 +185,54 @@ def get_one_char(character_id):
 
     return {}, 404
 
+# @app.delete('/api/character/<int:character_id')
+# def delete_one(character_id):
+#     user_id = session.get('user_id')
+
+#     user=User.query.get(user_id)
+#     if user:
+#         for character in user.characters:
+#             if character.id==character_id:
+#                 db.session.delete(character)
+#                 db.session.commit()
+#                 return{}, 204
+#             return{}, 404
+
+
+
+@app.delete('/api/character/<int:character_id>')
+def delete_character(character_id):
+    try:
+        # Retrieve user from session or authentication mechanism
+        user_id = session.get('user_id')
+        if not user_id:
+            return jsonify({'error': 'User is not logged in.'}), 401
+
+        # Ensure user exists
+        user = User.query.get(user_id)
+        if not user:
+            return jsonify({'error': 'User does not exist.'}), 404
+
+        # Find the character to delete
+        character_to_delete = None
+        for character in user.characters:
+            if character.id == character_id:
+                character_to_delete = character
+                break
+
+        if not character_to_delete:
+            return jsonify({'error': 'Character not found.'}), 404
+
+        # Delete the character
+        db.session.delete(character_to_delete)
+        db.session.commit()
+
+        return {}, 204  # Return empty response with 204 status on successful deletion
+
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
+
 # @app.get('/api/user/<int:user_id>/character/<int:character_id>')
 # def get_one_char(user_id, character_id):
 #     character = (db.session.query(Character)

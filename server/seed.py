@@ -41,11 +41,11 @@ if __name__ == '__main__':
         users.append(u3)
 
         u4 = User(username="Player4")
-        u4.hashed_password = generate_password_hash('123')
+        u4.hashed_password = '123'
         users.append(u4)
 
         u5 = User(username="Player5")
-        u5.hashed_password = generate_password_hash('123')
+        u5.hashed_password = '123'
         users.append(u5)
 
 

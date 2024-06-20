@@ -417,6 +417,29 @@ function CharacterSheet() {
     //         console.error('Error fetching data:', error);
     //     }
     // };
+
+    const handleDelete = async () => {
+        try {
+            const response = await fetch(`/api/character/${character.id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+            });
+            if (!response.ok) {
+                throw new Error('Failed to delete character');
+            }
+            onDelete(character.id); // Notify parent component that character has been deleted
+        } catch (error) {
+            console.error('Error deleting character:', error);
+            // Handle error
+        }
+    };
+    // const handleDeleteCharacter = (deletedCharacterId) => {
+    //     // Filter out the deleted character from the state
+    //     setCharacters(characters.filter(character => character.id !== deletedCharacterId));
+    // };  
     return (
     <div className="relative bg-cover bg-center bg-no-repeat min-h-screen"
         style={{ backgroundImage: `url(${backgroundImage})` }}>
@@ -431,7 +454,9 @@ function CharacterSheet() {
             )}
         </div>
                 <div className="w-full m-2 ">
-                          <CharacterProfile character={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData}/>
+                         
+                          <CharacterProfile character={character} handleSubmit={handleSubmit} handleChange={handleChange} profData={profData} setProfData={setProfData} handleDelete={handleDelete}/>
+                          
                     </div>
             <div className="w-full sm:w-1/6 mx-2 mb-4">
                 <CharacterStats

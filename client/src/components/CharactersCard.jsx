@@ -4,7 +4,14 @@ import { Link } from "react-router-dom";
 function CharacterCards(){
 
     const [characters, setCharacters] = useState([]);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(null)
+
+// ======================
+
+
+    
+// ======================
+
     useEffect(() => {
         fetch("/api/characters")
         .then(res => {
@@ -21,8 +28,16 @@ function CharacterCards(){
             setError(error.message)
         });
     }, []);
-    // console.log({data.characters})  
-  
+    // console.log({data.characters}) 
+
+
+// ======================
+  //   const handleDeleteCharacter = (deletedCharacterId) => {
+  //     // Filter out the deleted character from the state
+  //     setCharacters(characters.filter(character => character.id !== deletedCharacterId));
+  // };  
+
+  // =====================
 console.log(characters)
     return(  
       
@@ -45,6 +60,16 @@ console.log(characters)
                 <p className="text-white text-xl">Level: {character.level}</p>
                 <p className="text-white text-xl">Class: {character.klass}</p>
                 <p className="text-white text-xl">Exp: {character.xp}</p>
+
+
+                {/* =================== */}
+                {/* <button
+                onClick={handleDelete}
+                className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md">
+                Delete
+                </button> */}
+               {/* ===================== */}
+
               </div>
             </Link>
           ))}
