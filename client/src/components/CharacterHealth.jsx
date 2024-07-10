@@ -14,7 +14,7 @@ function CharacterHealth({ handleSubmit, health, handleChange }) {
                             onChange={handleChange}
                             required
                             className=" bg-transparent rounded p-1 w-full text-center text-xl"
-                            // className="w-16 bg-transparent border-b-2 border-black outline-none text-center"
+
                         />
                     </div>
                     <div className="w-full sm:w-1/3 mb-4 sm:mb-0">
@@ -25,7 +25,7 @@ function CharacterHealth({ handleSubmit, health, handleChange }) {
                             value={health.initiative}
                             onChange={handleChange}
                             required
-                            // className="border rounded p-1 w-full"
+
                             className="  text-xl bg-transparent rounded p-1 w-full text-center"
 
                         />
@@ -38,14 +38,14 @@ function CharacterHealth({ handleSubmit, health, handleChange }) {
                             value={health.speed}
                             onChange={handleChange}
                             required
-                            // className="border rounded p-1 w-full"
+
                             className="  text-xl bg-transparent rounded p-1 w-full text-center"
 
                         />
                     </div>
                 </div>
                 <div className="flex flex-wrap">
-                    {/* Row 2: Max HP, Current HP, Temporary HP */}
+
                     <div className="w-full sm:w-1/3 mb-4 sm:mb-0">
                         <label className="block text-center mx-5 font-dragon underline">Max <></>HP</label>
                         <input
@@ -54,7 +54,7 @@ function CharacterHealth({ handleSubmit, health, handleChange }) {
                             value={health.max_hp}
                             onChange={handleChange}
                             required
-                            // className="border rounded p-1 w-full"
+
                             className="  text-xl bg-transparent rounded p-1 w-full text-center"
 
                         />
@@ -67,7 +67,7 @@ function CharacterHealth({ handleSubmit, health, handleChange }) {
                             value={health.current_hp}
                             onChange={handleChange}
                             required
-                            // className="border rounded p-1 w-full"
+
                             className="  text-xl bg-transparent rounded p-1 w-full text-center"
 
                         />
@@ -81,7 +81,7 @@ function CharacterHealth({ handleSubmit, health, handleChange }) {
                             value={health.temp_hp}
                             onChange={handleChange}
                             required
-                            // className="border rounded p-1 w-full"
+
                             className="  text-xl bg-transparent rounded p-1 w-full text-center"
 
                         />
