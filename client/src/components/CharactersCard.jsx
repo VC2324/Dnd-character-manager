@@ -6,11 +6,7 @@ function CharacterCards(){
     const [characters, setCharacters] = useState([]);
     const [error, setError] = useState(null)
 
-// ======================
 
-
-    
-// ======================
 
     useEffect(() => {
         fetch("/api/characters")
@@ -31,13 +27,7 @@ function CharacterCards(){
     // console.log({data.characters}) 
 
 
-// ======================
-  //   const handleDeleteCharacter = (deletedCharacterId) => {
-  //     // Filter out the deleted character from the state
-  //     setCharacters(characters.filter(character => character.id !== deletedCharacterId));
-  // };  
 
-  // =====================
 console.log(characters)
     return(  
       
