@@ -24,7 +24,7 @@ function CharacterCards(){
             setError(error.message)
         });
     }, []);
-    // console.log({data.characters}) 
+   
 
 
 
